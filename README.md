@@ -6,9 +6,9 @@ Los archivos de informacion sobre el proyecto los van a encontrar en la carpeta 
 
 ## Capturas de ejemplo:
 
-<figure><img src="./ProjectInfo/img/YoProgramo-PortfolioWeb-Arquitectura-Manuel-Bravard.png" alt="App architecture" style="max-width:600px; max-height=600px;">
-<figcaption style="margin-top:-10px;">App architecture</figcaption>
-</figure>
+<img src="./ProjectInfo/img/YoProgramo-PortfolioWeb-Arquitectura-Manuel-Bravard.png" alt="App architecture" style="max-width:600px; max-height=600px;">
+<p style="margin-top:-10px;">App architecture</p>
+
 
 <hr style="margin:1rem 0;">
 
