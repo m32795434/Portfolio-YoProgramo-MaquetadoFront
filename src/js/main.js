@@ -1,4 +1,4 @@
-import bootstrap from '../../node_modules/bootstrap/dist/js/bootstrap.min';//.js too
+import bootstrap from 'bootstrap/dist/js/bootstrap.min';
 /*
 const popers = document.querySelectorAll('[data-bs-toggle="popover"]');
 Array.from(popers).forEach((pop)=>new bootstrap.Popover(pop));
