@@ -1,0 +1,28 @@
+{
+  "name": "portfolio-yoprogramo-maquetadofront",
+  "version": "1.0.0",
+  "description": "FrontEnd del proyecto",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel serve src/index.html --public-url / --dist-dir dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m32795434/Portfolio-YoProgramo-MaquetadoFront.git"
+  },
+  "author": "Manuel Augusto Bravard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/m32795434/Portfolio-YoProgramo-MaquetadoFront/issues"
+  },
+  "homepage": "https://github.com/m32795434/Portfolio-YoProgramo-MaquetadoFront#readme",
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
+    "parcel": "^2.7.0"
+  }
+}
