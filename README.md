@@ -3,6 +3,7 @@
 El trabajo lo estoy realizando, aplicando la metodología SCRUM. Dado que es mi portfolio, me considero en todas las posiciones que SCRUM determina. A saber: Product Owner, Scrum Master, Developer. Por tanto aunque parezca un poco redundante todo esto, lo estoy aplicando solo a modo de práctica, y en cada posición considero todos los aspectos que consideraría en caso de trabajar con un equipo real, teniendo que asumir alguna de dichas funciones.
 
 Los archivos de informacion sobre el proyecto los van a encontrar en la carpeta /ProyectInfo en el directorio raiz.
+Enlace al Figma:https://www.figma.com/file/OzmM9ZwWiCKJm0VOkrIZa5/Portfolio-YoProgramo?node-id=0%3A1&t=8uwZka9PgEAfaabS-1
 
 ## Capturas de ejemplo:
 
