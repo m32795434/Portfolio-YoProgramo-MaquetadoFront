@@ -17,16 +17,45 @@
 
 <body>
   <header class="container-fluid d-grid align-content-center">
-    <div class="row row-cols-3">
-      <div class="col gridItem d-flex justify-content-start m-0 py-1">
+    <div class="row justify-content-between">
+      <div class="col col-4 gridItem d-flex justify-content-start m-0 py-1">
         <img role="button" tabindex="0" src="../src/images/Argentina-Programa.png" alt="Argentina Programa">
       </div>
-      <div class="col gridItem material-icons d-grid justify-content-center align-content-center d-md-none">menu</div>
-      <div class="col gridItem d-flex justify-content-end align-content-center gap-1 div-socials">
-        <div class="d-md-block d-none">Section</div>
-        <img src="../src/images/instagram.png" alt="">
-        <img src="../src/images/linkedin.png" alt="">
-        <img src="../src/images/whatsapp.png" alt="">
+      <div class="col col-4 gridItem d-grid justify-content-center align-content-center d-md-none">
+        <div class="btn-group">
+          <button type="button" class="btn material-icons" id="menuHamb" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            menu
+          </button>
+          <nav class="dropdown-menu">
+            <h6 class="dropdown-header">Section</h6>
+            <a class="dropdown-item" href="#">Experience</a>
+            <a class="dropdown-item" href="#">Education</a>
+            <a class="dropdown-item" href="#">Hard & Soft Skills</a>
+            <hr class="dropdown-divider">
+            <a class="dropdown-item" href="#">LOGIN</a>
+          </nav>
+        </div>
+      </div>
+      <div class="col col-4 gridItem d-flex justify-content-end align-content-center gap-1 div-socials">
+        <div class="btn-group d-none d-md-block">
+          <!-- class="dropdown-toggle" is for the arrow in the button. -->
+          <!-- data-bs-toggle is for closing functionality -->
+          <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn material-icons" id="section">
+            Section
+          </button>
+          <nav class="dropdown-menu">
+            <h6 class="dropdown-header">Section</h6>
+            <a class="dropdown-item" href="#">Experience</a>
+            <a class="dropdown-item" href="#">Education</a>
+            <a class="dropdown-item" href="#">Hard & Soft Skills</a>
+            <hr class="dropdown-divider">
+            <a class="dropdown-item" href="#">LOGIN</a>
+          </nav>
+        </div>
+        <img role="button" tabindex="0" src="../src/images/instagram.png" alt="instagram">
+        <img role="button" tabindex="0" src="../src/images/linkedin.png" alt="Linkedin">
+        <img role="button" tabindex="0" src="../src/images/whatsapp.png" alt="Whatsapp">
       </div>
     </div>
   </header>

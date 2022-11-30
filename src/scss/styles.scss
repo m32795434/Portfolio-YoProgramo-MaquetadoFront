@@ -95,17 +95,29 @@ header {
   height: 88px;
 }
 
-a {
-  color: #b3b3b3;
-  font: 14px, sans-serif;
-}
+// a {
+//   color: #b3b3b3;
+//   font: 14px, sans-serif;
+// }
 
-h1 {
-  color: white;
-  font: 36px, Montserrat, sans-serif;
-}
+// h1 {
+//   color: white;
+//   font: 36px, Montserrat, sans-serif;
+// }
 
 .div-socials>img {
   width: 35px;
   height: 35px;
+}
+
+#menuHamb {
+  font-family: 'Material Icons';
+  color: #b3b3b3;
+  font-size: 20px;
+}
+
+#section {
+  font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
+  font-size: 20px;
+  color: #b3b3b3
 }
