@@ -86,7 +86,26 @@ body {
   padding: 1.5rem;
 }
 */
+/*colors>
+header>black; header links #b3b3b3; font: 14px, sans-serif;
+*/
+header {
+  background-color: black;
+  color: white;
+}
 
-body>.container-fluid {
-  background: url('../images/background.png')
+a {
+  color: #b3b3b3;
+  font: 14px, sans-serif;
+}
+
+h1 {
+  color: white;
+  font: 36px, Montserrat, sans-serif;
+}
+
+img {
+  color: white;
+  background-color: white;
+  width: 40px;
 }
