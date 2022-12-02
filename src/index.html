@@ -10,6 +10,8 @@
     href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Lato&family=Montserrat&family=Open+Sans&family=Roboto&display=swap"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <title>Portfolio YoProgramo FrontEnd</title>
   <link rel="stylesheet" href="scss/styles.scss">
   <script type="module" src="js/main.js"></script>
@@ -37,11 +39,11 @@
           </nav>
         </div>
       </div>
-      <div class="col col-4 gridItem d-flex justify-content-end align-content-center gap-1 div-socials">
-        <div class="btn-group d-none d-md-block">
+      <div class="col col-4 gridItem d-flex justify-content-end align-content-center gap-1" id="section-socials">
+        <div class="btn-group d-none d-md-block" id="section">
           <!-- class="dropdown-toggle" is for the arrow in the button. -->
           <!-- data-bs-toggle is for closing functionality -->
-          <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn material-icons" id="section">
+          <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn material-icons">
             Section
           </button>
           <nav class="dropdown-menu">
@@ -59,37 +61,24 @@
       </div>
     </div>
   </header>
-  <!-- <div class="container-fluid m-0 p-0 back-img">
+
+  <section class="container-fluid m-0 p-0" id="about-section">
     <img src="../src/images/home-mobile.png" alt="Manuel perfil">
-    <p>Hi! I’m Manuel.<br> I’m a FullStack<br>Developer Jr.</p>
-    <div class="d-grid slide">
-      <p class="slide-text">I had the opportunity to study Programing in the university some years ago, and since
-        January 2021 I have been studing and developing some stuff in Js and friends. ¡I invite you to check my Github
-        repository!</p>
-      <div>
-        <button class="btn material-icons slide-buttons">prev</button>
-        <button class="btn material-icons slide-buttons">next</button>
-        <button class="btn material-icons slide-buttons">play</button>
-      </div>
-    </div>
-  </div> -->
-  <div class="container-fluid m-0 p-0 back-img ">
-    <img src="../src/images/home-mobile.png" alt="Manuel perfil">
-    <div class="d-flex flex-column justify-content-between flex-wrap"
-      style="height: 100%;position:absolute;top:0;z-index:10000;">
-      <p class="hi">Hi! I’m Manuel.<br> I’m a FullStack<br>Developer Jr.</p>
-      <div class="d-grid slide">
-        <p class="slide-text">I had the opportunity to study Programing in the university some years ago, and since
+    <div class="d-flex flex-column justify-content-between flex-wrap" id="h1-plus-slide">
+      <h1 class="mx-1 mt-4">Hi!, I’m Manuel.<br> I’m a FullStack<br>Developer Jr.</h1>
+      <div class="d-grid" id="slide">
+        <p class="p-3 m-0 text-center">I had the opportunity to study Programing in the university some years ago, and
+          since
           January 2021 I have been studing and developing some stuff in Js and friends. ¡I invite you to check my Github
           repository!</p>
-        <div>
-          <button class="btn material-icons slide-buttons">prev</button>
-          <button class="btn material-icons slide-buttons">next</button>
-          <button class="btn material-icons slide-buttons">play</button>
+        <div class="d-flex flex-wrap justify-content-center">
+          <button type="button" class="btn material-symbols-outlined">skip_previous</button>
+          <button type="button" class="btn material-symbols-outlined">play_pause</button>
+          <button type="button" class="btn material-symbols-outlined">skip_next</button>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
 
   <footer>FOOTER</footer>

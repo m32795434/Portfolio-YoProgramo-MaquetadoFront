@@ -105,7 +105,7 @@ header {
 //   font: 36px, Montserrat, sans-serif;
 // }
 
-.div-socials>img {
+#section-socials>img {
   width: 35px;
   height: 35px;
 }
@@ -116,57 +116,45 @@ header {
   font-size: 20px;
 }
 
-#section {
+#section>button {
   font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
   font-size: 20px;
   color: #b3b3b3
 }
 
-/*
-.back-img {
+#about-section {
   position: relative;
-  z-index: 1;
 
   &>img {
     width: 100%;
   }
+}
 
-  &>p {
-    position: absolute;
-    z-index: 10;
-    top: 40px;
-    left: 10px;
+#h1-plus-slide {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+
+  &>h1 {
     font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
-    font-size: 36px;
+    font-size: 9vw;
     color: white;
   }
 }
 
-.slide {
-  background-color: rgba(0, 0, 0, 0.4);
-  position: absolute;
-  top: 60%;
-}
+#slide {
+  background-color: rgba(0, 0, 0, 0.66);
 
-.slide-text {
-  padding: 10px;
-}
+  &>p {
+    font: 500 16px Montserrat, 'Open Sans', Lato, 'sans-serif';
+    color: white;
+    letter-spacing: 0.2rem;
+  }
 
-.slide-buttons {
-  font-family: 'Material Icons';
-  color: white;
-}
-*/
-.back-img {
-  position: relative;
-}
-
-.hi {
-  font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
-  font-size: 36px;
-  color: white;
-}
-
-.slide {
-  background-color: rgba(0, 0, 0, 0.4);
+  & button {
+    font-family: 'Material Symbols Outlined';
+    color: white;
+    font-size: 24px;
+  }
 }
