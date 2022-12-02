@@ -122,6 +122,7 @@ header {
   color: #b3b3b3
 }
 
+/*
 .back-img {
   position: relative;
   z-index: 1;
@@ -154,4 +155,18 @@ header {
 .slide-buttons {
   font-family: 'Material Icons';
   color: white;
+}
+*/
+.back-img {
+  position: relative;
+}
+
+.hi {
+  font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
+  font-size: 36px;
+  color: white;
+}
+
+.slide {
+  background-color: rgba(0, 0, 0, 0.4);
 }
