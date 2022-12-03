@@ -158,3 +158,26 @@ header {
     font-size: 24px;
   }
 }
+
+footer {
+  background-color: black;
+  height: 350px;
+  font: 500 22px Montserrat, 'Open Sans', Lato, 'sans-serif';
+  color: white;
+
+  & a {
+    text-decoration: none;
+    font: 500 22px Montserrat, 'Open Sans', Lato, 'sans-serif';
+    color: white;
+    line-height: 1.5;
+    display: block;
+    transition: all 0.2s;
+
+    &:hover {
+      color: #b3b3b3;
+      font-size: 23px;
+      border: 0.5px solid #b3b3b3;
+      border-radius: 2px;
+    }
+  }
+}
