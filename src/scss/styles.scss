@@ -109,7 +109,7 @@ header {
   color: #b3b3b3
 }
 
-#about-section {
+.about-section {
   position: relative;
 
 
@@ -118,7 +118,7 @@ header {
   }
 }
 
-#h1-plus-slide {
+.h1-plus-slide {
   height: 100%;
   position: absolute;
   top: 0;
@@ -128,16 +128,32 @@ header {
     font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
     font-size: 9vw;
     color: white;
+
+    @include media-breakpoint-up(md) {
+      font-size: 4.5vw;
+      max-width: 50vw;
+      background-color: rgba(0, 0, 0, 0.44);
+
+    }
   }
 }
 
-#slide {
+.slide {
   background-color: rgba(0, 0, 0, 0.66);
+
+  @include media-breakpoint-up(md) {
+    max-width: 50vw;
+    background-color: rgba(0, 0, 0, 0.44);
+  }
 
   &>p {
     font: 500 16px Montserrat, 'Open Sans', Lato, 'sans-serif';
     color: white;
     letter-spacing: 0.2rem;
+
+    @include media-breakpoint-only(md) {
+      font-size: 14px;
+    }
   }
 
   & button {

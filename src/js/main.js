@@ -18,7 +18,7 @@ Array.from(popers).forEach((pop)=>{
     new Popover(pop)
 })
 */
-
+/*
 const imgHome = document.querySelector('main>img');
 if (window.visualViewport.width >= 768) {
   imgHome.src = '/home-md-1920.png';
@@ -31,3 +31,4 @@ function handleResize(e) {
   }
 }
 window.addEventListener('resize', handleResize);
+*/
