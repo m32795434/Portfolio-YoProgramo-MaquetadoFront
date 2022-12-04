@@ -114,6 +114,9 @@ header {
   font-family: 'Material Icons';
   color: #b3b3b3;
   font-size: 20px;
+  background-color: transparent;
+  outline: none;
+  border: transparent;
 }
 
 #section>button {
@@ -124,6 +127,7 @@ header {
 
 #about-section {
   position: relative;
+
 
   &>img {
     width: 100%;
@@ -156,6 +160,9 @@ header {
     font-family: 'Material Symbols Outlined';
     color: white;
     font-size: 24px;
+    background-color: transparent;
+    outline: none;
+    border: transparent;
   }
 }
 
