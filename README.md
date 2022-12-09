@@ -1,8 +1,10 @@
 ## Proyecto final ArgPrograma etapa YoProgramo
 
-El trabajo lo estoy realizando, aplicando la metodología SCRUM. Dado que es mi portfolio, me considero en todas las posiciones que SCRUM determina. A saber: Product Owner, Scrum Master, Developer. Por tanto aunque parezca un poco redundante todo esto, lo estoy aplicando solo a modo de práctica, y en cada posición considero todos los aspectos que consideraría en caso de trabajar con un equipo real, teniendo que asumir alguna de dichas funciones.
+En el desafío del primer módulo de la capacitación debíamos aplicar la metodología SCRUM. Dado que es mi portfolio, me consideré en todas las posiciones que SCRUM determina. A saber: Product Owner, Scrum Master, Developer. Por tanto aunque parezca un poco redundante todo esto, lo apliqué solo a modo de práctica, y en cada posición consideré todos los aspectos que consideraría en caso de trabajar con un equipo real, teniendo que asumir alguna de dichas funciones.<br>
+Actualmente continúo aplicando las características y funcionalidades adicionales que nos ofrece Github, tales como ["Projects", "Labels", "Issues", "Pull Requests", "Tags"]. Aunque parezca un poco <strong>"burocrático"</strong>, (ya que estoy jugando con esto en <b>solitario</b>), me quedan todos los movimientos registrados y correctamente ordenados/clasificados, y... <strong>¡Nada mejor que experimentar amig@ 😁👌</strong>!
 
 Los archivos de informacion sobre el proyecto los van a encontrar en la carpeta /ProyectInfo en el directorio raiz.
+
 Enlace al Figma:https://www.figma.com/file/OzmM9ZwWiCKJm0VOkrIZa5/Portfolio-YoProgramo?node-id=0%3A1&t=8uwZka9PgEAfaabS-1
 
 ## Algunas capturas:
@@ -11,6 +13,8 @@ Enlace al Figma:https://www.figma.com/file/OzmM9ZwWiCKJm0VOkrIZa5/Portfolio-YoPr
 <h2 style="text-align:center;">Digital Mockup</h2>
 <img src="./ProjectInfo/img/figmaSnapshot.png" alt="Figma - Digital Mockup" style="max-width:600px; height:auto;">
 </div>
+
+<hr style="margin:1rem 0;">
 
 <div style="display:grid;align-items:center; justify-items:center;gap:1rem;">
 <h2 style="text-align:center;">App architecture</h2>
