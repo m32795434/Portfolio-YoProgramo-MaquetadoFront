@@ -1,7 +1,7 @@
 ## Proyecto final ArgPrograma etapa YoProgramo
 
 En el desafío del primer módulo de la capacitación debíamos aplicar la metodología SCRUM. Dado que es mi portfolio, me consideré en todas las posiciones que SCRUM determina. A saber: Product Owner, Scrum Master, Developer. Por tanto aunque parezca un poco redundante todo esto, lo apliqué solo a modo de práctica, y en cada posición consideré todos los aspectos que consideraría en caso de trabajar con un equipo real, teniendo que asumir alguna de dichas funciones.<br>
-Actualmente continúo aplicando las características y funcionalidades adicionales que nos ofrece Github, tales como ["Projects", "Labels", "Issues", "Pull Requests", "Tags"]. Aunque parezca un poco <strong>"burocrático"</strong>, (ya que estoy jugando con esto en <b>solitario</b>), me quedan todos los movimientos registrados y correctamente ordenados/clasificados, y... <strong>¡Nada mejor que experimentar amig@ 😁👌</strong>!
+Actualmente continúo aplicando las características y funcionalidades adicionales que nos ofrece Github, tales como ["Projects", "Labels", "Issues", "Pull Requests", "Tags"]. Aunque parezca un poco <strong>"burocrático"</strong>, (ya que estoy jugando con esto en <b>solitario</b>), de esta forma llevo un correcto registro de todas las tareas, realizadas y a realizar, y... <strong>¡No hay nada mejor que experimentar amig@ 😁👌</strong>!
 
 Los archivos de informacion sobre el proyecto los van a encontrar en la carpeta /ProyectInfo en el directorio raiz.
 
