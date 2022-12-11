@@ -4,18 +4,15 @@
 
 .wrapper-h1-Edit-button-experience {
     position: absolute;
-    z-index: 10;
     top: 0;
-    width: 100%;
 
     & #h1-experience {
         font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
-        color: white;
         font-size: 8vw;
         background-color: rgba(217, 217, 217, 0.28);
-        color: rgba(0, 0, 0, 0.683);
+        color: #1f1d1dae;
         font-weight: 600;
-        padding: 21px 13px 13px 1px;
+        padding: 21px 13px 13px 7px;
 
         @include media-breakpoint-up(md) {
             font-size: 4.5vw;
