@@ -98,7 +98,7 @@ header {
   height: 35px;
 }
 
-#menuHamb {
+#menu-Hamb {
   font-family: 'Material Icons';
   color: #b3b3b3;
   font-size: 20px;
@@ -122,6 +122,8 @@ header {
   }
 }
 
+
+
 .h1-plus-slide {
   height: 100%;
   position: absolute;
@@ -139,12 +141,14 @@ header {
   }
 }
 
-#mainHalfBackG {
+#main-Half-BackG {
+  position: relative;
   background-color: rgba(0, 0, 0, 0.6);
 }
 
 .slide {
   background-color: rgba(0, 0, 0, 0.66);
+  position: relative;
 
   @include media-breakpoint-up(md) {
     background-color: transparent;
@@ -164,7 +168,7 @@ header {
     }
   }
 
-  & button {
+  & .slider-buttons>button {
     font-family: 'Material Symbols Outlined';
     color: white;
     font-size: 24px;
@@ -202,4 +206,31 @@ footer {
       transition: font-size 0.2s ease-in-out;
     }
   }
+}
+
+//Edit Buttons
+.edit-button {
+  position: absolute;
+  z-index: 11;
+  height: 50px;
+  width: 50px;
+  color: #FA1C1C;
+  border: 1px solid #FA1C1C;
+  font-size: 34px;
+  background-color: #393838;
+}
+
+#edit-bkg-img {
+  top: -30px;
+  left: 5px;
+}
+
+#edit-h1 {
+  top: 5px;
+  left: 85%;
+}
+
+.edit-p {
+  top: -50px;
+  left: 85%;
 }
