@@ -83,6 +83,11 @@ $success: #7952b3;
 @import "icon-list";
 */
 
+@import './style-home.scss';
+@import './style-experience.scss';
+
+//-----------------START-HEADER----------------------------
+
 header {
   background-color: black;
   color: white;
@@ -113,40 +118,19 @@ header {
   color: #b3b3b3
 }
 
-.about-section {
-  position: relative;
+//-----------------END-HEADER----------------------------
+//-----------------START-MAIN----------------------------
 
+.main-section {
+  position: relative;
 
   &>img {
     width: 100%;
   }
+
 }
 
-
-
-.h1-plus-slide {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  z-index: 10;
-
-  & h1 {
-    font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
-    font-size: 9vw;
-    color: white;
-
-    @include media-breakpoint-up(md) {
-      font-size: 4.5vw;
-    }
-  }
-}
-
-#main-Half-BackG {
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.slide {
+.slider {
   background-color: rgba(0, 0, 0, 0.66);
   position: relative;
 
@@ -179,6 +163,9 @@ header {
   }
 }
 
+//-----------------END-MAIN----------------------------
+//-----------------START-FOOTER----------------------------
+
 footer {
   background-color: black;
   height: 350px;
@@ -208,7 +195,9 @@ footer {
   }
 }
 
-//Edit Buttons
+//-----------------END-FOOTER----------------------------
+
+//-----------------EDIT-BUTTONS--------------------------
 .edit-button {
   position: absolute;
   z-index: 11;

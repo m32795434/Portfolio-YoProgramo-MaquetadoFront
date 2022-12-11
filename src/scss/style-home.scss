@@ -1,0 +1,22 @@
+.h1-plus-slider {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+
+    & h1 {
+        font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
+        font-size: 9vw;
+        color: white;
+
+        @include media-breakpoint-up(md) {
+            font-size: 4.5vw;
+        }
+
+    }
+}
+
+#main-Half-BackG {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.6);
+}
