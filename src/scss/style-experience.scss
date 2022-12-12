@@ -6,7 +6,7 @@
     position: absolute;
     top: 0;
 
-    & #h1-experience {
+    & h1 {
         font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
         font-size: 8vw;
         background-color: rgba(217, 217, 217, 0.28);
@@ -14,9 +14,51 @@
         font-weight: 600;
         padding: 21px 13px 13px 7px;
 
-        @include media-breakpoint-up(md) {
-            font-size: 4.5vw;
-        }
+        // @include media-breakpoint-up(md) {
+        //     font-size: 4.5vw;
+        // }
+
+    }
+}
+
+.slider-experience {
+    background-color: #f7f7f7;
+    position: relative;
+
+    // @include media-breakpoint-up(md) {
+    //     background-color: transparent;
+    // }
+
+    & h2 {
+        color: #5A5A5A;
+        font-size: 17px;
+        background-color: white;
+        font-weight: 200;
+        padding: 17px 0 9px 13px;
+    }
+
+    & p {
+        font: 500 19px Roboto, Montserrat, 'Open Sans', Lato, 'sans-serif';
+        color: #5A5A5A;
+        line-height: 1.5;
+        // letter-spacing: 0.2rem;
+
+        // @include media-breakpoint-only(md) {
+        //     font-size: 14px;
+        // }
+
+        // @include media-breakpoint-up(lg) {
+        //     font-size: 1.5vw;
+        // }
+    }
+
+    & .slider-buttons>button {
+        font-family: 'Material Symbols Outlined';
+        color: #777777;
+        font-size: 24px;
+        background-color: transparent;
+        outline: none;
+        border: transparent;
 
     }
 }
