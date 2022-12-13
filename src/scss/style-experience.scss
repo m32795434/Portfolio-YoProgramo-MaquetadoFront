@@ -8,7 +8,7 @@
 
     & h1 {
         font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
-        font-size: 8vw;
+        font-size: 28px;
         background-color: rgba(217, 217, 217, 0.28);
         color: #1f1d1dae;
         font-weight: 600;
@@ -35,6 +35,11 @@
         background-color: white;
         font-weight: 200;
         padding: 17px 0 9px 13px;
+
+        &::first-line {
+            font-size: 19px;
+            font-weight: 500;
+        }
     }
 
     & p {
@@ -52,13 +57,14 @@
         // }
     }
 
-    & .slider-buttons>button {
-        font-family: 'Material Symbols Outlined';
-        color: #777777;
-        font-size: 24px;
-        background-color: transparent;
-        outline: none;
-        border: transparent;
+}
 
-    }
+.slider-buttons>button {
+    font-family: 'Material Symbols Outlined';
+    color: #777777;
+    font-size: 24px;
+    background-color: transparent;
+    outline: none;
+    border: transparent;
+
 }
