@@ -104,4 +104,8 @@ class Slider {
     }
   }
 }
-const mySlider = new Slider(document.querySelector('.slider-experience'));
+let mySlider;
+
+if (window.visualViewport.width < 992) {
+  mySlider = new Slider(document.querySelector('.slider-experience'));
+}
