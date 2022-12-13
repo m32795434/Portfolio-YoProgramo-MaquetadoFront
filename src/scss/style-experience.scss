@@ -23,48 +23,97 @@
 
 .slider-experience {
     background-color: #f7f7f7;
-    position: relative;
 
     // @include media-breakpoint-up(md) {
     //     background-color: transparent;
     // }
 
-    & h2 {
-        color: #5A5A5A;
-        font-size: 17px;
-        background-color: white;
-        font-weight: 200;
-        padding: 17px 0 9px 13px;
+    & .slides {
+        // position: relative;
 
-        &::first-line {
-            font-size: 19px;
-            font-weight: 500;
+        & .slide {
+            // top: 0;
+            // position: sbsolute;
+            // transform: translateX(-200%);
+            display: none;
+            // transition: all 0.5s;
+
+            &.current {
+                // z-index: 10;
+                display: block;
+                // transform: translateX(0) translateX(10%);
+                // transition: transform 1s;
+                animation: 1s slide;
+            }
+
+            /*
+            &.prev {
+                // z-index: 10;
+                // transform: translateX(-100%);
+                // transition: transform 1s;
+
+            }
+
+
+            &.next {
+                // z-index: 10;
+                // transform: translateX(100%);
+                // transition: transform 1s;
+
+            }
+
+            &.next+.slide {
+                // z-index: 10;
+                // transform: translateX(200%);
+            }
+*/
+            & h2 {
+                color: #5A5A5A;
+                font-size: 17px;
+                background-color: white;
+                font-weight: 200;
+                padding: 17px 0 9px 13px;
+
+                &::first-line {
+                    font-size: 19px;
+                    font-weight: 500;
+                }
+            }
+
+            & p {
+                font: 500 19px Roboto, Montserrat, 'Open Sans', Lato, 'sans-serif';
+                color: #5A5A5A;
+                line-height: 1.5;
+
+                // @include media-breakpoint-only(md) {
+                //     font-size: 14px;
+                // }
+
+                // @include media-breakpoint-up(lg) {
+                //     font-size: 1.5vw;
+                // }
+            }
         }
     }
 
-    & p {
-        font: 500 19px Roboto, Montserrat, 'Open Sans', Lato, 'sans-serif';
-        color: #5A5A5A;
-        line-height: 1.5;
-        // letter-spacing: 0.2rem;
+    & .slider-buttons>button {
+        font-family: 'Material Symbols Outlined';
+        color: #777777;
+        font-size: 24px;
+        background-color: transparent;
+        outline: none;
+        border: transparent;
 
-        // @include media-breakpoint-only(md) {
-        //     font-size: 14px;
-        // }
-
-        // @include media-breakpoint-up(lg) {
-        //     font-size: 1.5vw;
-        // }
     }
 
 }
 
-.slider-buttons>button {
-    font-family: 'Material Symbols Outlined';
-    color: #777777;
-    font-size: 24px;
-    background-color: transparent;
-    outline: none;
-    border: transparent;
+@keyframes slide {
+    1% {
+        transform: translateX(100%);
+    }
 
+    90% {
+        transform: translateX(0%);
+    }
 }
