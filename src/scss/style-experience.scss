@@ -29,44 +29,44 @@
     // }
 
     & .slides {
-        // position: relative;
+        position: relative;
+        height: 400px;
+        overflow: hidden;
 
         & .slide {
-            // top: 0;
-            // position: sbsolute;
-            // transform: translateX(-200%);
-            display: none;
-            // transition: all 0.5s;
+            position: absolute;
+            top: 0;
+            z-index: 10;
+            transform: translateX(-200%);
+            transition: all 0.5s;
 
-            &.current {
-                // z-index: 10;
-                display: block;
-                // transform: translateX(0) translateX(10%);
-                // transition: transform 1s;
-                animation: 1s slide;
+            & .left-no-flex {
+                position: absolute;
+                z-index: 11;
+                left: 280px;
             }
 
-            /*
-            &.prev {
-                // z-index: 10;
-                // transform: translateX(-100%);
-                // transition: transform 1s;
 
+
+            &.prev {
+                transform: translateX(-100%);
+
+            }
+
+            &.current {
+                transform: translateX(0);
             }
 
 
             &.next {
-                // z-index: 10;
-                // transform: translateX(100%);
-                // transition: transform 1s;
+                transform: translateX(100%);
 
             }
 
             &.next+.slide {
-                // z-index: 10;
-                // transform: translateX(200%);
+                transform: translateX(200%);
             }
-*/
+
             & h2 {
                 color: #5A5A5A;
                 font-size: 17px;
@@ -104,16 +104,16 @@
         outline: none;
         border: transparent;
 
+        &:hover {
+            border: 1px solid rgb(5, 5, 5);
+
+        }
+
+        &.open1 {
+            border: 1px solid rgb(5, 5, 5);
+            background-color: #777777;
+            color: black
+        }
     }
 
-}
-
-@keyframes slide {
-    1% {
-        transform: translateX(100%);
-    }
-
-    90% {
-        transform: translateX(0%);
-    }
 }

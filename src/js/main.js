@@ -58,9 +58,12 @@ class Slider {
 
     prevButton.addEventListener('click', () => this.move('back'));
     nextButton.addEventListener('click', this.move);
-    this.play.addEventListener('click', this.playPauseFunction);
+    this.play.addEventListener('click', (e) =>
+      this.playPauseFunction(e.target)
+    );
 
     this.applyClasses();
+    this.playPauseFunction(this.play);
   }
 
   applyClasses() {
@@ -90,10 +93,9 @@ class Slider {
     this.applyClasses();
   }
 
-  playPauseFunction(e) {
-    const t = e.target;
+  playPauseFunction(t) {
     t.classList.toggle('open1');
-    if (e.target.matches('.open1')) {
+    if (t.matches('.open1')) {
       this.running = setInterval(() => {
         this.move();
       }, 4000);
