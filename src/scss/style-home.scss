@@ -1,0 +1,103 @@
+.container-columns {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    //z-index: 10;
+    width: 100%;
+
+    & h1 {
+        font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
+        font-size: 9vw;
+        color: white;
+
+        @include media-breakpoint-up(lg) {
+            font-size: 4.5vw;
+        }
+
+    }
+}
+
+#main-Half-BackG {
+
+    @include media-breakpoint-up(lg) {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+}
+
+.home-slider {
+    background-color: rgba(0, 0, 0, 0.66);
+    width: 100%;
+
+    // position: relative;
+    & .slides {
+        position: relative;
+        height: 10vw;
+        width: 100%;
+        overflow: hidden;
+
+        & .slide {
+            position: absolute;
+            width: 100%;
+            transition: all .25s;
+            transform: translateX(-200%);
+
+            &.current {
+                // z-index: 10;
+                transform: translateX(0);
+
+            }
+
+            &.prev {
+                transform: translateX(-100%);
+            }
+
+            &.next {
+                transform: translateX(100%);
+            }
+
+            & button {
+                position: absolute;
+                top: 0;
+            }
+        }
+
+        @include media-breakpoint-up(lg) {
+            height: 15vw;
+        }
+    }
+
+
+    @include media-breakpoint-up(lg) {
+        background-color: transparent;
+    }
+
+    & p {
+        font: 500 16px Montserrat, 'Open Sans', Lato, 'sans-serif';
+        color: white;
+        letter-spacing: 0.2rem;
+
+        @include media-breakpoint-up(lg) {
+            font-size: 1.5vw;
+        }
+    }
+
+    & .slider-buttons>button {
+        font-family: 'Material Symbols Outlined';
+        color: white;
+        font-size: 24px;
+        background-color: transparent;
+        outline: none;
+        border: transparent;
+
+        &:hover {
+            border: 1px solid white;
+
+        }
+
+        &.open1 {
+            border: 1px solid rgb(5, 5, 5);
+            background-color: #777777;
+            color: black
+        }
+    }
+}

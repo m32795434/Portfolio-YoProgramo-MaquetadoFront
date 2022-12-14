@@ -81,43 +81,114 @@ $success: #7952b3;
 //
 
 @import "icon-list";
+*/
 
-body {
-  padding: 1.5rem;
-}
-*/
-/*colors>
-header>black; header links #b3b3b3; font: 14px, sans-serif;
-*/
+@import './style-home.scss';
+@import './style-experience.scss';
+
+//-----------------START-HEADER----------------------------
+
 header {
   background-color: black;
   color: white;
   height: 88px;
+
+  @include media-breakpoint-up(lg) {
+    background-color: #393838;
+  }
 }
 
-// a {
-//   color: #b3b3b3;
-//   font: 14px, sans-serif;
-// }
-
-// h1 {
-//   color: white;
-//   font: 36px, Montserrat, sans-serif;
-// }
-
-.div-socials>img {
+#section-socials>img {
   width: 35px;
   height: 35px;
 }
 
-#menuHamb {
+#menu-Hamb {
   font-family: 'Material Icons';
   color: #b3b3b3;
   font-size: 20px;
+  background-color: transparent;
+  outline: none;
+  border: transparent;
 }
 
-#section {
+#section>button {
   font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
   font-size: 20px;
   color: #b3b3b3
+}
+
+//-----------------END-HEADER----------------------------
+//-----------------START-MAIN----------------------------
+
+.main-section {
+  position: relative;
+
+  & img {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+
+
+//-----------------END-MAIN----------------------------
+//-----------------START-FOOTER----------------------------
+
+footer {
+  background-color: black;
+  height: 350px;
+  font: 500 22px Montserrat, 'Open Sans', Lato, 'sans-serif';
+  color: white;
+
+  @include media-breakpoint-up(lg) {
+    background-color: #393838;
+  }
+
+  & a {
+    text-decoration: none;
+    font: 500 22px Montserrat, 'Open Sans', Lato, 'sans-serif';
+    color: white;
+    line-height: 1.5;
+    display: block;
+    transition: font-size 0.2s ease-in-out;
+
+
+    &:hover {
+      color: white;
+      font-size: 24px;
+      width: 250px;
+      border-bottom: 4px solid #5a5a5a;
+      transition: font-size 0.2s ease-in-out;
+    }
+  }
+}
+
+//-----------------END-FOOTER----------------------------
+
+//-----------------EDIT-BUTTONS--------------------------
+.edit-button {
+  height: 50px;
+  width: 50px;
+  color: #FA1C1C;
+  border: 1px solid #FA1C1C;
+  font-size: 34px;
+  background-color: #393838;
+}
+
+.edit-top-left {
+  position: absolute;
+  z-index: 11;
+  top: -30px;
+  left: 5px;
+}
+
+
+.edit-top-right {
+  position: absolute;
+  z-index: 11;
+  top: -50px;
+  left: 85%;
 }

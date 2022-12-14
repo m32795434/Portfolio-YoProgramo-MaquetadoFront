@@ -10,9 +10,10 @@
     href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Lato&family=Montserrat&family=Open+Sans&family=Roboto&display=swap"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <title>Portfolio YoProgramo FrontEnd</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <title>Home</title>
   <link rel="stylesheet" href="scss/styles.scss">
-  <script type="module" src="js/main.js"></script>
 </head>
 
 <body>
@@ -21,15 +22,16 @@
       <div class="col col-4 gridItem d-flex justify-content-start m-0 py-1">
         <img role="button" tabindex="0" src="../src/images/Argentina-Programa.png" alt="Argentina Programa">
       </div>
-      <div class="col col-4 gridItem d-grid justify-content-center align-content-center d-md-none">
+      <div class="col col-4 gridItem d-grid justify-content-center align-content-center d-lg-none">
         <div class="btn-group">
-          <button type="button" class="btn material-icons" id="menuHamb" data-bs-toggle="dropdown"
+          <button type="button" class="btn material-icons" id="menu-Hamb" data-bs-toggle="dropdown"
             aria-expanded="false">
             menu
           </button>
           <nav class="dropdown-menu">
             <h6 class="dropdown-header">Section</h6>
-            <a class="dropdown-item" href="#">Experience</a>
+            <a class="dropdown-item" href="./index.html">Home</a>
+            <a class="dropdown-item" href="./experience.html">Experience</a>
             <a class="dropdown-item" href="#">Education</a>
             <a class="dropdown-item" href="#">Hard & Soft Skills</a>
             <hr class="dropdown-divider">
@@ -37,16 +39,17 @@
           </nav>
         </div>
       </div>
-      <div class="col col-4 gridItem d-flex justify-content-end align-content-center gap-1 div-socials">
-        <div class="btn-group d-none d-md-block">
+      <div class="col col-4 gridItem d-flex justify-content-end align-content-center gap-1" id="section-socials">
+        <div class="btn-group d-none d-lg-block" id="section">
           <!-- class="dropdown-toggle" is for the arrow in the button. -->
           <!-- data-bs-toggle is for closing functionality -->
-          <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn material-icons" id="section">
+          <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn material-icons">
             Section
           </button>
           <nav class="dropdown-menu">
             <h6 class="dropdown-header">Section</h6>
-            <a class="dropdown-item" href="#">Experience</a>
+            <a class="dropdown-item" href="./index.html">Home</a>
+            <a class="dropdown-item" href="./experience.html">Experience</a>
             <a class="dropdown-item" href="#">Education</a>
             <a class="dropdown-item" href="#">Hard & Soft Skills</a>
             <hr class="dropdown-divider">
@@ -59,10 +62,85 @@
       </div>
     </div>
   </header>
+  <!-- main-section  relative -->
+  <main class="container-fluid m-0 p-0 main-section">
+    <img class="d-lg-none" src="../src/images/home2-mb-v.png" alt="Manuel perfil">
+    <img class="d-none d-lg-block" src="../src/images/home-md-1920.png" alt="Manuel perfil">
+    <button class="edit-button edit-top-left rounded-circle material-symbols-outlined">edit</button>
+    <!-- container-columns absolute top 0 h100 w100-->
+    <div class="row m-0 p-0 container-columns">
+      <div class="d-none d-lg-block col-lg-6 m-0 p-0"></div>
+      <div class="col-12 col-lg-6 d-flex flex-column justify-content-between m-0 p-0" id="main-Half-BackG">
+        <div class="d-flex flex-fill">
+          <h1 class="mx-1 mt-4">Hi!, I’m Manuel.<br> I’m a FullStack<br>Developer Jr.</h1>
+          <button class="edit-button rounded-circle material-symbols-outlined" id="edit-h1">edit</button>
+        </div>
+        <!-- home-slider w100-->
+        <div class="d-flex flex-column flex-fill home-slider">
+          <!-- slides relative h10vw/h15vw w100 -->
+          <div class="slides flex-fill">
+            <!-- slide aboslute top 0 z10  -->
+            <div class="slide current">
+              <p class="p-3 m-0 text-center">I had the opportunity to study Programing in the university some years ago,
+                and
+                since
+                January 2021 I have been studing and developing some stuff in Js and friends. ¡I invite you to check my
+                Github
+                repository!</p>
+              <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button>
+            </div>
+            <div class="slide">
+              <p class="p-3 m-0 text-center">study Programing in the university some years ago,
+                and
+                sinc
+                repository!</p>
+              <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button>
+            </div>
+            <div class="slide">
+              <p class="p-3 m-0 text-center">January 2021 I have been studing and developing some stuff in Js and
+                friends. ¡I invite you to check my
+                GithubI had the opportunity to study Programing in the university some years ago,
+                and
+                since
+                January 2021 I have been studing and developing some stuff in Js and friends. ¡I invite you to check my
+                Github
+                repository!</p>
+              <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button>
+            </div>
+            <div class="slide">
+              <p class="p-3 m-0 text-center"> developing some stuff in Js and friends. ¡I invite you to check my
+                Github
+                repository!developing some stuff in Js and friends. ¡I invite you to check my
+                Github
+                repository!</p>
+              <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap justify-content-center slider-buttons">
+            <button type="button" class="btn material-symbols-outlined" id="skip_previous">skip_previous</button>
+            <button type="button" class="btn material-symbols-outlined" id="play_pause">play_pause</button>
+            <button type="button" class="btn material-symbols-outlined" id="skip_next">skip_next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
-  <footer>FOOTER</footer>
+  <footer class="container-fluid d-grid mx-auto text-center">
+    <nav class="d-grid mx-auto mt-4">
+      <a href="">Home</a>
+      <a href="">Expirience</a>
+      <a href="">Education</a>
+      <a href="">Hard & Soft Skills</a>
+      <a href="">Projects</a>
+    </nav>
+    <div class="mx-auto">
+      <a href="">Contact Me</a>
+    </div>
+    <p>© MAB - All Rights Reserved.</p>
+  </footer>
 
-
+  <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

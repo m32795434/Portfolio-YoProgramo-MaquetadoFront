@@ -1,0 +1,124 @@
+.cols-slider-wrapper {
+    height: 100%;
+}
+
+.wrapper-h1-Edit-button-experience {
+    position: absolute;
+    top: 0;
+
+    & h1 {
+        font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
+        font-size: 28px;
+        background-color: rgba(217, 217, 217, 0.28);
+        color: #1f1d1dae;
+        font-weight: 600;
+        padding: 21px 13px 13px 7px;
+
+    }
+}
+
+.slider-experience {
+
+    & .slides {
+        position: relative;
+        height: 400px;
+        overflow: hidden;
+
+        @include media-breakpoint-up(lg) {
+            height: 44vw;
+            position: static;
+            overflow: auto;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        & .slide {
+            background-color: #f7f7f7;
+            position: absolute;
+            top: 0;
+            z-index: 10;
+            transform: translateX(-200%);
+            transition: all 0.5s;
+
+            @include media-breakpoint-up(lg) {
+                height: 30em;
+                position: relative;
+                z-index: 0;
+                transform: translateX(0);
+            }
+
+            & .edit-h2-slide-ex {
+                position: absolute;
+                z-index: 11;
+                left: 280px;
+
+                @include media-breakpoint-up(lg) {
+                    top: -30px;
+                    left: 5px;
+                }
+            }
+
+            &.prev {
+                transform: translateX(-100%);
+
+            }
+
+            &.current {
+                transform: translateX(0);
+            }
+
+
+            &.next {
+                transform: translateX(100%);
+
+            }
+
+            &.next+.slide {
+                transform: translateX(200%);
+            }
+
+            & h2 {
+                color: #5A5A5A;
+                font-size: 17px;
+                background-color: white;
+                font-weight: 200;
+                padding: 17px 0 9px 13px;
+
+                &::first-line {
+                    font-size: 19px;
+                    font-weight: 500;
+                }
+            }
+
+            & p {
+                font: 500 19px Roboto, Montserrat, 'Open Sans', Lato, 'sans-serif';
+                color: #5A5A5A;
+                line-height: 1.5;
+
+            }
+        }
+    }
+
+    & .slider-buttons>button {
+        font-family: 'Material Symbols Outlined';
+        color: #777777;
+        font-size: 24px;
+        background-color: transparent;
+        outline: none;
+        border: transparent;
+
+        &:hover {
+            border: 1px solid rgb(5, 5, 5);
+
+        }
+
+        &.open1 {
+            border: 1px solid rgb(5, 5, 5);
+            background-color: #777777;
+            color: black
+        }
+    }
+
+}
+
+//when vw = 1160.533 --> img width = 290.13, height = 518.53. //relation: height = 518.53/290.13 img width = 1.7872 img width.
+//then, img width = vw /4. So img height = vw/4*1.7872 : true!. So the slides heigth must be this value! => height=25vw*1.7872
