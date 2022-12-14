@@ -136,7 +136,7 @@ header {
   background-color: rgba(0, 0, 0, 0.66);
   position: relative;
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     background-color: transparent;
   }
 
@@ -144,10 +144,6 @@ header {
     font: 500 16px Montserrat, 'Open Sans', Lato, 'sans-serif';
     color: white;
     letter-spacing: 0.2rem;
-
-    @include media-breakpoint-only(md) {
-      font-size: 14px;
-    }
 
     @include media-breakpoint-up(lg) {
       font-size: 1.5vw;
