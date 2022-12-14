@@ -14,7 +14,6 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <title>Home</title>
   <link rel="stylesheet" href="scss/styles.scss">
-  <script type="module" src="js/main.js"></script>
 </head>
 
 <body>
@@ -63,34 +62,64 @@
       </div>
     </div>
   </header>
-
+  <!-- main-section  relative -->
   <main class="container-fluid m-0 p-0 main-section">
     <img class="d-lg-none" src="../src/images/home2-mb-v.png" alt="Manuel perfil">
     <img class="d-none d-lg-block" src="../src/images/home-md-1920.png" alt="Manuel perfil">
     <button class="edit-button edit-top-left rounded-circle material-symbols-outlined">edit</button>
-    <div class="row m-0 p-0 h1-plus-slider">
+    <!-- container-columns absolute top 0 h100 w100-->
+    <div class="row m-0 p-0 container-columns">
       <div class="d-none d-lg-block col-lg-6 m-0 p-0"></div>
-      <div class="col-12 col-lg-6 d-grid align-content-between m-0 p-0" id="main-Half-BackG">
-        <div class="d-flex">
+      <div class="col-12 col-lg-6 d-flex flex-column justify-content-between m-0 p-0" id="main-Half-BackG">
+        <div class="d-flex flex-fill">
           <h1 class="mx-1 mt-4">Hi!, I’m Manuel.<br> I’m a FullStack<br>Developer Jr.</h1>
           <button class="edit-button rounded-circle material-symbols-outlined" id="edit-h1">edit</button>
         </div>
-        <div class="d-grid home-slider">
-          <div class="slides">
-            <div class="slide">
+        <!-- home-slider w100-->
+        <div class="d-flex flex-column flex-fill home-slider">
+          <!-- slides relative h10vw/h15vw w100 -->
+          <div class="slides flex-fill">
+            <!-- slide aboslute top 0 z10  -->
+            <div class="slide current">
               <p class="p-3 m-0 text-center">I had the opportunity to study Programing in the university some years ago,
                 and
                 since
                 January 2021 I have been studing and developing some stuff in Js and friends. ¡I invite you to check my
                 Github
                 repository!</p>
-              <button class="edit-button edit-top-right rounded-circle material-symbols-outlined">edit</button>
+              <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button>
+            </div>
+            <div class="slide">
+              <p class="p-3 m-0 text-center">study Programing in the university some years ago,
+                and
+                sinc
+                repository!</p>
+              <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button>
+            </div>
+            <div class="slide">
+              <p class="p-3 m-0 text-center">January 2021 I have been studing and developing some stuff in Js and
+                friends. ¡I invite you to check my
+                GithubI had the opportunity to study Programing in the university some years ago,
+                and
+                since
+                January 2021 I have been studing and developing some stuff in Js and friends. ¡I invite you to check my
+                Github
+                repository!</p>
+              <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button>
+            </div>
+            <div class="slide">
+              <p class="p-3 m-0 text-center"> developing some stuff in Js and friends. ¡I invite you to check my
+                Github
+                repository!developing some stuff in Js and friends. ¡I invite you to check my
+                Github
+                repository!</p>
+              <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button>
             </div>
           </div>
           <div class="d-flex flex-wrap justify-content-center slider-buttons">
-            <button type="button" class="btn material-symbols-outlined">skip_previous</button>
-            <button type="button" class="btn material-symbols-outlined">play_pause</button>
-            <button type="button" class="btn material-symbols-outlined">skip_next</button>
+            <button type="button" class="btn material-symbols-outlined" id="skip_previous">skip_previous</button>
+            <button type="button" class="btn material-symbols-outlined" id="play_pause">play_pause</button>
+            <button type="button" class="btn material-symbols-outlined" id="skip_next">skip_next</button>
           </div>
         </div>
       </div>
@@ -111,7 +140,7 @@
     <p>© MAB - All Rights Reserved.</p>
   </footer>
 
-
+  <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

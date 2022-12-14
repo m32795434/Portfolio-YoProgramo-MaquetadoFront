@@ -1,8 +1,9 @@
-.h1-plus-slider {
+.container-columns {
     height: 100%;
     position: absolute;
     top: 0;
-    z-index: 10;
+    //z-index: 10;
+    width: 100%;
 
     & h1 {
         font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
@@ -25,7 +26,46 @@
 
 .home-slider {
     background-color: rgba(0, 0, 0, 0.66);
-    position: relative;
+    width: 100%;
+
+    // position: relative;
+    & .slides {
+        position: relative;
+        height: 10vw;
+        width: 100%;
+        overflow: hidden;
+
+        & .slide {
+            position: absolute;
+            width: 100%;
+            transition: all .25s;
+            transform: translateX(-200%);
+
+            &.current {
+                // z-index: 10;
+                transform: translateX(0);
+
+            }
+
+            &.prev {
+                transform: translateX(-100%);
+            }
+
+            &.next {
+                transform: translateX(100%);
+            }
+
+            & button {
+                position: absolute;
+                top: 0;
+            }
+        }
+
+        @include media-breakpoint-up(lg) {
+            height: 15vw;
+        }
+    }
+
 
     @include media-breakpoint-up(lg) {
         background-color: transparent;
@@ -49,5 +89,15 @@
         outline: none;
         border: transparent;
 
+        &:hover {
+            border: 1px solid white;
+
+        }
+
+        &.open1 {
+            border: 1px solid rgb(5, 5, 5);
+            background-color: #777777;
+            color: black
+        }
     }
 }
