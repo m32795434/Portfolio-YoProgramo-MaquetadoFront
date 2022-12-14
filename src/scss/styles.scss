@@ -132,34 +132,7 @@ header {
 
 }
 
-.slider {
-  background-color: rgba(0, 0, 0, 0.66);
-  position: relative;
 
-  @include media-breakpoint-up(lg) {
-    background-color: transparent;
-  }
-
-  &>p {
-    font: 500 16px Montserrat, 'Open Sans', Lato, 'sans-serif';
-    color: white;
-    letter-spacing: 0.2rem;
-
-    @include media-breakpoint-up(lg) {
-      font-size: 1.5vw;
-    }
-  }
-
-  & .slider-buttons>button {
-    font-family: 'Material Symbols Outlined';
-    color: white;
-    font-size: 24px;
-    background-color: transparent;
-    outline: none;
-    border: transparent;
-
-  }
-}
 
 //-----------------END-MAIN----------------------------
 //-----------------START-FOOTER----------------------------
