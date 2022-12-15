@@ -7,6 +7,39 @@ import {
 } from './elements';
 
 let loginForm;
+let reducedEditables;
+function editableTextsReducer(arr) {
+  const reduced = arr.reduce((textObj, currentEl) => {
+    textObj[currentEl.id] = currentEl.innerText;
+    return textObj;
+  }, {});
+  return reduced;
+}
+
+function handleEditText(e) {
+  const el = e.target;
+}
+function setEventsListeners() {
+  editableTexts.forEach((el) => {
+    el.addEventListener('input', handleEditText);
+  });
+}
+
+function mirrorToLocalStorage() {
+  reducedEditables = editableTextsReducer(editableTexts);
+  const { title } = document;
+  console.log(title);
+  switch (title) {
+    case 'Home':
+      localStorage.setItem('Home', JSON.stringify(reducedEditables));
+      break;
+    case 'Experience':
+      localStorage.setItem('Experience', JSON.stringify(reducedEditables));
+      break;
+    default:
+      break;
+  }
+}
 
 function handleSubmit(e) {
   e.preventDefault();
@@ -15,6 +48,8 @@ function handleSubmit(e) {
   editableTexts.forEach((el) => {
     el.contentEditable = true;
   });
+  mirrorToLocalStorage();
+  setEventsListeners();
 }
 function createForm() {
   modalOuter.classList.add('open');
@@ -60,4 +95,5 @@ function manageLogin() {
     but.addEventListener('click', createForm);
   });
 }
-export { handleSubmit, createForm, manageLogin };
+
+export { manageLogin };
