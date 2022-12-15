@@ -37,7 +37,7 @@
                         <a class="dropdown-item" href="#">Education</a>
                         <a class="dropdown-item" href="#">Hard & Soft Skills</a>
                         <hr class="dropdown-divider">
-                        <a class="dropdown-item" href="#">LOGIN</a>
+                        <button type="button" class="dropdown-item login">LOGIN</button>
                     </nav>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         <a class="dropdown-item" href="#">Education</a>
                         <a class="dropdown-item" href="#">Hard & Soft Skills</a>
                         <hr class="dropdown-divider">
-                        <a class="dropdown-item" href="#">LOGIN</a>
+                        <button type="button" class="dropdown-item login">LOGIN</button>
                     </nav>
                 </div>
                 <img role="button" tabindex="0" src="../src/images/instagram.png" alt="instagram">
@@ -72,9 +72,9 @@
             <div class="col-12 col-lg-3 p-0 m-0">
                 <img class="d-lg-none" src="../src/images/Experience-mobile.png" alt="Manuel perfil">
                 <img class="d-none d-lg-block" src="../src/images/experience-md-1920.png" alt="Manuel perfil">
-                <button class="edit-button edit-top-left rounded-circle material-symbols-outlined">edit</button>
+                <button class="edit-button edit-top-left rounded-circle material-symbols-outlined" hidden>edit</button>
                 <div class="d-flex wrapper-h1-Edit-button-experience">
-                    <h1>EXPERIENCE</h1>
+                    <h1 class=" edit-text" contenteditable="false">EXPERIENCE</h1>
                     <!-- <button class="edit-button rounded-circle material-symbols-outlined">edit</button> -->
                 </div>
             </div>
@@ -84,9 +84,11 @@
                         <div class="slide current">
                             <!-- <button
                                 class="edit-button edit-h2-slide-ex rounded-circle material-symbols-outlined">edit</button> -->
-                            <h2 class="text-start">Poder Judicial de Entre Ríos <br>01/2021-05/2021</h2>
+                            <h2 class="text-start edit-text" contenteditable="false">Poder Judicial de Entre Ríos
+                                <br>01/2021-05/2021
+                            </h2>
                             <div style="position:relative;">
-                                <p class="p-3 m-0 text-center">
+                                <p class="p-3 m-0 text-center edit-text" contenteditable="false">
                                     I had the opportunity to study Programing in the university some years
                                     ago, and
                                     since
@@ -103,9 +105,11 @@
                         <div class="slide">
                             <!-- <button
                                 class="edit-button edit-h2-slide-ex rounded-circle material-symbols-outlined">edit</button> -->
-                            <h2 class="text-start">Estudio Contable Bravard <br>01/2021-05/2021</h2>
+                            <h2 class="text-start edit-text" contenteditable="false">Estudio Contable Bravard
+                                <br>01/2021-05/2021
+                            </h2>
                             <div style="position:relative;">
-                                <p class="p-3 m-0 text-center">
+                                <p class="p-3 m-0 text-center edit-text" contenteditable="false">
                                     I had the opportunity to study Programing in the university some years
                                     ago, and
                                     since
@@ -124,9 +128,11 @@
                         <div class="slide">
                             <!-- <button
                                 class="edit-button edit-h2-slide-ex rounded-circle material-symbols-outlined">edit</button> -->
-                            <h2 class="text-start">Estudio Contable Bravard <br>01/2021-05/2021</h2>
+                            <h2 class="text-start edit-text" contenteditable="false">Estudio Contable Bravard
+                                <br>01/2021-05/2021
+                            </h2>
                             <div style="position:relative;">
-                                <p class="p-3 m-0 text-center">
+                                <p class="p-3 m-0 text-center edit-text" contenteditable="false">
                                     I had the opportunity to study Programing in the university some years
                                     ago, and
                                     since
@@ -145,9 +151,11 @@
                         <div class="slide">
                             <!-- <button
                                 class="edit-button edit-h2-slide-ex rounded-circle material-symbols-outlined">edit</button> -->
-                            <h2 class="text-start">Estudio Contable Bravard <br>01/2021-05/2021</h2>
+                            <h2 class="text-start edit-text" contenteditable="false">Estudio Contable Bravard
+                                <br>01/2021-05/2021
+                            </h2>
                             <div style="position:relative;">
-                                <p class="p-3 m-0 text-center">
+                                <p class="p-3 m-0 text-center edit-text" contenteditable="false">
                                     I had the opportunity to study Programing in the university some years
                                     ago, and
                                     since
@@ -166,9 +174,9 @@
                         <div class="slide">
                             <!-- <button
                                 class="edit-button edit-h2-slide-ex rounded-circle material-symbols-outlined">edit</button> -->
-                            <h2 class="text-start">Otroooo <br>01/2021-05/2021</h2>
+                            <h2 class="text-start edit-text" contenteditable="false">Otroooo <br>01/2021-05/2021</h2>
                             <div style="position:relative;">
-                                <p class="p-3 m-0 text-center">
+                                <p class="p-3 m-0 text-center edit-text" contenteditable="false">
                                     I had the opportunity to study Programing in the university some years
                                     ago, and
                                     since
@@ -195,6 +203,11 @@
             </div>
         </div>
     </main>
+    <!-- MODAL! -->
+    <div class="d-grid justify-content-center align-content-center modal-outer">
+        <div class="d-grid justify-content-center align-content-center modal-inner">
+        </div>
+    </div>
 
     <footer class="container-fluid d-grid mx-auto text-center">
         <nav class="d-grid mx-auto mt-4">

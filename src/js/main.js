@@ -1,7 +1,7 @@
 import dropdown from 'bootstrap/js/dist/dropdown.js';
 // import popover from 'bootstrap/js/dist/popover.js';
-import { Slider1 } from './libraries.js';
-import { manageLogin } from './utils.js';
+import { Slider1 } from './slider.js';
+import { manageLogin } from './loguin.js';
 /*
 const popers = document.querySelectorAll('[data-bs-toggle="popover"]');
 Array.from(popers).forEach((pop)=>new bootstrap.Popover(pop));
