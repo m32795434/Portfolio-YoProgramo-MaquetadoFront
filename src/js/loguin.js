@@ -1,15 +1,22 @@
-const modalInner = document.querySelector('.modal-inner');
-const modalOuter = document.querySelector('.modal-outer');
+import {
+  modalInner,
+  modalOuter,
+  editableTexts,
+  editButton,
+  loginButtons,
+} from './elements';
+
+let loginForm;
 
 function handleSubmit(e) {
   e.preventDefault();
   modalOuter.classList.remove('open');
-  document.querySelector('.edit-button').hidden = false;
-  Array.from(document.querySelectorAll('.edit-text')).forEach((el) => {
+  editButton.hidden = false;
+  editableTexts.forEach((el) => {
     el.contentEditable = true;
   });
 }
-export function createForm() {
+function createForm() {
   modalOuter.classList.add('open');
   modalInner.innerHTML = `<div class="dropdown-menu show" style="position: static;">
     <form class="px-4 py-3 login-form">
@@ -45,11 +52,12 @@ export function createForm() {
   </div>
 </div>`;
   modalInner.style.setProperty('transform', 'translateY(0)');
-  const loginForm = document.querySelector('.login-form');
+  loginForm = document.querySelector('.login-form');
   loginForm.addEventListener('submit', handleSubmit);
 }
-export function manageLogin() {
-  Array.from(document.querySelectorAll('.login')).forEach((but) => {
+function manageLogin() {
+  loginButtons.forEach((but) => {
     but.addEventListener('click', createForm);
   });
 }
+export { handleSubmit, createForm, manageLogin };
