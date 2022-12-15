@@ -67,13 +67,14 @@
   <main class="container-fluid m-0 p-0 main-section">
     <img class="d-lg-none" src="../src/images/home2-mb-v.png" alt="Manuel perfil">
     <img class="d-none d-lg-block" src="../src/images/home-md-1920.png" alt="Manuel perfil">
-    <button class="edit-button edit-top-left rounded-circle material-symbols-outlined">edit</button>
+    <button class="edit-button edit-top-left rounded-circle material-symbols-outlined" hidden>edit</button>
     <!-- container-columns absolute top 0 h100 w100-->
     <div class="row m-0 p-0 container-columns">
       <div class="d-none d-lg-block col-lg-6 m-0 p-0"></div>
       <div class="col-12 col-lg-6 d-flex flex-column justify-content-between m-0 p-0 main-Half-BackG">
         <div class="d-flex flex-fill">
-          <h1 class="mx-1 mt-4">Hi!, I’m Manuel.<br> I’m a FullStack<br>Developer Jr.</h1>
+          <h1 class="mx-1 mt-4 edit-text" contenteditable="false">Hi!, I’m Manuel.<br> I’m a FullStack<br>Developer Jr.
+          </h1>
           <!-- <button class="edit-button rounded-circle material-symbols-outlined">edit</button> -->
         </div>
         <!-- home-slider w100-->
@@ -82,7 +83,9 @@
           <div class="slides flex-fill">
             <!-- slide aboslute top 0 z10  -->
             <div class="slide current">
-              <p class="p-3 m-0 text-center">I had the opportunity to study Programing in the university some years ago,
+              <p class="p-3 m-0 text-center edit-text" contenteditable="false">I had the opportunity to study Programing
+                in the university some
+                years ago,
                 and
                 since
                 January 2021 I have been studing and developing some stuff in Js and friends. ¡I invite you to check my
@@ -91,14 +94,17 @@
               <!-- <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button> -->
             </div>
             <div class="slide">
-              <p class="p-3 m-0 text-center">study Programing in the university some years ago,
+              <p class="p-3 m-0 text-center edit-text" contenteditable="false">study Programing in the university some
+                years ago,
                 and
                 sinc
                 repository!</p>
               <!-- <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button> -->
             </div>
             <div class="slide">
-              <p class="p-3 m-0 text-center">January 2021 I have been studing and developing some stuff in Js and
+              <p class="p-3 m-0 text-center edit-text" contenteditable="false">January 2021 I have been studing and
+                developing some stuff in Js
+                and
                 friends. ¡I invite you to check my
                 GithubI had the opportunity to study Programing in the university some years ago,
                 and
@@ -109,7 +115,9 @@
               <!-- <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button> -->
             </div>
             <div class="slide">
-              <p class="p-3 m-0 text-center"> developing some stuff in Js and friends. ¡I invite you to check my
+              <p class="p-3 m-0 text-center edit-text" contenteditable="false"> developing some stuff in Js and friends.
+                ¡I invite you to check
+                my
                 Github
                 repository!developing some stuff in Js and friends. ¡I invite you to check my
                 Github
@@ -126,6 +134,11 @@
       </div>
     </div>
   </main>
+  <!-- MODAL! -->
+  <div class="d-grid justify-content-center align-content-center modal-outer">
+    <div class="d-grid justify-content-center align-content-center modal-inner">
+    </div>
+  </div>
 
   <footer class="container-fluid d-grid mx-auto text-center">
     <nav class="d-grid mx-auto mt-4">

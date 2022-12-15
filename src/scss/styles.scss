@@ -197,13 +197,13 @@ footer {
 .modal-outer {
   position: fixed;
   inset: 0 0 0 0;
-  z-index: 10010;
   background-color: rgba(0, 0, 0, 0.5);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.5s;
 
   &.open {
+    z-index: 20;
     opacity: 1;
     pointer-events: all;
   }

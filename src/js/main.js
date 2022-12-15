@@ -1,4 +1,5 @@
 import dropdown from 'bootstrap/js/dist/dropdown.js';
+// import popover from 'bootstrap/js/dist/popover.js';
 import { Slider1 } from './libraries.js';
 import { manageLogin } from './utils.js';
 /*
