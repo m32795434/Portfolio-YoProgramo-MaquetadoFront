@@ -69,9 +69,12 @@
   </header>
   <!-- main-section  relative -->
   <main class="container-fluid m-0 p-0 main-section">
-    <img class="d-lg-none" src="../src/images/home2-mb-v.png" alt="Manuel perfil">
-    <img class="d-none d-lg-block" src="../src/images/home-md-1920.png" alt="Manuel perfil">
+    <img class="d-lg-none mobile" src="../src/images/home2-mb-v.png" alt="Manuel perfil">
+    <img class="d-none d-lg-block desktop" src="../src/images/home-md-1920.png" alt="Manuel perfil">
+    <input type="file" class="edit-button edit-top-left rounded-circle material-symbols-outlined"
+      onchange="showFile(this)" hidden>
     <button class="edit-button edit-top-left rounded-circle material-symbols-outlined" hidden>edit</button>
+
     <!-- container-columns absolute top 0 h100 w100-->
     <div class="row m-0 p-0 container-columns">
       <div class="d-none d-lg-block col-lg-6 m-0 p-0"></div>
@@ -162,8 +165,28 @@
     </div>
     <p>© MAB - All Rights Reserved.</p>
   </footer>
-
   <script type="module" src="js/main.js"></script>
+  <script>
+    function showFile(input) {
+      console.log(input);
+      console.log(input.files);
+      const file = input.files[0];
+      alert(`file name:  ${file.name}`);
+      alert(`file lastModified:  ${file.lastModified}`);
+
+      const reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = function () {
+        const { result } = reader;
+        console.log(result);
+        const h1Home = document.querySelector('#h1Home');
+        h1Home.innerText = result;
+      };
+      reader.onerror = function () {
+        console.log(reader.erorr);
+      };
+    }
+  </script>
 </body>
 
 </html>

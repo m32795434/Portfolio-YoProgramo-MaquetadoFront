@@ -14,14 +14,14 @@ function handleSubmit(e) {
   modalOuter.classList.remove('open');
   editButtons.forEach((but) => {
     but.hidden = false;
-    but.addEventListener('click', (ev) => {
-      const t = ev.target;
-      if (t.matches('.save')) {
-        mirrorToLocalStorage();
-      } else {
-        // changeImg()
-      }
-    });
+    // but.addEventListener('click', (ev) => {
+    //   const t = ev.target;
+    //   if (t.matches('.save')) {
+    //     mirrorToLocalStorage();
+    //   } else {
+    //     // showFile();
+    //   }
+    // });
   });
 
   editableElements.forEach((el) => {

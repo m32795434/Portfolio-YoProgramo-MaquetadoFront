@@ -36,4 +36,23 @@ function restoreFromLStorage() {
     });
   }
 }
+// function showFile(input) {
+//   console.log(input);
+//   console.log(input.files);
+//   const file = input.files[0];
+//   alert(`file name:  ${file.name}`);
+//   alert(`file lastModified:  ${file.lastModified}`);
+
+//   const reader = new FileReader();
+//   reader.readAsText(file);
+//   reader.onload = function () {
+//     const { result } = reader;
+//     console.log(result);
+//     const h1Home = editableElements.find((el) => (el.id = 'h1Home'));
+//     h1Home.innerText = result;
+//   };
+//   reader.onerror = function () {
+//     console.log(reader.erorr);
+//   };
+// }
 export { restoreFromLStorage, mirrorToLocalStorage };
