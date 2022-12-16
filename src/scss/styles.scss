@@ -115,7 +115,15 @@ header {
 #section>button {
   font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
   font-size: 20px;
-  color: #b3b3b3
+  color: #b3b3b3;
+
+  &.save {
+    font-family: 'Material Symbols Outlined';
+    color: #FA1C1C;
+    border: 1px solid #FA1C1C;
+    font-size: 34px;
+    background-color: #393838;
+  }
 }
 
 //-----------------END-HEADER----------------------------
@@ -170,6 +178,7 @@ footer {
 
 //-----------------EDIT-BUTTONS--------------------------
 .edit-button {
+  font-family: 'Material Symbols Outlined';
   height: 50px;
   width: 50px;
   color: #FA1C1C;

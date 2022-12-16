@@ -24,24 +24,28 @@
         <img role="button" tabindex="0" src="../src/images/Argentina-Programa.png" alt="Argentina Programa">
       </div>
       <div class="col col-4 gridItem d-grid justify-content-center align-content-center d-lg-none">
-        <div class="btn-group">
-          <button type="button" class="btn material-icons" id="menu-Hamb" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            menu
-          </button>
-          <nav class="dropdown-menu">
-            <h6 class="dropdown-header">Section</h6>
-            <a class="dropdown-item" href="./index.html">Home</a>
-            <a class="dropdown-item" href="./experience.html">Experience</a>
-            <a class="dropdown-item" href="#">Education</a>
-            <a class="dropdown-item" href="#">Hard & Soft Skills</a>
-            <hr class="dropdown-divider">
-            <button type="button" class="dropdown-item login">LOGIN</button>
-          </nav>
+        <div class="d-flex">
+          <button class="edit-button material-symbols-outlined save" type="button" hidden>save</button>
+          <div class="btn-group">
+            <button type="button" class="btn material-icons" id="menu-Hamb" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              menu
+            </button>
+            <nav class="dropdown-menu">
+              <h6 class="dropdown-header">Section</h6>
+              <a class="dropdown-item" href="./index.html">Home</a>
+              <a class="dropdown-item" href="./experience.html">Experience</a>
+              <a class="dropdown-item" href="#">Education</a>
+              <a class="dropdown-item" href="#">Hard & Soft Skills</a>
+              <hr class="dropdown-divider">
+              <button type="button" class="dropdown-item login">LOGIN</button>
+            </nav>
+          </div>
         </div>
       </div>
       <div class="col col-4 gridItem d-flex justify-content-end align-content-center gap-1" id="section-socials">
         <div class="btn-group d-none d-lg-block" id="section">
+          <button class="edit-button material-symbols-outlined save" type="button" hidden>save</button>
           <!-- class="dropdown-toggle" is for the arrow in the button. -->
           <!-- data-bs-toggle is for closing functionality -->
           <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn material-icons">

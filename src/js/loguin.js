@@ -2,7 +2,7 @@ import {
   modalInner,
   modalOuter,
   editableElements,
-  editButton,
+  editButtons,
   loginButtons,
 } from './elements';
 import { mirrorToLocalStorage } from './utils';
@@ -12,12 +12,24 @@ let loginForm;
 function handleSubmit(e) {
   e.preventDefault();
   modalOuter.classList.remove('open');
-  editButton.hidden = false;
+  editButtons.forEach((but) => {
+    but.hidden = false;
+    but.addEventListener('click', (ev) => {
+      const t = ev.target;
+      if (t.matches('.save')) {
+        mirrorToLocalStorage();
+      } else {
+        // changeImg()
+      }
+    });
+  });
+
   editableElements.forEach((el) => {
     el.contentEditable = true;
   });
   setInterval(() => {
     mirrorToLocalStorage();
+    console.log('Mirroring!!!');
   }, 10000);
 }
 function createForm() {
@@ -60,6 +72,7 @@ function createForm() {
   loginForm.addEventListener('submit', handleSubmit);
 }
 function manageLogin() {
+  console.log(loginButtons);
   loginButtons.forEach((but) => {
     but.addEventListener('click', createForm);
   });
