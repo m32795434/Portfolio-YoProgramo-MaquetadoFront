@@ -115,7 +115,15 @@ header {
 #section>button {
   font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
   font-size: 20px;
-  color: #b3b3b3
+  color: #b3b3b3;
+
+  &.save {
+    font-family: 'Material Symbols Outlined';
+    color: #FA1C1C;
+    border: 1px solid #FA1C1C;
+    font-size: 34px;
+    background-color: #393838;
+  }
 }
 
 //-----------------END-HEADER----------------------------
@@ -170,6 +178,7 @@ footer {
 
 //-----------------EDIT-BUTTONS--------------------------
 .edit-button {
+  font-family: 'Material Symbols Outlined';
   height: 50px;
   width: 50px;
   color: #FA1C1C;
@@ -191,4 +200,27 @@ footer {
   z-index: 11;
   top: -50px;
   left: 85%;
+}
+
+//-----------------------MODAL-------------------
+.modal-outer {
+  position: fixed;
+  inset: 0 0 0 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+
+  &.open {
+    z-index: 20;
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.modal-inner {
+  background-color: white;
+  box-shadow: 0 0 10px 10px;
+  transform: translateY(-100vh);
+  transition: all 0.5s
 }

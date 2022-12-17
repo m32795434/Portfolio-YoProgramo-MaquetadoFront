@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <meta http-equiv="refresh" content="11111111111"> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -23,24 +24,28 @@
         <img role="button" tabindex="0" src="../src/images/Argentina-Programa.png" alt="Argentina Programa">
       </div>
       <div class="col col-4 gridItem d-grid justify-content-center align-content-center d-lg-none">
-        <div class="btn-group">
-          <button type="button" class="btn material-icons" id="menu-Hamb" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            menu
-          </button>
-          <nav class="dropdown-menu">
-            <h6 class="dropdown-header">Section</h6>
-            <a class="dropdown-item" href="./index.html">Home</a>
-            <a class="dropdown-item" href="./experience.html">Experience</a>
-            <a class="dropdown-item" href="#">Education</a>
-            <a class="dropdown-item" href="#">Hard & Soft Skills</a>
-            <hr class="dropdown-divider">
-            <a class="dropdown-item" href="#">LOGIN</a>
-          </nav>
+        <div class="d-flex">
+          <button class="edit-button material-symbols-outlined save" type="button" hidden>save</button>
+          <div class="btn-group">
+            <button type="button" class="btn material-icons" id="menu-Hamb" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              menu
+            </button>
+            <nav class="dropdown-menu">
+              <h6 class="dropdown-header">Section</h6>
+              <a class="dropdown-item" href="./index.html">Home</a>
+              <a class="dropdown-item" href="./experience.html">Experience</a>
+              <a class="dropdown-item" href="#">Education</a>
+              <a class="dropdown-item" href="#">Hard & Soft Skills</a>
+              <hr class="dropdown-divider">
+              <button type="button" class="dropdown-item login">LOGIN</button>
+            </nav>
+          </div>
         </div>
       </div>
       <div class="col col-4 gridItem d-flex justify-content-end align-content-center gap-1" id="section-socials">
         <div class="btn-group d-none d-lg-block" id="section">
+          <button class="edit-button material-symbols-outlined save" type="button" hidden>save</button>
           <!-- class="dropdown-toggle" is for the arrow in the button. -->
           <!-- data-bs-toggle is for closing functionality -->
           <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn material-icons">
@@ -53,7 +58,7 @@
             <a class="dropdown-item" href="#">Education</a>
             <a class="dropdown-item" href="#">Hard & Soft Skills</a>
             <hr class="dropdown-divider">
-            <a class="dropdown-item" href="#">LOGIN</a>
+            <button type="button" class="dropdown-item login">LOGIN</button>
           </nav>
         </div>
         <img role="button" tabindex="0" src="../src/images/instagram.png" alt="instagram">
@@ -64,16 +69,23 @@
   </header>
   <!-- main-section  relative -->
   <main class="container-fluid m-0 p-0 main-section">
-    <img class="d-lg-none" src="../src/images/home2-mb-v.png" alt="Manuel perfil">
-    <img class="d-none d-lg-block" src="../src/images/home-md-1920.png" alt="Manuel perfil">
-    <button class="edit-button edit-top-left rounded-circle material-symbols-outlined">edit</button>
+    <img class="d-lg-none mobile imgsToChange edit-content" src="../src/images/home2-mb-v.png" alt="Manuel perfil"
+      id="imgMobileHome">
+    <img class="d-none d-lg-block desktop imgsToChange edit-content" src="../src/images/home-md-1920.png"
+      alt="Manuel perfil" id="imgDesktopHome">
+    <input type="file" accept="image/*" id="changeImg" hidden>
+    <button class="edit-button changeImg edit-top-left rounded-circle material-symbols-outlined"
+      hidden>upload_file</button>
+
     <!-- container-columns absolute top 0 h100 w100-->
     <div class="row m-0 p-0 container-columns">
       <div class="d-none d-lg-block col-lg-6 m-0 p-0"></div>
-      <div class="col-12 col-lg-6 d-flex flex-column justify-content-between m-0 p-0" id="main-Half-BackG">
+      <div class="col-12 col-lg-6 d-flex flex-column justify-content-between m-0 p-0 main-Half-BackG">
         <div class="d-flex flex-fill">
-          <h1 class="mx-1 mt-4">Hi!, I’m Manuel.<br> I’m a FullStack<br>Developer Jr.</h1>
-          <button class="edit-button rounded-circle material-symbols-outlined" id="edit-h1">edit</button>
+          <h1 class="mx-1 mt-4 edit-content" contenteditable="false" id="h1Home">Hi!, I’m Manuel.<br> I’m a
+            FullStack<br>Developer Jr.
+          </h1>
+          <!-- <button class="edit-button rounded-circle material-symbols-outlined">edit</button> -->
         </div>
         <!-- home-slider w100-->
         <div class="d-flex flex-column flex-fill home-slider">
@@ -81,23 +93,31 @@
           <div class="slides flex-fill">
             <!-- slide aboslute top 0 z10  -->
             <div class="slide current">
-              <p class="p-3 m-0 text-center">I had the opportunity to study Programing in the university some years ago,
+              <p class="p-3 m-0 text-center edit-content" contenteditable="false" id="p1Home">I had the opportunity to
+                study Programing
+                in the university some
+                years ago,
                 and
                 since
                 January 2021 I have been studing and developing some stuff in Js and friends. ¡I invite you to check my
                 Github
                 repository!</p>
-              <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button>
+              <!-- <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button> -->
             </div>
             <div class="slide">
-              <p class="p-3 m-0 text-center">study Programing in the university some years ago,
+              <p class="p-3 m-0 text-center edit-content" contenteditable="false" id="p2Home">study Programing in the
+                university some
+                years ago,
                 and
                 sinc
                 repository!</p>
-              <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button>
+              <!-- <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button> -->
             </div>
             <div class="slide">
-              <p class="p-3 m-0 text-center">January 2021 I have been studing and developing some stuff in Js and
+              <p class="p-3 m-0 text-center edit-content" contenteditable="false" id="p3Home">January 2021 I have been
+                studing and
+                developing some stuff in Js
+                and
                 friends. ¡I invite you to check my
                 GithubI had the opportunity to study Programing in the university some years ago,
                 and
@@ -105,15 +125,19 @@
                 January 2021 I have been studing and developing some stuff in Js and friends. ¡I invite you to check my
                 Github
                 repository!</p>
-              <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button>
+              <!-- <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button> -->
             </div>
             <div class="slide">
-              <p class="p-3 m-0 text-center"> developing some stuff in Js and friends. ¡I invite you to check my
+              <p class="p-3 m-0 text-center edit-content" contenteditable="false" id="p4Home"> developing some stuff in
+                Js
+                and friends.
+                ¡I invite you to check
+                my
                 Github
                 repository!developing some stuff in Js and friends. ¡I invite you to check my
                 Github
                 repository!</p>
-              <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button>
+              <!-- <button class="edit-button mx-1 rounded-circle material-symbols-outlined">edit</button> -->
             </div>
           </div>
           <div class="d-flex flex-wrap justify-content-center slider-buttons">
@@ -125,6 +149,11 @@
       </div>
     </div>
   </main>
+  <!-- MODAL! -->
+  <div class="d-grid justify-content-center align-content-center modal-outer">
+    <div class="d-grid justify-content-center align-content-center modal-inner">
+    </div>
+  </div>
 
   <footer class="container-fluid d-grid mx-auto text-center">
     <nav class="d-grid mx-auto mt-4">
@@ -139,8 +168,28 @@
     </div>
     <p>© MAB - All Rights Reserved.</p>
   </footer>
-
   <script type="module" src="js/main.js"></script>
+  <script>
+    function showFile(input) {
+      console.log(input);
+      console.log(input.files);
+      const file = input.files[0];
+      alert(`file name:  ${file.name}`);
+      alert(`file lastModified:  ${file.lastModified}`);
+
+      const reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = function () {
+        const { result } = reader;
+        console.log(result);
+        const h1Home = document.querySelector('#h1Home');
+        h1Home.innerText = result;
+      };
+      reader.onerror = function () {
+        console.log(reader.erorr);
+      };
+    }
+  </script>
 </body>
 
 </html>
