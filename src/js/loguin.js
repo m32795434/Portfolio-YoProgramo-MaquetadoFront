@@ -13,16 +13,16 @@ let loginForm;
 function handleSubmit(e) {
   e.preventDefault();
   modalOuter.classList.remove('open');
-  changeImgInput.addEventListener('click', (evnt) => {
-    selectImg(evnt.currentTarget);
-  });
+  changeImgInput.onchange = function () {
+    selectImg(this);
+  };
   editButtons.forEach((but) => {
     but.hidden = false;
     but.addEventListener('click', (ev) => {
       const t = ev.currentTarget;
       if (t.matches('.save')) {
         mirrorToLocalStorage();
-      } else if (t.matches('.changeImg')) {
+      } else if (t.matches('.changeImg') && changeImgInput) {
         changeImgInput.click();
       }
     });
