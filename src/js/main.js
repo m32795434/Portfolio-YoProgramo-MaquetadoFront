@@ -3,7 +3,6 @@ import 'bootstrap/js/dist/dropdown.js';
 import { Slider1 } from './slider.js';
 import { manageLogin } from './loguin.js';
 import { restoreFromLStorage } from './utils';
-import { editableElements } from './elements.js';
 /*
 const popers = document.querySelectorAll('[data-bs-toggle="popover"]');
 Array.from(popers).forEach((pop)=>new bootstrap.Popover(pop));

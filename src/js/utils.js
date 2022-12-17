@@ -2,6 +2,12 @@ import { editableElements } from './elements';
 
 let reducedEditables;
 
+function wait(ms) {
+  return new Promise((res) => {
+    setTimeout(res, ms);
+  });
+}
+
 function editableTextsReducer(arr) {
   const reduced = arr.reduce((textObj, currentEl) => {
     textObj[currentEl.id] = currentEl.innerText;
@@ -36,23 +42,18 @@ function restoreFromLStorage() {
     });
   }
 }
-// function showFile(input) {
-//   console.log(input);
-//   console.log(input.files);
-//   const file = input.files[0];
-//   alert(`file name:  ${file.name}`);
-//   alert(`file lastModified:  ${file.lastModified}`);
-
-//   const reader = new FileReader();
-//   reader.readAsText(file);
-//   reader.onload = function () {
-//     const { result } = reader;
-//     console.log(result);
-//     const h1Home = editableElements.find((el) => (el.id = 'h1Home'));
-//     h1Home.innerText = result;
-//   };
-//   reader.onerror = function () {
-//     console.log(reader.erorr);
-//   };
-// }
-export { restoreFromLStorage, mirrorToLocalStorage };
+async function selectImg(el) {
+  await wait(5000);
+  const file = el.files[0];
+  console.log(file);
+  // const reader = new FileReader();
+  // reader.readAsText(file);
+  // reader.onload = function () {
+  // const { result } = reader;
+  // console.log(result);
+  // };
+  // reader.onerror = function () {
+  //   console.log(reader.erorr);
+  // };
+}
+export { restoreFromLStorage, mirrorToLocalStorage, selectImg };
