@@ -23,6 +23,7 @@
         position: relative;
         height: 400px;
         overflow: hidden;
+        width: 100%;
 
         @include media-breakpoint-up(lg) {
             height: 44vw;
@@ -32,6 +33,7 @@
         }
 
         & .slide {
+            width: 100%;
             background-color: #f7f7f7;
             position: absolute;
             top: 0;
