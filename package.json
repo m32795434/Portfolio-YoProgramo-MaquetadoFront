@@ -2,10 +2,10 @@
   "name": "portfolio-yoprogramo-maquetadofront",
   "version": "1.0.0",
   "description": "FrontEnd del proyecto",
-  "main": "index.js",
   "scripts": {
     "start": "parcel serve src/index.html --public-url / --dist-dir dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build src/index.html --public-url ./ --dist-dir docs"
   },
   "repository": {
     "type": "git",
