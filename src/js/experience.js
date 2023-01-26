@@ -14,3 +14,15 @@ if (window.visualViewport.width < 992) {
 manageLogin();
 restoreFromLStorage();
 document.querySelectorAll('[data-type]').forEach(write);
+function checkForResize() {
+  if (window.visualViewport.width > 992 && myExperienceSlider) {
+    myExperienceSlider = null;
+    window.location.reload();
+    console.log('null and reloaded!');
+  } else if (window.visualViewport.width < 992 && !myExperienceSlider) {
+    myExperienceSlider = new Slider1(
+      document.querySelector('.slider-experience')
+    );
+  }
+}
+window.onresize = checkForResize;
