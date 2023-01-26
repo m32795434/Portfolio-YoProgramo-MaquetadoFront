@@ -21,7 +21,7 @@
 
     & .slides {
         position: relative;
-        height: 400px;
+        height: 600px;
         overflow: hidden;
         width: 100%;
 
@@ -96,6 +96,11 @@
                 color: #5A5A5A;
                 line-height: 1.5;
 
+            }
+
+            & img {
+                width: 140px;
+                height: 140px;
             }
         }
     }

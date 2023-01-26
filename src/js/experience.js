@@ -5,8 +5,9 @@ import { restoreFromLStorage } from './utils';
 import { write } from './typer';
 
 let myExperienceSlider;
+let widthViewPort = window.visualViewport.width;
 
-if (window.visualViewport.width < 992) {
+if (widthViewPort < 992) {
   myExperienceSlider = new Slider1(
     document.querySelector('.slider-experience')
   );
@@ -15,14 +16,11 @@ manageLogin();
 restoreFromLStorage();
 document.querySelectorAll('[data-type]').forEach(write);
 function checkForResize() {
-  if (window.visualViewport.width > 992 && myExperienceSlider) {
-    myExperienceSlider = null;
+  widthViewPort = window.visualViewport.width;
+  if (widthViewPort > 992 && myExperienceSlider) {
     window.location.reload();
-    console.log('null and reloaded!');
-  } else if (window.visualViewport.width < 992 && !myExperienceSlider) {
-    myExperienceSlider = new Slider1(
-      document.querySelector('.slider-experience')
-    );
+  } else if (widthViewPort < 992 && !myExperienceSlider) {
+    window.location.reload();
   }
 }
 window.onresize = checkForResize;
