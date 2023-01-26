@@ -172,6 +172,11 @@ footer {
       transition: font-size 0.2s ease-in-out;
     }
   }
+
+  & .footer-typer {
+    font: 500 16px 'Courier Prime', monospace;
+    color: #FD0B0B;
+  }
 }
 
 //-----------------END-FOOTER----------------------------
