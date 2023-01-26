@@ -82,7 +82,6 @@ async function selectImg(el) {
 }
 function getRandomBetween(min = 20, max = 200) {
   const randomNumber = Math.random();
-  console.log(min, max);
   return Math.floor(randomNumber * (max - min) + min);
 }
 export {
