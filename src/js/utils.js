@@ -1,4 +1,14 @@
-import { editableElements, imgsToChange } from './elements';
+import {
+  editableElements,
+  imgsToChange,
+  refresh,
+  formCurrency,
+  fromCurrecy,
+  toCurrency,
+} from './elements';
+import currencies from './currencies.js';
+
+import { fetchRates, convert, restoreFromLocalStorageConvert } from './lib';
 
 let reducedEditables;
 
@@ -84,10 +94,41 @@ function getRandomBetween(min = 20, max = 200) {
   const randomNumber = Math.random();
   return Math.floor(randomNumber * (max - min) + min);
 }
+function generateOptions(options) {
+  return Object.entries(options)
+    .map(
+      ([currencyCode, currencyName]) =>
+        `<option value="${currencyCode}">${currencyCode} - ${currencyName}</option>`
+    )
+    .join('');
+}
+function formatCurrency(amount, currency) {
+  return Intl.NumberFormat('es-ar', { style: 'currency', currency }).format(
+    amount
+  );
+}
+
+function initConverter() {
+  refresh.addEventListener('click', () => {
+    fetchRates();
+  });
+  formCurrency.addEventListener('input', convert);
+
+  const optionsHTML = generateOptions(currencies);
+
+  // populate the options elements
+  fromCurrecy.innerHTML = optionsHTML;
+  toCurrency.innerHTML = optionsHTML;
+
+  restoreFromLocalStorageConvert();
+}
 export {
   restoreFromLStorage,
   mirrorToLocalStorage,
   selectImg,
   wait,
   getRandomBetween,
+  generateOptions,
+  formatCurrency,
+  initConverter,
 };
