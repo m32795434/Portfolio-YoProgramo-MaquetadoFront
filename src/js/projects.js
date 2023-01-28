@@ -8,7 +8,7 @@ restoreFromLStorage();
 document.querySelectorAll('[data-type]').forEach(write);
 
 // Shopping List
-
+const sumSpan = document.querySelector('#sum');
 const shoppingForm = document.querySelector('.shopping');
 const list = document.querySelector('.list');
 
@@ -16,11 +16,16 @@ let items = [];
 
 function handleSubmitShop(e) {
   e.preventDefault();
-  const name = e.currentTarget.item.value;
+  const [name, price] = [
+    e.currentTarget.item.value,
+    e.currentTarget.price.value,
+  ];
+  console.log(name, price);
   if (!name) return;
   const item = {
     name,
     id: Date.now(),
+    price,
     complete: false,
   };
   items.push(item);
@@ -38,6 +43,7 @@ function displayItems() {
   type="checkbox"
   ${item.complete && 'checked'}>
   <span class="itemName">${item.name}</span>
+  <span class="itemPrice">${item.price}</span>
   <button 
   aria-label="Remove ${item.name}"
   value="${item.id}"class="material-symbols-outlined"
@@ -60,6 +66,7 @@ function restoreFromLocalStorageList() {
     if (lsItems.length) {
       items.push(...lsItems);
       displayItems();
+      sum();
     }
   }
 }
@@ -73,10 +80,15 @@ function markAsComplete(id) {
   itemRef.complete = !itemRef.complete;
   mirrorToLocalStorageList();
 }
-
+function sum() {
+  let suma = 0;
+  items.forEach((item) => (suma += parseInt(item.price)));
+  sumSpan.textContent = suma.toFixed(2);
+}
 shoppingForm.addEventListener('submit', handleSubmitShop);
 list.addEventListener('itemsUpdated', displayItems);
 list.addEventListener('itemsUpdated', mirrorToLocalStorageList);
+list.addEventListener('itemsUpdated', sum);
 
 list.addEventListener('click', (event) => {
   const id = parseInt(event.target.value);

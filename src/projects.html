@@ -75,41 +75,51 @@
     <!-- main-section position relative -->
     <main class="container-fluid m-0 p-0">
         <div class="row flex-wrap m-0 p-0">
-            <div class="col-12 col-lg-3 flex-fill p-0 m-0 titleAndButtons">
+            <div class="col-12 col-lg-2 flex-fill p-0 m-0 titleAndButtons">
                 <!-- <input type="file" accept="image/*" id="changeImg" hidden>
                 <button class="edit-button edit-top-left changeImg rounded-circle material-symbols-outlined"
                     hidden>edit</button> -->
                 <h1 class=" edit-content" contenteditable="false" id="h1Proj">PROJECTS</h1>
                 <!-- <button class="edit-button rounded-circle material-symbols-outlined">edit</button> -->
             </div>
-            <div class="col-12 col-lg-9 flex-fill row gap-2 m-0 p-0">
-                <div class="col-12 col-lg-4 flex-fill m-0 p-0">
+            <div class="col-12 col-lg-10 flex-fill row gap-2 m-0 p-0">
+                <div class="col-12 col-lg-5 flex-fill m-0 p-0">
                     <div class="shopping-list">
-                        <form class="shopping" autocomplete="off">
+                        <form class="shopping d-flex gap-2 justify-content-between" autocomplete="off">
                             <!-- with "required" we can validate there is something entered in the input. but we will do this with javascript -->
-                            <input type="text" id="item">
-                            <button type="submit" class="material-symbols-outlined">add</button>
-
+                            <fieldset class="flex-grow-1">
+                                <label for="item">Item</label>
+                                <input class="rounded-1" type="text" id="item">
+                            </fieldset>
+                            <fieldset class="">
+                                <label for="price">Price?</label>
+                                <input class="rounded-1" type="number" id="price">
+                            </fieldset>
+                            <fieldset class="d-flex justify-content-end align-items-end">
+                                <button type="submit" class="material-symbols-outlined">add</button>
+                            </fieldset>
                         </form>
                         <ul class="list"></ul>
+                        <h3>Total = </h3><span id="sum">0</span>
                     </div>
 
                 </div>
-                <div class="col-12 col-lg-4 flex-fill m-0 p-0">
+                <div class="col-12 col-lg-5 flex-fill m-0 p-0">
                     <div class="app">
+                        <h3>Need to convert?</h3>
                         <form>
-                            <input type="number" name="from_amount">
-                            <select name="from_currency">
+                            <input class="rounded-1" type="number" name="from_amount">
+                            <select class="rounded-1" name="from_currency">
                                 <option>Select a Currency</option>
                             </select>
                             <p>in</p>
-                            <select name="to_currency">
+                            <select class="rounded-1" name="to_currency">
                                 <option>Select a Currency</option>
                             </select>
                             <p>is</p>
                             <p class="to_amount">$0</p>
                         </form>
-                        <button type="button" name="refresh_rates" class="btn btn-light">Refresh Rates!</button>
+                        <button type="button" name="refresh_rates" class="btn btn-light mx-1">Refresh Rates!</button>
                     </div>
                 </div>
             </div>
