@@ -40,8 +40,8 @@ function displayItems() {
   <span class="itemName">${item.name}</span>
   <button 
   aria-label="Remove ${item.name}"
-  value="${item.id}"
-  >&times;</button>
+  value="${item.id}"class="material-symbols-outlined"
+  >delete</button>
     </li>`).join('');
   /* eslint-enable */
 

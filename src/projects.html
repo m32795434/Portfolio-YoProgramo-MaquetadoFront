@@ -74,41 +74,44 @@
 
     <!-- main-section position relative -->
     <main class="container-fluid m-0 p-0">
-        <div class="row m-0 p-0">
-            <div class="col-12 col-lg-3 p-0 m-0 titleAndButtons">
+        <div class="row flex-wrap m-0 p-0">
+            <div class="col-12 col-lg-3 flex-fill p-0 m-0 titleAndButtons">
                 <!-- <input type="file" accept="image/*" id="changeImg" hidden>
                 <button class="edit-button edit-top-left changeImg rounded-circle material-symbols-outlined"
                     hidden>edit</button> -->
                 <h1 class=" edit-content" contenteditable="false" id="h1Proj">PROJECTS</h1>
                 <!-- <button class="edit-button rounded-circle material-symbols-outlined">edit</button> -->
             </div>
-            <div class="col-12 col-lg-9 m-0 p-0">
+            <div class="col-12 col-lg-9 flex-fill row gap-2 m-0 p-0">
+                <div class="col-12 col-lg-4 flex-fill m-0 p-0">
+                    <div class="shopping-list">
+                        <form class="shopping" autocomplete="off">
+                            <!-- with "required" we can validate there is something entered in the input. but we will do this with javascript -->
+                            <input type="text" id="item">
+                            <button type="submit" class="material-symbols-outlined">add</button>
 
-                <div class="shopping-list project">
-                    <form class="shopping" autocomplete="off">
-                        <!-- with "required" we can validate there is something entered in the input. but we will do this with javascript -->
-                        <input type="text" id="item">
-                        <button type="submit">+ Add Item</button>
+                        </form>
+                        <ul class="list"></ul>
+                    </div>
 
-                    </form>
-                    <ul class="list"></ul>
                 </div>
-                <div class="app">
-                    <form>
-                        <input type="number" name="from_amount">
-                        <select name="from_currency">
-                            <option>Select a Currency</option>
-                        </select>
-                        <p>in</p>
-                        <select name="to_currency">
-                            <option>Select a Currency</option>
-                        </select>
-                        <p>is</p>
-                        <p class="to_amount">$0</p>
-                    </form>
-                    <button name="refresh_rates" type="button">Refresh Rates!</button>
+                <div class="col-12 col-lg-4 flex-fill m-0 p-0">
+                    <div class="app">
+                        <form>
+                            <input type="number" name="from_amount">
+                            <select name="from_currency">
+                                <option>Select a Currency</option>
+                            </select>
+                            <p>in</p>
+                            <select name="to_currency">
+                                <option>Select a Currency</option>
+                            </select>
+                            <p>is</p>
+                            <p class="to_amount">$0</p>
+                        </form>
+                        <button type="button" name="refresh_rates" class="btn btn-light">Refresh Rates!</button>
+                    </div>
                 </div>
-
             </div>
         </div>
     </main>
