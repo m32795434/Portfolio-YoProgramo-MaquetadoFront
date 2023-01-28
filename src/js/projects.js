@@ -54,11 +54,13 @@ function mirrorToLocalStorageList() {
 }
 
 function restoreFromLocalStorageList() {
-  console.log('restoring from local storage');
   const lsItems = JSON.parse(localStorage.getItem('items'));
-  if (lsItems.length) {
-    items.push(...lsItems);
-    displayItems();
+  if (lsItems) {
+    console.log('restoring from local storage');
+    if (lsItems.length) {
+      items.push(...lsItems);
+      displayItems();
+    }
   }
 }
 

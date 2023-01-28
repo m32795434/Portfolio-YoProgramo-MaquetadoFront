@@ -8,7 +8,11 @@ import {
 } from './elements';
 import currencies from './currencies.js';
 
-import { fetchRates, convert, restoreFromLocalStorageConvert } from './lib';
+import {
+  fetchRates,
+  convert,
+  restoreFromLocalStorageConvert,
+} from '../../gitignore/lib';
 
 let reducedEditables;
 

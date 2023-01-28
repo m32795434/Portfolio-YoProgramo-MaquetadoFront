@@ -1,4 +1,5 @@
 const currencies = {
+  ARS: 'Pesos Argentinos',
   USD: 'United States Dollar',
   AUD: 'Australian Dollar',
   BGN: 'Bulgarian Lev',
