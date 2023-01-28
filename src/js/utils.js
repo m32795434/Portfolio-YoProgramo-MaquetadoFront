@@ -5,14 +5,11 @@ import {
   formCurrency,
   fromCurrecy,
   toCurrency,
+  fromAmount,
+  toAmount,
 } from './elements';
 import currencies from './currencies.js';
-
-import {
-  fetchRates,
-  convert,
-  restoreFromLocalStorageConvert,
-} from '../../gitignore/lib';
+import { ak } from '../../gitignore/ak';
 
 let reducedEditables;
 
@@ -98,6 +95,11 @@ function getRandomBetween(min = 20, max = 200) {
   const randomNumber = Math.random();
   return Math.floor(randomNumber * (max - min) + min);
 }
+// Converter
+
+let ratesByBase = {};
+const endPoint = 'https://api.apilayer.com/exchangerates_data';
+
 function generateOptions(options) {
   return Object.entries(options)
     .map(
@@ -126,6 +128,35 @@ function initConverter() {
 
   restoreFromLocalStorageConvert();
 }
+
+function mirrorToLocalStorageConvert(object) {
+  localStorage.setItem('exchangeRates', JSON.stringify(object));
+}
+
+export async function fetchRates(base = 'USD') {
+  const res = await fetch(`${endPoint}/latest?base=${base}`, {
+    headers: { apikey: ak },
+  });
+  ratesByBase = (await res.json()).rates;
+  mirrorToLocalStorageConvert(ratesByBase);
+}
+export function restoreFromLocalStorageConvert() {
+  const exchangeRates = localStorage.getItem('exchangeRates');
+  if (exchangeRates) {
+    ratesByBase = JSON.parse(exchangeRates);
+    return;
+  }
+  fetchRates();
+}
+
+export function convert() {
+  const amount = fromAmount.value;
+  const from = fromCurrecy.value;
+  const to = toCurrency.value;
+  const calcAmount = (amount * ratesByBase[to]) / ratesByBase[from];
+  toAmount.textContent = formatCurrency(calcAmount, to);
+}
+
 export {
   restoreFromLStorage,
   mirrorToLocalStorage,
