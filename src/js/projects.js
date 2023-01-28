@@ -1,4 +1,5 @@
 import 'bootstrap/js/dist/dropdown.js';
+import Toast from 'bootstrap/js/dist/toast.js';
 import { manageLogin } from './loguin.js';
 import { restoreFromLStorage, initConverter } from './utils';
 import { write } from './typer';
@@ -16,16 +17,17 @@ let items = [];
 
 function handleSubmitShop(e) {
   e.preventDefault();
-  const [name, price] = [
+  const [name, price, units] = [
     e.currentTarget.item.value,
     e.currentTarget.price.value,
+    e.currentTarget.units.value,
   ];
-  console.log(name, price);
   if (!name) return;
   const item = {
     name,
     id: Date.now(),
     price,
+    units,
     complete: false,
   };
   items.push(item);
@@ -43,7 +45,7 @@ function displayItems() {
   type="checkbox"
   ${item.complete && 'checked'}>
   <span class="itemName">${item.name}</span>
-  <span class="itemPrice">${item.price}</span>
+  <span class="itemPrice">$ ${item.price*item.units}</span>
   <button 
   aria-label="Remove ${item.name}"
   value="${item.id}"class="material-symbols-outlined"
@@ -82,8 +84,12 @@ function markAsComplete(id) {
 }
 function sum() {
   let suma = 0;
-  items.forEach((item) => (suma += parseInt(item.price)));
-  sumSpan.textContent = suma.toFixed(2);
+  items.forEach((item) => {
+    if (item.price && item.units) {
+      suma += parseInt(item.price) * parseInt(item.units);
+    }
+  });
+  sumSpan.textContent = `$${suma.toFixed(2)}`;
 }
 shoppingForm.addEventListener('submit', handleSubmitShop);
 list.addEventListener('itemsUpdated', displayItems);
@@ -107,3 +113,17 @@ restoreFromLocalStorageList();
 const form = document.querySelector('.app form');
 
 form.addEventListener('mouseenter', initConverter, { once: true });
+
+// toats
+// I will limit the times people will see this toast
+let toastTimes = JSON.parse(localStorage.getItem('toastTimes'));
+
+if (!toastTimes || (toastTimes && toastTimes < 2)) {
+  toastTimes = !toastTimes ? (toastTimes = 1) : (toastTimes += 1);
+  localStorage.setItem('toastTimes', JSON.stringify(toastTimes));
+  const welcomeToast = document.getElementById('welcomeToast');
+  if (welcomeToast) {
+    const myToast = new Toast(welcomeToast);
+    myToast.show();
+  }
+}

@@ -81,6 +81,7 @@
                     hidden>edit</button> -->
                 <h1 class=" edit-content" contenteditable="false" id="h1Proj">PROJECTS</h1>
                 <!-- <button class="edit-button rounded-circle material-symbols-outlined">edit</button> -->
+                <h3>The NoteCalc</h3>
             </div>
             <div class="col-12 col-lg-10 flex-fill row gap-2 m-0 p-0">
                 <div class="col-12 col-lg-5 flex-fill m-0 p-0">
@@ -91,6 +92,10 @@
                                 <label for="item">Item</label>
                                 <input class="rounded-1" type="text" id="item">
                             </fieldset>
+                            <fieldset class="units">
+                                <label for="units">Units?</label>
+                                <input class="rounded-1" type="number" id="units">
+                            </fieldset>
                             <fieldset class="">
                                 <label for="price">Price?</label>
                                 <input class="rounded-1" type="number" id="price">
@@ -100,7 +105,7 @@
                             </fieldset>
                         </form>
                         <ul class="list"></ul>
-                        <h3>Total = </h3><span id="sum">0</span>
+                        <h3>Total =</h3><span id="sum">$0</span>
                     </div>
 
                 </div>
@@ -119,7 +124,7 @@
                             <p>is</p>
                             <p class="to_amount">$0</p>
                         </form>
-                        <button type="button" name="refresh_rates" class="btn btn-light mx-1">Refresh Rates!</button>
+                        <button type="button" name="refresh_rates" class="btn btn-light m-1">Refresh Rates!</button>
                     </div>
                 </div>
             </div>
@@ -157,6 +162,24 @@
             Bootstrap:~$Layers -Popovers --Tooltips
         </p>
     </footer>
+    <!-------------------------------------- TOASTS -------------------------------------->
+    <div class="toast-container position-fixed top-0 start-0 p-3">
+        <div id="welcomeToast" class="toast text-bg-primary" role="alert" aria-live="assertive" aria-atomic="true"
+            data-bs-delay="10000">
+            <div class="toast-header">
+                <!-- <img src="..." class="rounded me-2" alt="..."> -->
+                <strong class="me-auto">NoteCalc</strong>
+                <small>Wellcome!!</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Wellcome to the NoteCalc!. Just type what you need. No matters if it's an activity or a shopping list
+                item. You can even calc something like a "reference badget". If you type a price, don't forguet to type
+                the units!. You can do realtime currency convertions. Enjoy!
+            </div>
+        </div>
+    </div>
+
     <script type="module" src="js/projects.js"></script>
 </body>
 
