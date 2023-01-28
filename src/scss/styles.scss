@@ -85,7 +85,7 @@ $success: #7952b3;
 
 @import './style-home.scss';
 @import './style-experience.scss';
-
+@import'./projects.scss';
 //-----------------START-HEADER----------------------------
 
 header {
@@ -147,7 +147,7 @@ header {
 
 footer {
   background-color: black;
-  height: 350px;
+  height: 430px;
   font: 500 22px Montserrat, 'Open Sans', Lato, 'sans-serif';
   color: white;
 
@@ -171,6 +171,11 @@ footer {
       border-bottom: 4px solid #5a5a5a;
       transition: font-size 0.2s ease-in-out;
     }
+  }
+
+  & .footer-typer {
+    font: 500 16px 'Courier Prime', monospace;
+    color: #FD0B0B;
   }
 }
 

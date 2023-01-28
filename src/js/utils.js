@@ -1,4 +1,15 @@
-import { editableElements, imgsToChange } from './elements';
+import {
+  editableElements,
+  imgsToChange,
+  refresh,
+  formCurrency,
+  fromCurrecy,
+  toCurrency,
+  fromAmount,
+  toAmount,
+} from './elements';
+import currencies from './currencies.js';
+import { ak } from '../../gitignore/ak';
 
 let reducedEditables;
 
@@ -80,4 +91,79 @@ async function selectImg(el) {
     console.log(reader.erorr);
   };
 }
-export { restoreFromLStorage, mirrorToLocalStorage, selectImg };
+function getRandomBetween(min = 20, max = 200) {
+  const randomNumber = Math.random();
+  return Math.floor(randomNumber * (max - min) + min);
+}
+// Converter
+
+let ratesByBase = {};
+const endPoint = 'https://api.apilayer.com/exchangerates_data';
+
+function generateOptions(options) {
+  return Object.entries(options)
+    .map(
+      ([currencyCode, currencyName]) =>
+        `<option value="${currencyCode}">${currencyCode} - ${currencyName}</option>`
+    )
+    .join('');
+}
+function formatCurrency(amount, currency) {
+  return Intl.NumberFormat('es-ar', { style: 'currency', currency }).format(
+    amount
+  );
+}
+
+function initConverter() {
+  refresh.addEventListener('click', () => {
+    fetchRates();
+  });
+  formCurrency.addEventListener('input', convert);
+
+  const optionsHTML = generateOptions(currencies);
+
+  // populate the options elements
+  fromCurrecy.innerHTML = optionsHTML;
+  toCurrency.innerHTML = optionsHTML;
+
+  restoreFromLocalStorageConvert();
+}
+
+function mirrorToLocalStorageConvert(object) {
+  localStorage.setItem('exchangeRates', JSON.stringify(object));
+}
+
+export async function fetchRates(base = 'USD') {
+  const res = await fetch(`${endPoint}/latest?base=${base}`, {
+    headers: { apikey: ak },
+  });
+  ratesByBase = (await res.json()).rates;
+  mirrorToLocalStorageConvert(ratesByBase);
+}
+export function restoreFromLocalStorageConvert() {
+  const exchangeRates = localStorage.getItem('exchangeRates');
+  if (exchangeRates) {
+    ratesByBase = JSON.parse(exchangeRates);
+    return;
+  }
+  fetchRates();
+}
+
+export function convert() {
+  const amount = fromAmount.value;
+  const from = fromCurrecy.value;
+  const to = toCurrency.value;
+  const calcAmount = (amount * ratesByBase[to]) / ratesByBase[from];
+  toAmount.textContent = formatCurrency(calcAmount, to);
+}
+
+export {
+  restoreFromLStorage,
+  mirrorToLocalStorage,
+  selectImg,
+  wait,
+  getRandomBetween,
+  generateOptions,
+  formatCurrency,
+  initConverter,
+};

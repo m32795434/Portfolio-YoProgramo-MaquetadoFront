@@ -3,6 +3,8 @@ import 'bootstrap/js/dist/dropdown.js';
 import { Slider1 } from './slider.js';
 import { manageLogin } from './loguin.js';
 import { restoreFromLStorage } from './utils';
+import { write } from './typer';
+
 /*
 const popers = document.querySelectorAll('[data-bs-toggle="popover"]');
 Array.from(popers).forEach((pop)=>new bootstrap.Popover(pop));
@@ -42,3 +44,4 @@ window.addEventListener('resize', handleResize);
 const myHomeSlider = new Slider1(document.querySelector('.home-slider'));
 manageLogin();
 restoreFromLStorage();
+document.querySelectorAll('[data-type]').forEach(write);

@@ -1,0 +1,109 @@
+#h1Proj {
+    font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
+    font-size: 28px;
+    color: #1f1d1dae;
+    font-weight: 600;
+    padding: 21px 13px 13px 7px;
+}
+
+.titleAndButtons {
+    background-color: rgba(217, 217, 217, 1);
+}
+
+//Shopping List
+.shopping {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.shopping-list {
+    padding: 3rem;
+    width: 100%;
+}
+
+.shopping-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.shopping-item {
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 1rem;
+    align-items: center;
+    border-bottom: 1px solid var(--gray);
+}
+
+.shopping-item input[type="checkbox"] {
+    margin-right: 1rem;
+}
+
+.shopping-item input[type="checkbox"]:checked+.itemName {
+    opacity: 0.5;
+}
+
+.shopping-item button {
+    padding: 0;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.shopping-item button:hover {
+    transform: scale(1.4);
+}
+
+//Converter
+
+
+.app {
+    max-width: 800px;
+    background: white;
+}
+
+.app form {
+    border: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-auto-rows: 1fr;
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 600;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    grid-gap: 2rem;
+    align-items: stretch;
+}
+
+
+.app :is(button, input, select, textarea) {
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
+    border: 0;
+}
+
+.app :is(button, input, select, textarea):focus {
+    outline-color: violet;
+}
+
+.app input {
+    width: 250px;
+}
+
+.app select {
+    background: none;
+    border: 0;
+    padding: 2rem;
+}
+
+.app form>* {
+    background: var(--yellow);
+    margin: 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+    display: grid;
+    align-content: center;
+}

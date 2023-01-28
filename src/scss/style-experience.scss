@@ -21,7 +21,7 @@
 
     & .slides {
         position: relative;
-        height: 400px;
+        height: 600px;
         overflow: hidden;
         width: 100%;
 
@@ -92,10 +92,16 @@
             }
 
             & p {
-                font: 500 19px Roboto, Montserrat, 'Open Sans', Lato, 'sans-serif';
+                font: 500 16px Roboto, Montserrat, 'Open Sans', Lato, 'sans-serif';
                 color: #5A5A5A;
                 line-height: 1.5;
 
+            }
+
+            & img {
+                width: 100px;
+                height: 100px;
+                box-shadow: 5px 5px grey;
             }
         }
     }
