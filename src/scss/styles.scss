@@ -101,6 +101,16 @@ header {
 #section-socials>img {
   width: 35px;
   height: 35px;
+
+  &:hover {
+    border-radius: 7px;
+    box-shadow: 0 0 7px 4px #8a8989;
+  }
+}
+
+img[alt="Argentina Programa"]:hover {
+  border-radius: 7px;
+  box-shadow: 0 0 7px 4px #8a8989;
 }
 
 #menu-Hamb {
@@ -126,6 +136,11 @@ header {
   }
 }
 
+[data-bs-toggle="dropdown"]:hover {
+  border-radius: 7px;
+  box-shadow: 0 0 7px 4px #8a8989;
+}
+
 //-----------------END-HEADER----------------------------
 //-----------------START-MAIN----------------------------
 
@@ -147,8 +162,8 @@ header {
 
 footer {
   background-color: black;
-  height: 430px;
-  font: 500 22px Montserrat, 'Open Sans', Lato, 'sans-serif';
+  height: 375px;
+  font: 500 19px Montserrat, 'Open Sans', Lato, 'sans-serif';
   color: white;
 
   @include media-breakpoint-up(lg) {
@@ -157,26 +172,46 @@ footer {
 
   & a {
     text-decoration: none;
-    font: 500 22px Montserrat, 'Open Sans', Lato, 'sans-serif';
+    // font: 500 22px Montserrat, 'Open Sans', Lato, 'sans-serif';
     color: white;
     line-height: 1.5;
     display: block;
-    transition: font-size 0.2s ease-in-out;
+    transition: border-bottom 0.5s ease-in-out, font-size 0.2s ease-in-out;
 
 
     &:hover {
       color: white;
-      font-size: 24px;
+      font-size: 20px;
       width: 250px;
-      border-bottom: 4px solid #5a5a5a;
-      transition: font-size 0.2s ease-in-out;
+      border-bottom: 6px solid #5a5a5a;
+      transition: border-bottom 0.5s ease-in-out, font-size 0.2s ease-in-out;
     }
   }
 
-  & .footer-typer {
-    font: 500 16px 'Courier Prime', monospace;
-    color: #FD0B0B;
+  & .typer-header {
+    background-color: #D9D9D9;
+    height: 35px;
+    border-radius: 5px 5px 0 0;
+
+    & p {
+      font: 500 16px 'Courier Prime', monospace;
+      color: black;
+    }
   }
+
+  .typer-body {
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 0 0 5px 5px;
+    height: 50px;
+    overflow: auto;
+
+    & p {
+      font: 500 16px 'Courier Prime', monospace;
+      color: #FD0B0B;
+    }
+  }
+
 }
 
 //-----------------END-FOOTER----------------------------
