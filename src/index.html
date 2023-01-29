@@ -166,6 +166,27 @@
       </p>
     </div>
   </footer>
+
+  <!-------------------------------------- TOASTS -------------------------------------->
+  <div class="toast-container position-fixed top-0 start-0 p-3">
+    <div id="welcomeToast" class="toast text-bg-primary" role="alert" aria-live="assertive" aria-atomic="true"
+      data-bs-delay="30000">
+      <div class="toast-header">
+        <!-- <img src="..." class="rounded me-2" alt="..."> -->
+        <strong class="me-auto">Wellcome Folks!</strong>
+        <small>MyPortolio</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        This site is under building. <br>
+        Login: You can enter whatever you want, the form will allow you to edit the page. <br>
+        "Refresh" will logout you, because it's under development. Your changes are stored in your LocalStorage after
+        10s or you can click the save btn.
+        Enjoy!
+      </div>
+    </div>
+  </div>
+
   <script type="module" src="js/main.js"></script>
   <script>
     function showFile(input) {

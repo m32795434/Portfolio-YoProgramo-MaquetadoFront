@@ -1,3 +1,6 @@
+import Toast from 'bootstrap/js/dist/toast';
+import Tooltip from 'bootstrap/js/dist/tooltip';
+
 import {
   editableElements,
   imgsToChange,
@@ -179,6 +182,37 @@ function imgEventHandler(e) {
   }
 }
 
+// -------------------------------------TOASTS----------------------------
+function checkForToasts() {
+  // I will limit the times people will see this toast
+  const { title } = document;
+  let toastTimes = JSON.parse(localStorage.getItem(`toastTimes${title}`));
+
+  if (!toastTimes || (toastTimes && toastTimes < 2)) {
+    toastTimes = !toastTimes ? (toastTimes = 1) : (toastTimes += 1);
+    localStorage.setItem(`toastTimes${title}`, JSON.stringify(toastTimes));
+    const welcomeToast = document.getElementById('welcomeToast');
+    if (welcomeToast) {
+      const myToast = new Toast(welcomeToast);
+      myToast.show();
+    }
+  }
+}
+
+// --------------------------------TOOLTIPS---------------------------
+async function checkForTooltips() {
+  const tooltipTriggerList = document.querySelectorAll(
+    '[data-bs-toggle="tooltip"]'
+  );
+  const tooltipList = [...tooltipTriggerList].map(
+    (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
+  );
+  await wait(1000);
+  tooltipList.forEach((el) => {
+    el.show();
+  });
+}
+
 export {
   restoreFromLStorage,
   mirrorToLocalStorage,
@@ -192,4 +226,6 @@ export {
   restoreFromLocalStorageConvert,
   convert,
   imgEventHandler,
+  checkForToasts,
+  checkForTooltips,
 };

@@ -6,7 +6,7 @@ import {
   loginButtons,
   changeImgInput,
 } from './elements';
-import { mirrorToLocalStorage, selectImg } from './utils';
+import { checkForTooltips, mirrorToLocalStorage, selectImg } from './utils';
 
 let loginForm;
 
@@ -68,7 +68,9 @@ function createForm() {
           </label>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Sign in</button>
+      <span data-bs-toggle="tooltip" data-bs-title="Edit my site!" data-bs-placement="right" data-bs-trigger="manual">
+      <button type="submit" class="btn btn-primary" >Sign in</button>
+      </span>
     </form>
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="#">New around here? Sign up</a>
@@ -77,8 +79,13 @@ function createForm() {
 </div>`;
   modalInner.style.setProperty('transform', 'translateY(0)');
   loginForm = document.querySelector('.login-form');
+
+  // --------------------------------TOOLTIPS?---------------------------
+
+  checkForTooltips();
   loginForm.addEventListener('submit', handleSubmit);
 }
+
 function manageLogin() {
   console.log(loginButtons);
   loginButtons.forEach((but) => {

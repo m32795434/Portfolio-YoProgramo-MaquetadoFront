@@ -1,7 +1,11 @@
 import 'bootstrap/js/dist/dropdown.js';
-import Toast from 'bootstrap/js/dist/toast.js';
 import { manageLogin } from './loguin.js';
-import { restoreFromLStorage, initConverter, imgEventHandler } from './utils';
+import {
+  restoreFromLStorage,
+  initConverter,
+  imgEventHandler,
+  checkForToasts,
+} from './utils';
 import { write } from './typer';
 import { imgClick } from './elements.js';
 
@@ -118,18 +122,7 @@ form.addEventListener('mouseenter', initConverter, { once: true });
 
 // --------------------------TOASTS--------------------------
 
-// I will limit the times people will see this toast
-let toastTimes = JSON.parse(localStorage.getItem('toastTimes'));
-
-if (!toastTimes || (toastTimes && toastTimes < 2)) {
-  toastTimes = !toastTimes ? (toastTimes = 1) : (toastTimes += 1);
-  localStorage.setItem('toastTimes', JSON.stringify(toastTimes));
-  const welcomeToast = document.getElementById('welcomeToast');
-  if (welcomeToast) {
-    const myToast = new Toast(welcomeToast);
-    myToast.show();
-  }
-}
+checkForToasts();
 
 // --------------------------imgEventHandler--------------------------
 imgClick.forEach((el) => {

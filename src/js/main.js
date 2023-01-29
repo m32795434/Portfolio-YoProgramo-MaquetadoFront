@@ -1,8 +1,10 @@
 import 'bootstrap/js/dist/dropdown.js';
+import Toast from 'bootstrap/js/dist/toast.js';
+
 // import popover from 'bootstrap/js/dist/popover.js';
 import { Slider1 } from './slider.js';
 import { manageLogin } from './loguin.js';
-import { restoreFromLStorage, imgEventHandler } from './utils';
+import { restoreFromLStorage, imgEventHandler, checkForToasts } from './utils';
 import { write } from './typer';
 import { imgClick } from './elements';
 
@@ -52,3 +54,7 @@ imgClick.forEach((el) => {
   el.addEventListener('click', imgEventHandler);
   el.addEventListener('keyup', imgEventHandler);
 });
+
+// --------------------------TOASTS--------------------------
+
+checkForToasts();
