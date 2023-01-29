@@ -81,7 +81,7 @@
                     hidden>edit</button> -->
                 <h1 class=" edit-content" contenteditable="false" id="h1Proj">PROJECTS</h1>
                 <!-- <button class="edit-button rounded-circle material-symbols-outlined">edit</button> -->
-                <h3>The NoteCalc</h3>
+                <h3 class=" edit-content" id="h3Proj1">The MainNote</h3>
             </div>
             <div class="col-12 col-lg-10 flex-fill row gap-2 m-0 p-0">
                 <div class="col-12 col-lg-5 flex-fill m-0 p-0">
@@ -89,29 +89,30 @@
                         <form class="shopping d-flex gap-2 justify-content-between" autocomplete="off">
                             <!-- with "required" we can validate there is something entered in the input. but we will do this with javascript -->
                             <fieldset class="flex-grow-1">
-                                <label for="item">Item</label>
+                                <label for="item" class=" edit-content" id="laItemProj1">Item</label>
                                 <input class="rounded-1" type="text" id="item">
                             </fieldset>
                             <fieldset class="units">
-                                <label for="units">Units?</label>
+                                <label for="units" class=" edit-content" id="laUnitsProj1">Units?</label>
                                 <input class="rounded-1" type="number" id="units">
                             </fieldset>
                             <fieldset class="">
-                                <label for="price">Price?</label>
+                                <label for="price" class=" edit-content" id="laPriceProj1">Price?</label>
                                 <input class="rounded-1" type="number" id="price">
                             </fieldset>
                             <fieldset class="d-flex justify-content-end align-items-end">
-                                <button type="submit" class="material-symbols-outlined">add</button>
+                                <button type="submit" class="material-symbols-outlined edit-content"
+                                    id="butMaterAddProj1">add</button>
                             </fieldset>
                         </form>
                         <ul class="list"></ul>
-                        <h3>Total =</h3><span id="sum">$0</span>
+                        <h3 class=" edit-content" id="h3TotalProj1">Total =</h3><span id="sum">$0</span>
                     </div>
 
                 </div>
                 <div class="col-12 col-lg-5 flex-fill m-0 p-0">
                     <div class="app">
-                        <h3>Need to convert?</h3>
+                        <h3 class=" edit-content" id="h3ConvProj1">Need to convert?</h3>
                         <form>
                             <input class="rounded-1" type="number" name="from_amount">
                             <select class="rounded-1" name="from_currency">
@@ -124,7 +125,8 @@
                             <p>is</p>
                             <p class="to_amount">$0</p>
                         </form>
-                        <button type="button" name="refresh_rates" class="btn btn-light m-1">Refresh Rates!</button>
+                        <button type="button" name="refresh_rates" class="btn btn-light m-1 edit-content"
+                            id="butRefreshProj1">Refresh Rates!</button>
                     </div>
                 </div>
             </div>
@@ -171,12 +173,12 @@
             data-bs-delay="10000">
             <div class="toast-header">
                 <!-- <img src="..." class="rounded me-2" alt="..."> -->
-                <strong class="me-auto">NoteCalc</strong>
+                <strong class="me-auto">MainNote</strong>
                 <small>Wellcome!!</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-                Wellcome to the NoteCalc!. Just type what you need. No matters if it's an activity or a shopping list
+                Wellcome to the MainNote!. Just type what you need. No matters if it's an activity or a shopping list
                 item. You can even calc something like a "reference badget". If you type a price, don't forguet to type
                 the units!. You can do realtime currency convertions. Enjoy!
             </div>

@@ -35,6 +35,7 @@ function editableContentsReducer(arr) {
 
 function mirrorToLocalStorage() {
   const { title } = document;
+  console.log(title);
   reducedEditables = editableContentsReducer(editableElements);
   console.log(title);
   switch (title) {
@@ -50,6 +51,7 @@ function mirrorToLocalStorage() {
 }
 function restoreFromLStorage() {
   const { title } = document;
+  console.log(title);
   const elsContent = JSON.parse(localStorage.getItem(title));
   if (!elsContent) {
     mirrorToLocalStorage();
@@ -91,6 +93,9 @@ async function selectImg(el) {
     console.log(reader.erorr);
   };
 }
+
+// --------------------------AsyncTyper--------------------------
+
 function getRandomBetween(min = 20, max = 200) {
   const randomNumber = Math.random();
   return Math.floor(randomNumber * (max - min) + min);

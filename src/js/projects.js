@@ -9,7 +9,8 @@ manageLogin();
 restoreFromLStorage();
 document.querySelectorAll('[data-type]').forEach(write);
 
-// Shopping List
+// ------------------------------------MainNote----------------------------------------
+
 const sumSpan = document.querySelector('#sum');
 const shoppingForm = document.querySelector('.shopping');
 const list = document.querySelector('.list');
@@ -109,13 +110,14 @@ list.addEventListener('click', (event) => {
 
 restoreFromLocalStorageList();
 
-// Converter
+// --------------------------Converter--------------------------
 
 const form = document.querySelector('.app form');
 
 form.addEventListener('mouseenter', initConverter, { once: true });
 
-// toats
+// --------------------------TOASTS--------------------------
+
 // I will limit the times people will see this toast
 let toastTimes = JSON.parse(localStorage.getItem('toastTimes'));
 
