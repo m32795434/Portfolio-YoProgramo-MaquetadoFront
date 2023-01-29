@@ -95,7 +95,8 @@ function getRandomBetween(min = 20, max = 200) {
   const randomNumber = Math.random();
   return Math.floor(randomNumber * (max - min) + min);
 }
-// Converter
+
+// --------------------------Converter--------------------------
 
 let ratesByBase = {};
 const endPoint = 'https://api.apilayer.com/exchangerates_data';
@@ -133,14 +134,14 @@ function mirrorToLocalStorageConvert(object) {
   localStorage.setItem('exchangeRates', JSON.stringify(object));
 }
 
-export async function fetchRates(base = 'USD') {
+async function fetchRates(base = 'USD') {
   const res = await fetch(`${endPoint}/latest?base=${base}`, {
     headers: { apikey: ak },
   });
   ratesByBase = (await res.json()).rates;
   mirrorToLocalStorageConvert(ratesByBase);
 }
-export function restoreFromLocalStorageConvert() {
+function restoreFromLocalStorageConvert() {
   const exchangeRates = localStorage.getItem('exchangeRates');
   if (exchangeRates) {
     ratesByBase = JSON.parse(exchangeRates);
@@ -149,12 +150,38 @@ export function restoreFromLocalStorageConvert() {
   fetchRates();
 }
 
-export function convert() {
+function convert() {
   const amount = fromAmount.value;
   const from = fromCurrecy.value;
   const to = toCurrency.value;
   const calcAmount = (amount * ratesByBase[to]) / ratesByBase[from];
   toAmount.textContent = formatCurrency(calcAmount, to);
+}
+// --------------------------imgEventHandler--------------------------
+function imgEventHandler(e) {
+  console.log(e);
+  if (e.key === 'Enter' || e.type === 'click') {
+    console.log(e.target.al);
+    switch (e.target.alt) {
+      case 'Instagram':
+        window.location = 'https://www.instagram.com/augustox86/';
+        break;
+      case 'Linkedin':
+        window.location =
+          'https://www.linkedin.com/in/manuel-augusto-bravard-642034204/';
+        break;
+      case 'Whatsapp':
+        window.location = 'https://api.whatsapp.com/send?phone=+5493454093473';
+        break;
+      case 'Argentina Programa':
+        window.location =
+          'https://www.argentina.gob.ar/economia/conocimiento/argentina-programa';
+        break;
+      default:
+        window.location = 'https://api.whatsapp.com/send?phone=+5493454093473';
+        break;
+    }
+  }
 }
 
 export {
@@ -166,4 +193,8 @@ export {
   generateOptions,
   formatCurrency,
   initConverter,
+  fetchRates,
+  restoreFromLocalStorageConvert,
+  convert,
+  imgEventHandler,
 };

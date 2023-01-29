@@ -2,8 +2,9 @@ import 'bootstrap/js/dist/dropdown.js';
 // import popover from 'bootstrap/js/dist/popover.js';
 import { Slider1 } from './slider.js';
 import { manageLogin } from './loguin.js';
-import { restoreFromLStorage } from './utils';
+import { restoreFromLStorage, imgEventHandler } from './utils';
 import { write } from './typer';
+import { imgClick } from './elements';
 
 /*
 const popers = document.querySelectorAll('[data-bs-toggle="popover"]');
@@ -45,3 +46,9 @@ const myHomeSlider = new Slider1(document.querySelector('.home-slider'));
 manageLogin();
 restoreFromLStorage();
 document.querySelectorAll('[data-type]').forEach(write);
+
+// --------------------------imgEventHandler--------------------------
+imgClick.forEach((el) => {
+  el.addEventListener('click', imgEventHandler);
+  el.addEventListener('keyup', imgEventHandler);
+});

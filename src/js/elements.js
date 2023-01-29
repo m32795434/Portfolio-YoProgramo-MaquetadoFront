@@ -11,6 +11,7 @@ const refresh = document.querySelector('[name="refresh_rates"]');
 const fromCurrecy = document.querySelector('[name="from_currency"]');
 const toCurrency = document.querySelector('[name="to_currency"]');
 const formCurrency = document.querySelector('.app form');
+const imgClick = Array.from(document.querySelectorAll('img[role="button"]'));
 
 export {
   modalInner,
@@ -26,4 +27,5 @@ export {
   fromCurrecy,
   toCurrency,
   formCurrency,
+  imgClick,
 };

@@ -1,8 +1,9 @@
 import 'bootstrap/js/dist/dropdown.js';
 import Toast from 'bootstrap/js/dist/toast.js';
 import { manageLogin } from './loguin.js';
-import { restoreFromLStorage, initConverter } from './utils';
+import { restoreFromLStorage, initConverter, imgEventHandler } from './utils';
 import { write } from './typer';
+import { imgClick } from './elements.js';
 
 manageLogin();
 restoreFromLStorage();
@@ -127,3 +128,9 @@ if (!toastTimes || (toastTimes && toastTimes < 2)) {
     myToast.show();
   }
 }
+
+// --------------------------imgEventHandler--------------------------
+imgClick.forEach((el) => {
+  el.addEventListener('click', imgEventHandler);
+  el.addEventListener('keyup', imgEventHandler);
+});

@@ -1,8 +1,9 @@
 import 'bootstrap/js/dist/dropdown.js';
 import { Slider1 } from './slider.js';
 import { manageLogin } from './loguin.js';
-import { restoreFromLStorage } from './utils';
+import { imgEventHandler, restoreFromLStorage } from './utils';
 import { write } from './typer';
+import { imgClick } from './elements.js';
 
 let myExperienceSlider;
 let widthViewPort = window.visualViewport.width;
@@ -14,7 +15,7 @@ if (widthViewPort < 992) {
 }
 manageLogin();
 restoreFromLStorage();
-document.querySelectorAll('[data-type]').forEach(write);
+
 function checkForResize() {
   widthViewPort = window.visualViewport.width;
   if (widthViewPort > 992 && myExperienceSlider) {
@@ -24,3 +25,13 @@ function checkForResize() {
   }
 }
 window.onresize = checkForResize;
+
+// ------------------------Async Typer------------------------
+
+document.querySelectorAll('[data-type]').forEach(write);
+
+// --------------------------imgEventHandler--------------------------
+imgClick.forEach((el) => {
+  el.addEventListener('click', imgEventHandler);
+  el.addEventListener('keyup', imgEventHandler);
+});
