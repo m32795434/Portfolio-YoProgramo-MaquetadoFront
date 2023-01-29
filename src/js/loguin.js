@@ -13,9 +13,13 @@ let loginForm;
 function handleSubmit(e) {
   e.preventDefault();
   modalOuter.classList.remove('open');
-  changeImgInput.onchange = function () {
-    selectImg(this);
-  };
+
+  if (changeImgInput) {
+    changeImgInput.onchange = function () {
+      selectImg(this);
+    };
+  }
+
   editButtons.forEach((but) => {
     but.hidden = false;
     but.addEventListener('click', (ev) => {

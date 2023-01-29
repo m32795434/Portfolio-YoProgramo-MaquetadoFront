@@ -37,17 +37,7 @@ function mirrorToLocalStorage() {
   const { title } = document;
   console.log(title);
   reducedEditables = editableContentsReducer(editableElements);
-  console.log(title);
-  switch (title) {
-    case 'Home':
-      localStorage.setItem('Home', JSON.stringify(reducedEditables));
-      break;
-    case 'Experience':
-      localStorage.setItem('Experience', JSON.stringify(reducedEditables));
-      break;
-    default:
-      break;
-  }
+  localStorage.setItem(title, JSON.stringify(reducedEditables));
 }
 function restoreFromLStorage() {
   const { title } = document;
