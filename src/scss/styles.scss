@@ -197,6 +197,11 @@ footer {
       font: 500 16px 'Courier Prime', monospace;
       color: black;
     }
+
+    & button {
+      font-family: 'Material Symbols Outlined';
+      height: 32px;
+    }
   }
 
   .typer-body {

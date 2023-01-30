@@ -1,3 +1,5 @@
+/* eslint-disable import/no-mutable-exports */
+
 import {
   modalInner,
   modalOuter,
@@ -7,18 +9,18 @@ import {
   changeImgInput,
 } from './elements';
 import {
-  checkForThisTooltips,
+  checkForLoginToasts,
+  createTooltips,
   mirrorToLocalStorage,
   selectImg,
-  tooltipList,
 } from './utils';
 
 let loginForm;
-let toolType;
+let loginToolTips;
 
 function handleSubmit(e) {
   // if it's necessary to close some tooltips
-  tooltipList.forEach((el) => {
+  loginToolTips.forEach((el) => {
     if (el._config.trigger && el._config.trigger === 'manual') el.hide();
   });
   e.preventDefault();
@@ -50,18 +52,16 @@ function handleSubmit(e) {
     console.log('Mirroring!!!');
   }, 10000);
 }
-function createForm() {
-  toolType = 'loginToolTips';
+async function createForm() {
   modalOuter.classList.add('open');
   modalInner.innerHTML = `<div class="dropdown-menu show" style="position: static;">
     <form class="px-4 py-3 login-form">
       <div class="mb-3">
-      <span class="${toolType}" data-bs-toggle="tooltip" data-bs-title="You can enter whatever you want, the form will allow you to edit the page." data-bs-placement="right" data-bs-trigger="manual">
         <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
         <div class="dropup">
           <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com"
             data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="100,30">
-          <div class="dropdown-menu">
+          <div class="dropdown-menu format">
             <h6 class="dropdown-header">Format:</h6>
             <hr class="dropdown-divider">
             <p class="dropdown-item">email@example.com</p>
@@ -80,7 +80,7 @@ function createForm() {
           </label>
         </div>
       </div>
-      <span class="${toolType}" data-bs-toggle="tooltip" data-bs-title="Edit my site!" data-bs-placement="right" data-bs-trigger="manual">
+      <span class="loginToolTips" data-bs-toggle="tooltip" data-bs-title="Edit my site!" data-bs-placement="right" data-bs-trigger="manual">
       <button type="submit" class="btn btn-primary" >Sign in</button>
       </span>
     </form>
@@ -88,14 +88,29 @@ function createForm() {
     <a class="dropdown-item" href="#">New around here? Sign up</a>
     <a class="dropdown-item" href="#">Forgot password?</a>
   </div>
-</div>`;
+</div>
+<div class="toast-container position-fixed top-0 start-0 p-3">
+    <div id="loginToast" class="toast text-bg-primary" role="alert" aria-live="assertive" aria-atomic="true"
+      data-bs-delay="30000">
+      <div class="toast-header">
+        <!-- <img src="..." class="rounded me-2" alt="..."> -->
+        <strong class="me-auto">Login:</strong>
+        <small>How to</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+      You can enter whatever the credentials you want, the form will allow you to log and edit the page.
+      </div>
+    </div>
+  </div>`;
   modalInner.style.setProperty('transform', 'translateY(0)');
   loginForm = document.querySelector('.login-form');
 
   // --------------------------------TOOLTIPS?---------------------------
 
-  checkForThisTooltips(toolType);
-
+  loginToolTips = await createTooltips('loginToolTips');
+  console.log('loginToolTips', loginToolTips);
+  checkForLoginToasts();
   loginForm.addEventListener('submit', handleSubmit);
 }
 
@@ -106,4 +121,4 @@ function manageLogin() {
   });
 }
 
-export { manageLogin };
+export { manageLogin, loginForm };

@@ -16,7 +16,6 @@ import currencies from './currencies.js';
 import { ak } from '../../gitignore/ak';
 
 let reducedEditables;
-let tooltipList;
 
 function wait(ms) {
   return new Promise((res) => {
@@ -200,11 +199,25 @@ function checkForToasts() {
     }
   }
 }
+function checkForLoginToasts() {
+  // I will limit the times people will see this toast
+  let toastTimes = JSON.parse(localStorage.getItem(`loginToastTimes`));
+
+  if (!toastTimes || (toastTimes && toastTimes < 2)) {
+    toastTimes = !toastTimes ? (toastTimes = 1) : (toastTimes += 1);
+    localStorage.setItem(`loginToastTimes`, JSON.stringify(toastTimes));
+    const loginToast = document.getElementById('loginToast');
+    if (loginToast) {
+      const myToast = new Toast(loginToast);
+      myToast.show();
+    }
+  }
+}
 
 // --------------------------------TOOLTIPS---------------------------
-async function checkForThisTooltips(tools) {
+async function createTooltips(tools) {
   const tooltipTriggerList = document.querySelectorAll(`.${tools}`);
-  tooltipList = [...tooltipTriggerList].map(
+  const tooltipList = [...tooltipTriggerList].map(
     (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
   );
   // if it needs to be showed manually
@@ -215,6 +228,7 @@ async function checkForThisTooltips(tools) {
       el.show();
     }
   });
+  return tooltipList;
 }
 
 export {
@@ -231,6 +245,6 @@ export {
   convert,
   imgEventHandler,
   checkForToasts,
-  checkForThisTooltips,
-  tooltipList,
+  createTooltips,
+  checkForLoginToasts,
 };
