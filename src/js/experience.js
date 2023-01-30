@@ -1,7 +1,7 @@
 import 'bootstrap/js/dist/dropdown.js';
 import { Slider1 } from './slider.js';
 import { manageLogin } from './loguin.js';
-import { imgEventHandler, restoreFromLStorage } from './utils';
+import { createTooltips, imgEventHandler, restoreFromLStorage } from './utils';
 import { write } from './typer';
 import { imgClick } from './elements.js';
 
@@ -34,4 +34,11 @@ document.querySelectorAll('[data-type]').forEach(write);
 imgClick.forEach((el) => {
   el.addEventListener('click', imgEventHandler);
   el.addEventListener('keyup', imgEventHandler);
+});
+
+// --------------------------TOOLTIPS--------------------------
+createTooltips('.cleanLs');
+document.querySelector('.cleanLs').addEventListener('click', () => {
+  localStorage.clear();
+  alert('Local Storage Cleared');
 });

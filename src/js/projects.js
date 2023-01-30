@@ -5,6 +5,7 @@ import {
   initConverter,
   imgEventHandler,
   checkForToasts,
+  createTooltips,
 } from './utils';
 import { write } from './typer';
 import { imgClick } from './elements.js';
@@ -128,4 +129,12 @@ checkForToasts();
 imgClick.forEach((el) => {
   el.addEventListener('click', imgEventHandler);
   el.addEventListener('keyup', imgEventHandler);
+});
+
+// --------------------------TOOLTIPS--------------------------
+
+createTooltips('.cleanLs');
+document.querySelector('.cleanLs').addEventListener('click', () => {
+  localStorage.clear();
+  alert('Local Storage Cleared');
 });

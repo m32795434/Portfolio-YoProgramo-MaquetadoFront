@@ -4,7 +4,12 @@ import Toast from 'bootstrap/js/dist/toast.js';
 // import popover from 'bootstrap/js/dist/popover.js';
 import { Slider1 } from './slider.js';
 import { manageLogin } from './loguin.js';
-import { restoreFromLStorage, imgEventHandler, checkForToasts } from './utils';
+import {
+  restoreFromLStorage,
+  imgEventHandler,
+  checkForToasts,
+  createTooltips,
+} from './utils';
 import { write } from './typer';
 import { imgClick } from './elements';
 
@@ -58,3 +63,8 @@ imgClick.forEach((el) => {
 // --------------------------TOASTS--------------------------
 
 checkForToasts();
+createTooltips('.cleanLs');
+document.querySelector('.cleanLs').addEventListener('click', () => {
+  localStorage.clear();
+  alert('Local Storage Cleared');
+});

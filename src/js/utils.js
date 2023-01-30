@@ -216,7 +216,7 @@ function checkForLoginToasts() {
 
 // --------------------------------TOOLTIPS---------------------------
 async function createTooltips(tools) {
-  const tooltipTriggerList = document.querySelectorAll(`.${tools}`);
+  const tooltipTriggerList = document.querySelectorAll(tools);
   const tooltipList = [...tooltipTriggerList].map(
     (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
   );

@@ -108,7 +108,7 @@ async function createForm() {
 
   // --------------------------------TOOLTIPS?---------------------------
 
-  loginToolTips = await createTooltips('loginToolTips');
+  loginToolTips = await createTooltips('.loginToolTips');
   console.log('loginToolTips', loginToolTips);
   checkForLoginToasts();
   loginForm.addEventListener('submit', handleSubmit);
