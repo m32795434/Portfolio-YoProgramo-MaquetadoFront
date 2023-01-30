@@ -146,6 +146,18 @@ img[alt="Argentina Programa"]:hover {
   box-shadow: 0 0 7px 4px #8a8989;
 }
 
+.tooltip.innerRed {
+
+
+  &>.tooltip-arrow::before {
+    border-color: rgba(255, 0, 0, 0.623) transparent transparent transparent;
+  }
+
+  &>.tooltip-inner {
+    background-color: rgb(205, 30, 30);
+  }
+}
+
 //-----------------END-HEADER----------------------------
 //-----------------START-MAIN----------------------------
 

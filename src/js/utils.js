@@ -26,10 +26,10 @@ function wait(ms) {
 function editableContentsReducer(arr) {
   const reduced = arr.reduce((contentObj, currentEl) => {
     if (currentEl.tagName === 'IMG') {
-      console.log(`saving the content of an IMG`);
+      // console.log(`saving the content of an IMG`);
       contentObj[currentEl.id] = currentEl.src;
     } else if (currentEl.tagName === 'P' || currentEl.tagName.includes('H')) {
-      console.log(`saving the content of a ${currentEl.tagName}`);
+      // console.log(`saving the content of a ${currentEl.tagName}`);
       contentObj[currentEl.id] = currentEl.innerText;
     }
     return contentObj;
@@ -52,10 +52,10 @@ function restoreFromLStorage() {
   } else {
     editableElements.forEach((el) => {
       if (el.tagName === 'IMG') {
-        console.log(`restoring the content of an IMG`);
+        // console.log(`restoring the content of an IMG`);
         el.src = elsContent[el.id];
       } else if (el.tagName === 'P' || el.tagName.includes('H')) {
-        console.log(`restoring the content of a ${el.tagName}`);
+        // console.log(`restoring the content of a ${el.tagName}`);
         el.innerText = elsContent[el.id];
       }
     });
@@ -221,10 +221,10 @@ async function createTooltips(tools) {
     (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
   );
   // if it needs to be showed manually
-  await wait(1000);
+  await wait(500);
   tooltipList.forEach((el) => {
     if (el._config.trigger === 'manual') {
-      console.log(el);
+      // console.log(el);
       el.show();
     }
   });

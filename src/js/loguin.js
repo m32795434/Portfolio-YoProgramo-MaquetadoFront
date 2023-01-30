@@ -1,5 +1,5 @@
 /* eslint-disable import/no-mutable-exports */
-
+/* eslint-disable no-plusplus */
 import {
   modalInner,
   modalOuter,
@@ -13,6 +13,7 @@ import {
   createTooltips,
   mirrorToLocalStorage,
   selectImg,
+  wait,
 } from './utils';
 
 let loginForm;
@@ -20,18 +21,44 @@ let loginToolTips;
 let infoSaveBts;
 
 async function handleSubmit(e) {
+  e.preventDefault();
   // if it's necessary to close some tooltips
   loginToolTips.forEach((el) => {
     if (el._config.trigger && el._config.trigger === 'manual') el.hide();
   });
-  e.preventDefault();
   modalOuter.classList.remove('open');
 
+  // await wait(1000);
   if (window.visualViewport.width >= 992) {
     infoSaveBts = await createTooltips('.saveLg'); // from the edit mode
   } else {
     infoSaveBts = await createTooltips('.save'); // from the edit mode
   }
+  infoSaveBts.forEach((el) => {
+    console.log(el.tip);
+    el.tip.addEventListener('click', (ev) => {
+      el.hide();
+    });
+  });
+  // tooltips?need to change the color of the arrow? - SOME DAY IN THE FUTURE🙏
+  /* const sheets = document.styleSheets;
+  for (let i = 0; i < sheets.length; i++) {
+    let rules = [];
+    try {
+      rules = sheets[i].cssRules || sheets[i].rules;
+    } catch (err) {
+      console.log(err);
+    }
+    debugger;
+    for (let j = 0; j < rules.length; j++) {
+      if (rules[j].selectorText === 'div') {
+        const pseudo = rules[j];
+        // pseudo.style.backgroundColor = '#your-color';
+        console.dir(pseudo);
+        break;
+      }
+    }
+  } */
 
   if (changeImgInput) {
     changeImgInput.onchange = function () {
@@ -59,6 +86,7 @@ async function handleSubmit(e) {
     console.log('Mirroring!!!');
   }, 10000);
 }
+
 async function createForm() {
   modalOuter.classList.add('open');
   modalInner.innerHTML = `<div class="dropdown-menu show" style="position: static;">
@@ -112,17 +140,16 @@ async function createForm() {
   </div>`;
   modalInner.style.setProperty('transform', 'translateY(0)');
   loginForm = document.querySelector('.login-form');
+  loginForm.addEventListener('submit', handleSubmit);
 
-  // --------------------------------TOOLTIPS?---------------------------
+  // --------------------------------TOOLTIPS + TOASTS?---------------------------
 
   checkForLoginToasts();
-  loginToolTips = await createTooltips('.loginToolTips'); // from the login form
-
-  loginForm.addEventListener('submit', handleSubmit);
+  loginToolTips = await createTooltips('.loginToolTips'); // for the login form
 }
 
 function manageLogin() {
-  console.log(loginButtons);
+  // console.log(loginButtons);
   loginButtons.forEach((but) => {
     but.addEventListener('click', createForm);
   });
