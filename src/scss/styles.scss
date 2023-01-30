@@ -86,6 +86,11 @@ $success: #7952b3;
 @import './style-home.scss';
 @import './style-experience.scss';
 @import'./projects.scss';
+
+:is(button.material-symbols-outlined, button.material-icons) {
+  font-family: 'Material Symbols Outlined';
+}
+
 //-----------------START-HEADER----------------------------
 
 header {
@@ -114,7 +119,7 @@ img[alt="Argentina Programa"]:hover {
 }
 
 #menu-Hamb {
-  font-family: 'Material Icons';
+  // font-family: 'Material Icons';
   color: #b3b3b3;
   font-size: 20px;
   background-color: transparent;
@@ -128,7 +133,7 @@ img[alt="Argentina Programa"]:hover {
   color: #b3b3b3;
 
   &.save {
-    font-family: 'Material Symbols Outlined';
+    // font-family: 'Material Symbols Outlined';
     color: #FA1C1C;
     border: 1px solid #FA1C1C;
     font-size: 34px;
@@ -199,7 +204,7 @@ footer {
     }
 
     & button {
-      font-family: 'Material Symbols Outlined';
+      // font-family: 'Material Symbols Outlined';
       height: 32px;
     }
   }
@@ -223,7 +228,7 @@ footer {
 
 //-----------------EDIT-BUTTONS--------------------------
 .edit-button {
-  font-family: 'Material Symbols Outlined';
+  // font-family: 'Material Symbols Outlined';
   height: 50px;
   width: 50px;
   color: #FA1C1C;

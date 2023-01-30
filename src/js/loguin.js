@@ -17,14 +17,21 @@ import {
 
 let loginForm;
 let loginToolTips;
+let infoSaveBts;
 
-function handleSubmit(e) {
+async function handleSubmit(e) {
   // if it's necessary to close some tooltips
   loginToolTips.forEach((el) => {
     if (el._config.trigger && el._config.trigger === 'manual') el.hide();
   });
   e.preventDefault();
   modalOuter.classList.remove('open');
+
+  if (window.visualViewport.width >= 992) {
+    infoSaveBts = await createTooltips('.saveLg'); // from the edit mode
+  } else {
+    infoSaveBts = await createTooltips('.save'); // from the edit mode
+  }
 
   if (changeImgInput) {
     changeImgInput.onchange = function () {
@@ -108,9 +115,9 @@ async function createForm() {
 
   // --------------------------------TOOLTIPS?---------------------------
 
-  loginToolTips = await createTooltips('.loginToolTips');
-  console.log('loginToolTips', loginToolTips);
   checkForLoginToasts();
+  loginToolTips = await createTooltips('.loginToolTips'); // from the login form
+
   loginForm.addEventListener('submit', handleSubmit);
 }
 

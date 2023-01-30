@@ -137,4 +137,5 @@ createTooltips('.cleanLs');
 document.querySelector('.cleanLs').addEventListener('click', () => {
   localStorage.clear();
   alert('Local Storage Cleared');
+  window.location.reload();
 });
