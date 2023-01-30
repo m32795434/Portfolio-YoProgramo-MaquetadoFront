@@ -63,7 +63,16 @@ imgClick.forEach((el) => {
 // --------------------------TOASTS--------------------------
 
 checkForToasts();
-createTooltips('.cleanLs');
+
+// --------------------------TOOLTIPS--------------------------
+(async function cleanTooltipsFunct() {
+  const cleanTooltips = await createTooltips('.cleanLs');
+  cleanTooltips.forEach((el) => {
+    el.tip.addEventListener('click', () => {
+      el.hide();
+    });
+  });
+})();
 
 document.querySelector('.cleanLs').addEventListener('click', () => {
   localStorage.clear();
