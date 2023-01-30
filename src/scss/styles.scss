@@ -127,18 +127,17 @@ img[alt="Argentina Programa"]:hover {
   border: transparent;
 }
 
-#section>button {
+button.save {
+  color: #FA1C1C;
+  border: 1px solid #FA1C1C;
+  font-size: 34px;
+  background-color: #393838;
+}
+
+#sectionBtn {
   font-family: Montserrat, 'Open Sans', Lato, 'sans-serif';
   font-size: 20px;
   color: #b3b3b3;
-
-  &.save {
-    // font-family: 'Material Symbols Outlined';
-    color: #FA1C1C;
-    border: 1px solid #FA1C1C;
-    font-size: 34px;
-    background-color: #393838;
-  }
 }
 
 [data-bs-toggle="dropdown"]:hover {
