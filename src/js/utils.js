@@ -1,3 +1,4 @@
+/* eslint-disable import/no-mutable-exports */
 import Toast from 'bootstrap/js/dist/toast';
 import Tooltip from 'bootstrap/js/dist/tooltip';
 
@@ -15,6 +16,7 @@ import currencies from './currencies.js';
 import { ak } from '../../gitignore/ak';
 
 let reducedEditables;
+let tooltipList;
 
 function wait(ms) {
   return new Promise((res) => {
@@ -200,16 +202,18 @@ function checkForToasts() {
 }
 
 // --------------------------------TOOLTIPS---------------------------
-async function checkForTooltips() {
-  const tooltipTriggerList = document.querySelectorAll(
-    '[data-bs-toggle="tooltip"]'
-  );
-  const tooltipList = [...tooltipTriggerList].map(
+async function checkForThisTooltips(tools) {
+  const tooltipTriggerList = document.querySelectorAll(`.${tools}`);
+  tooltipList = [...tooltipTriggerList].map(
     (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
   );
+  // if it needs to be showed manually
   await wait(1000);
   tooltipList.forEach((el) => {
-    el.show();
+    if (el._config.trigger === 'manual') {
+      console.log(el);
+      el.show();
+    }
   });
 }
 
@@ -227,5 +231,6 @@ export {
   convert,
   imgEventHandler,
   checkForToasts,
-  checkForTooltips,
+  checkForThisTooltips,
+  tooltipList,
 };

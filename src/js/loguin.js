@@ -6,11 +6,21 @@ import {
   loginButtons,
   changeImgInput,
 } from './elements';
-import { checkForTooltips, mirrorToLocalStorage, selectImg } from './utils';
+import {
+  checkForThisTooltips,
+  mirrorToLocalStorage,
+  selectImg,
+  tooltipList,
+} from './utils';
 
 let loginForm;
+let toolType;
 
 function handleSubmit(e) {
+  // if it's necessary to close some tooltips
+  tooltipList.forEach((el) => {
+    if (el._config.trigger && el._config.trigger === 'manual') el.hide();
+  });
   e.preventDefault();
   modalOuter.classList.remove('open');
 
@@ -41,10 +51,12 @@ function handleSubmit(e) {
   }, 10000);
 }
 function createForm() {
+  toolType = 'loginToolTips';
   modalOuter.classList.add('open');
   modalInner.innerHTML = `<div class="dropdown-menu show" style="position: static;">
     <form class="px-4 py-3 login-form">
       <div class="mb-3">
+      <span class="${toolType}" data-bs-toggle="tooltip" data-bs-title="You can enter whatever you want, the form will allow you to edit the page." data-bs-placement="right" data-bs-trigger="manual">
         <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
         <div class="dropup">
           <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com"
@@ -68,7 +80,7 @@ function createForm() {
           </label>
         </div>
       </div>
-      <span data-bs-toggle="tooltip" data-bs-title="Edit my site!" data-bs-placement="right" data-bs-trigger="manual">
+      <span class="${toolType}" data-bs-toggle="tooltip" data-bs-title="Edit my site!" data-bs-placement="right" data-bs-trigger="manual">
       <button type="submit" class="btn btn-primary" >Sign in</button>
       </span>
     </form>
@@ -82,7 +94,8 @@ function createForm() {
 
   // --------------------------------TOOLTIPS?---------------------------
 
-  checkForTooltips();
+  checkForThisTooltips(toolType);
+
   loginForm.addEventListener('submit', handleSubmit);
 }
 
