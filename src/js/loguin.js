@@ -40,9 +40,9 @@ async function handleSubmit(e) {
 
   // await wait(1000);
   if (window.visualViewport.width >= 992) {
-    tooltipsSaveBts = await createTooltips('.saveLg'); // from the edit mode
+    tooltipsSaveBts = await createTooltips('.toolSaveBtnLg'); // from the edit mode
   } else {
-    tooltipsSaveBts = await createTooltips('.save'); // from the edit mode
+    tooltipsSaveBts = await createTooltips('.toolSaveBtn'); // from the edit mode
   }
   tooltipsSaveBts.forEach((el) => {
     console.log(el.tip);
