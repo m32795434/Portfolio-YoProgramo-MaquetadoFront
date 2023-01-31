@@ -58,7 +58,7 @@ async function handleSubmit(e) {
   });
   toolChangeImg = await createTooltips('.changeImg');
   toolChangeImg.forEach((el) => {
-    console.log(el.tip);
+    console.log('el:', el);
     el.tip.addEventListener(
       'click',
       () => {
@@ -116,6 +116,10 @@ function shouldEnableContentEditable(bool) {
   } else {
     localStorage.setItem('login', 'false');
     logged = false;
+
+    if (toolChangeImg) {
+      toolChangeImg.forEach((el) => el.hide());
+    }
     if (tooltipsSaveBts) {
       tooltipsSaveBts.forEach((el) => el.hide());
     }

@@ -227,6 +227,7 @@ async function createTooltips(tools) {
   );
   // if it needs to be showed manually
   await wait(500);
+
   tooltipList.forEach((el) => {
     if (el._config.trigger === 'manual') {
       // console.log(el);
