@@ -85,11 +85,12 @@
       alt="Manuel perfil" id="imgDesktopHome">
     <input type="file" accept="image/*" id="changeImg" hidden>
     <button class="edit-button changeImg edit-top-left rounded-circle material-symbols-outlined"
-      hidden>upload_file</button>
+      data-bs-toggle="tooltip" data-bs-title="Select an img with the relation aspect:.." data-bs-placement="bottom"
+      data-bs-trigger="manual" data-bs-custom-class="innerRed" hidden>upload_file</button>
 
     <!-- container-columns absolute top 0 h100 w100-->
     <div class="row m-0 p-0 container-columns">
-      <div class="d-none d-lg-block col-lg-6 m-0 p-0"></div>
+      <div class="d-none d-lg-block col-lg-6 m-0 p-0"></div><!-- to allow to split at middle / don't delete-->
       <div class="col-12 col-lg-6 d-flex flex-column justify-content-between m-0 p-0 main-Half-BackG">
         <div class="d-flex flex-fill">
           <h1 class="mx-1 mt-4 edit-content" contenteditable="false" id="h1Home">Hi!, I’m Manuel.<br> I’m a

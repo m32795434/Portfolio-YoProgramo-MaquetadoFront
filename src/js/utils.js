@@ -71,7 +71,7 @@ async function selectImg(el) {
   let img;
   console.log(file); // the File object
   // select the img element
-  if (window.visualViewport.width >= 992) {
+  if (window.visualViewport.width >= 975.2) {
     img = imgsToChange.find((elm) => elm.matches('.desktop'));
   } else {
     img = imgsToChange.find((elm) => elm.matches('.mobile'));

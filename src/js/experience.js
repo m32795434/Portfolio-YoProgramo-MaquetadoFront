@@ -8,7 +8,7 @@ import { imgClick } from './elements.js';
 let myExperienceSlider;
 let widthViewPort = window.visualViewport.width;
 
-if (widthViewPort < 992) {
+if (widthViewPort < 975.2) {
   myExperienceSlider = new Slider1(
     document.querySelector('.slider-experience')
   );
@@ -18,9 +18,9 @@ restoreFromLStorage();
 
 function checkForResize() {
   widthViewPort = window.visualViewport.width;
-  if (widthViewPort > 992 && myExperienceSlider) {
+  if (widthViewPort > 975.2 && myExperienceSlider) {
     window.location.reload();
-  } else if (widthViewPort < 992 && !myExperienceSlider) {
+  } else if (widthViewPort < 975.2 && !myExperienceSlider) {
     window.location.reload();
   }
 }

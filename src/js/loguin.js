@@ -19,6 +19,7 @@ let loginForm;
 let loginToolTips;
 let tooltipsSaveBts;
 let logged;
+let toolChangeImg;
 
 // ------------------------EVENT HANDLERS-------------------------------
 function handleEditButtons(ev) {
@@ -32,14 +33,15 @@ function handleEditButtons(ev) {
 
 async function handleSubmit(e) {
   e.preventDefault();
-  // if it's necessary to close some tooltips
+  // if it's necessary to close some tooltips in the login
   loginToolTips.forEach((el) => {
     if (el._config.trigger && el._config.trigger === 'manual') el.hide();
   });
+
   modalOuter.classList.remove('open');
 
-  // await wait(1000);
-  if (window.visualViewport.width >= 992) {
+  // setting the tooltips for the edit mode
+  if (window.visualViewport.width >= 975.2) {
     tooltipsSaveBts = await createTooltips('.toolSaveBtnLg'); // from the edit mode
   } else {
     tooltipsSaveBts = await createTooltips('.toolSaveBtn'); // from the edit mode
@@ -54,6 +56,18 @@ async function handleSubmit(e) {
       { once: true }
     );
   });
+  toolChangeImg = await createTooltips('.changeImg');
+  toolChangeImg.forEach((el) => {
+    console.log(el.tip);
+    el.tip.addEventListener(
+      'click',
+      () => {
+        el.hide();
+      },
+      { once: true }
+    );
+  });
+
   // tooltips?need to change the color of the arrow? - SOME DAY IN THE FUTURE🙏
   /* const sheets = document.styleSheets;
   for (let i = 0; i < sheets.length; i++) {
