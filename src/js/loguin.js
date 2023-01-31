@@ -13,12 +13,12 @@ import {
   createTooltips,
   mirrorToLocalStorage,
   selectImg,
-  wait,
 } from './utils';
 
 let loginForm;
 let loginToolTips;
-let infoSaveBts;
+let tooltipsSaveBts;
+let logged;
 
 async function handleSubmit(e) {
   e.preventDefault();
@@ -30,11 +30,11 @@ async function handleSubmit(e) {
 
   // await wait(1000);
   if (window.visualViewport.width >= 992) {
-    infoSaveBts = await createTooltips('.saveLg'); // from the edit mode
+    tooltipsSaveBts = await createTooltips('.saveLg'); // from the edit mode
   } else {
-    infoSaveBts = await createTooltips('.save'); // from the edit mode
+    tooltipsSaveBts = await createTooltips('.save'); // from the edit mode
   }
-  infoSaveBts.forEach((el) => {
+  tooltipsSaveBts.forEach((el) => {
     console.log(el.tip);
     el.tip.addEventListener('click', (ev) => {
       el.hide();
@@ -49,7 +49,6 @@ async function handleSubmit(e) {
     } catch (err) {
       console.log(err);
     }
-    debugger;
     for (let j = 0; j < rules.length; j++) {
       if (rules[j].selectorText === 'div') {
         const pseudo = rules[j];
@@ -60,31 +59,49 @@ async function handleSubmit(e) {
     }
   } */
 
-  if (changeImgInput) {
-    changeImgInput.onchange = function () {
-      selectImg(this);
-    };
-  }
+  shouldEnableContentEditable(true);
+}
 
-  editButtons.forEach((but) => {
-    but.hidden = false;
-    but.addEventListener('click', (ev) => {
-      const t = ev.currentTarget;
-      if (t.matches('.save')) {
-        mirrorToLocalStorage();
-      } else if (t.matches('.changeImg') && changeImgInput) {
-        changeImgInput.click();
-      }
+function shouldEnableContentEditable(bool) {
+  let mirrorInterval;
+  if (bool) {
+    localStorage.setItem('login', JSON.stringify(true));
+    if (changeImgInput) {
+      changeImgInput.onchange = function () {
+        selectImg(this);
+      };
+    }
+    editButtons.forEach((but) => {
+      but.hidden = false;
+      but.addEventListener('click', (ev) => {
+        const t = ev.currentTarget;
+        if (t.matches('.save')) {
+          mirrorToLocalStorage();
+        } else if (t.matches('.changeImg') && changeImgInput) {
+          changeImgInput.click();
+        }
+      });
     });
-  });
-
-  editableElements.forEach((el) => {
-    el.contentEditable = true;
-  });
-  setInterval(() => {
+    editableElements.forEach((el) => {
+      el.contentEditable = true;
+    });
+    mirrorInterval = setInterval(() => {
+      mirrorToLocalStorage();
+      console.log('Mirroring!!!');
+    }, 10000);
+    loginButtons.forEach((el) => (el.textContent = 'LOGOUT'));
+  } else {
+    localStorage.setItem('login', JSON.stringify(false));
+    editableElements.forEach((el) => {
+      el.contentEditable = false;
+    });
+    editButtons.forEach((but) => {
+      but.hidden = false;
+    });
     mirrorToLocalStorage();
-    console.log('Mirroring!!!');
-  }, 10000);
+    clearInterval(mirrorInterval);
+    loginButtons.forEach((el) => (el.textContent = 'LOGIN'));
+  }
 }
 
 async function createForm() {
@@ -149,10 +166,20 @@ async function createForm() {
 }
 
 function manageLogin() {
-  // console.log(loginButtons);
+  logged = JSON.parse(localStorage.getItem('login'));
+  console.log('logged', logged);
   loginButtons.forEach((but) => {
-    but.addEventListener('click', createForm);
+    but.addEventListener('click', () => {
+      if (logged) {
+        // LOGOUT
+        shouldEnableContentEditable(false);
+      } else {
+        // LOGIN
+        createForm();
+        console.log('form created');
+      }
+    });
   });
 }
 
-export { manageLogin, loginForm };
+export { manageLogin, loginForm, shouldEnableContentEditable };

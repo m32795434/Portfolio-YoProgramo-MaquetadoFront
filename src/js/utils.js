@@ -14,6 +14,7 @@ import {
 } from './elements';
 import currencies from './currencies.js';
 import { ak } from '../../gitignore/ak';
+import { shouldEnableContentEditable } from './loguin';
 
 let reducedEditables;
 
@@ -43,7 +44,10 @@ function mirrorToLocalStorage() {
   reducedEditables = editableContentsReducer(editableElements);
   localStorage.setItem(title, JSON.stringify(reducedEditables));
 }
+
 function restoreFromLStorage() {
+  const shouldEnable = JSON.parse(localStorage.getItem('login'));
+  if (shouldEnable) shouldEnableContentEditable(true);
   const { title } = document;
   console.log(title);
   const elsContent = JSON.parse(localStorage.getItem(title));
@@ -61,6 +65,7 @@ function restoreFromLStorage() {
     });
   }
 }
+
 async function selectImg(el) {
   const file = el.files[0];
   let img;
