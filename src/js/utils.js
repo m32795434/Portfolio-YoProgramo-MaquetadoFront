@@ -40,7 +40,7 @@ function editableContentsReducer(arr) {
 
 function mirrorToLocalStorage() {
   const { title } = document;
-  console.log(title);
+  console.log('mirroring from:', title);
   reducedEditables = editableContentsReducer(editableElements);
   localStorage.setItem(title, JSON.stringify(reducedEditables));
 }

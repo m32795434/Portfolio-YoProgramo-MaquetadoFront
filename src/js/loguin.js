@@ -23,7 +23,7 @@ let logged;
 // ------------------------EVENT HANDLERS-------------------------------
 function handleEditButtons(ev) {
   const t = ev.currentTarget;
-  if (t.matches('.save')) {
+  if (t.matches('.save') || t.matches('.saveLg')) {
     mirrorToLocalStorage();
   } else if (t.matches('.changeImg') && changeImgInput) {
     changeImgInput.click();
@@ -80,6 +80,8 @@ function shouldEnableContentEditable(bool) {
   let mirrorInterval;
   if (bool) {
     localStorage.setItem('login', 'true');
+    logged = true;
+
     if (changeImgInput) {
       changeImgInput.onchange = function () {
         selectImg(this);
@@ -99,6 +101,8 @@ function shouldEnableContentEditable(bool) {
     loginButtons.forEach((el) => (el.textContent = 'LOGOUT'));
   } else {
     localStorage.setItem('login', 'false');
+    logged = false;
+
     editableElements.forEach((el) => {
       el.contentEditable = false;
     });
@@ -165,7 +169,7 @@ async function createForm() {
   </div>`;
   modalInner.style.setProperty('transform', 'translateY(0)');
   loginForm = document.querySelector('.login-form');
-  loginForm.addEventListener('submit', handleSubmit);
+  loginForm.addEventListener('submit', handleSubmit, { once: true });
 
   // --------------------------------TOOLTIPS + TOASTS?---------------------------
 
@@ -175,14 +179,16 @@ async function createForm() {
 
 function manageLogin() {
   logged = JSON.parse(localStorage.getItem('login'));
-  console.log('logged', logged);
+  console.log('refreshed....logged:', logged);
   loginButtons.forEach((but) => {
     but.addEventListener('click', () => {
       if (logged) {
         // LOGOUT
+        console.log('logged true?', logged);
         shouldEnableContentEditable(false);
       } else {
         // LOGIN
+        console.log('logged false?', logged);
         createForm();
         console.log('form created');
       }
