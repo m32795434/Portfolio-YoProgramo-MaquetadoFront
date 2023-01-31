@@ -20,6 +20,16 @@ let loginToolTips;
 let tooltipsSaveBts;
 let logged;
 
+// ------------------------EVENT HANDLERS-------------------------------
+function handleEditButtons(ev) {
+  const t = ev.currentTarget;
+  if (t.matches('.save')) {
+    mirrorToLocalStorage();
+  } else if (t.matches('.changeImg') && changeImgInput) {
+    changeImgInput.click();
+  }
+}
+
 async function handleSubmit(e) {
   e.preventDefault();
   // if it's necessary to close some tooltips
@@ -36,9 +46,13 @@ async function handleSubmit(e) {
   }
   tooltipsSaveBts.forEach((el) => {
     console.log(el.tip);
-    el.tip.addEventListener('click', (ev) => {
-      el.hide();
-    });
+    el.tip.addEventListener(
+      'click',
+      () => {
+        el.hide();
+      },
+      { once: true }
+    );
   });
   // tooltips?need to change the color of the arrow? - SOME DAY IN THE FUTURE🙏
   /* const sheets = document.styleSheets;
@@ -65,7 +79,7 @@ async function handleSubmit(e) {
 function shouldEnableContentEditable(bool) {
   let mirrorInterval;
   if (bool) {
-    localStorage.setItem('login', JSON.stringify(true));
+    localStorage.setItem('login', 'true');
     if (changeImgInput) {
       changeImgInput.onchange = function () {
         selectImg(this);
@@ -73,14 +87,7 @@ function shouldEnableContentEditable(bool) {
     }
     editButtons.forEach((but) => {
       but.hidden = false;
-      but.addEventListener('click', (ev) => {
-        const t = ev.currentTarget;
-        if (t.matches('.save')) {
-          mirrorToLocalStorage();
-        } else if (t.matches('.changeImg') && changeImgInput) {
-          changeImgInput.click();
-        }
-      });
+      but.addEventListener('click', handleEditButtons);
     });
     editableElements.forEach((el) => {
       el.contentEditable = true;
@@ -91,12 +98,13 @@ function shouldEnableContentEditable(bool) {
     }, 10000);
     loginButtons.forEach((el) => (el.textContent = 'LOGOUT'));
   } else {
-    localStorage.setItem('login', JSON.stringify(false));
+    localStorage.setItem('login', 'false');
     editableElements.forEach((el) => {
       el.contentEditable = false;
     });
     editButtons.forEach((but) => {
-      but.hidden = false;
+      but.hidden = true;
+      but.removeEventListener('click', handleEditButtons);
     });
     mirrorToLocalStorage();
     clearInterval(mirrorInterval);
