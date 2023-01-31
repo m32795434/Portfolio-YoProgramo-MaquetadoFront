@@ -47,6 +47,7 @@ function mirrorToLocalStorage() {
 
 function restoreFromLStorage() {
   const shouldEnable = JSON.parse(localStorage.getItem('login'));
+  console.log('shouldEnable?', shouldEnable);
   if (shouldEnable) shouldEnableContentEditable(true);
   const { title } = document;
   console.log(title);

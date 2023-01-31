@@ -7,6 +7,7 @@ import {
   editButtons,
   loginButtons,
   changeImgInput,
+  imgsToChange,
 } from './elements';
 import {
   checkForLoginToasts,
@@ -20,6 +21,7 @@ let loginToolTips;
 let tooltipsSaveBts;
 let logged;
 let toolChangeImg;
+let mirrorInterval;
 
 // ------------------------EVENT HANDLERS-------------------------------
 function handleEditButtons(ev) {
@@ -56,6 +58,9 @@ async function handleSubmit(e) {
       { once: true }
     );
   });
+  // enable the tooltips for the load-img
+  // console.log('img to change:', imgsToChange);
+
   toolChangeImg = await createTooltips('.changeImg');
   toolChangeImg.forEach((el) => {
     console.log('el:', el);
@@ -91,11 +96,10 @@ async function handleSubmit(e) {
 }
 
 function shouldEnableContentEditable(bool) {
-  let mirrorInterval;
   if (bool) {
-    localStorage.setItem('login', 'true');
+    localStorage.setItem('login', true);
     logged = true;
-
+    console.log('shouldEnableContentEditable(true)');
     if (changeImgInput) {
       changeImgInput.onchange = function () {
         selectImg(this);
@@ -112,11 +116,12 @@ function shouldEnableContentEditable(bool) {
       mirrorToLocalStorage();
       console.log('Mirroring!!!');
     }, 10000);
+    console.log('mirrorInterval', mirrorInterval);
     loginButtons.forEach((el) => (el.textContent = 'LOGOUT'));
   } else {
-    localStorage.setItem('login', 'false');
+    localStorage.setItem('login', false);
     logged = false;
-
+    console.log('login out.....');
     if (toolChangeImg) {
       toolChangeImg.forEach((el) => el.hide());
     }
