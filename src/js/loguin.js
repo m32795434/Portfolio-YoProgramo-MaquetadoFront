@@ -102,7 +102,7 @@ function shouldEnableContentEditable(bool) {
   } else {
     localStorage.setItem('login', 'false');
     logged = false;
-
+    tooltipsSaveBts.forEach((el) => el.hide());
     editableElements.forEach((el) => {
       el.contentEditable = false;
     });

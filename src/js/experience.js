@@ -37,9 +37,25 @@ imgClick.forEach((el) => {
 });
 
 // --------------------------TOOLTIPS--------------------------
-createTooltips('.cleanLs');
-document.querySelector('.cleanLs').addEventListener('click', () => {
-  localStorage.clear();
-  alert('Local Storage Cleared');
-  window.location.reload();
-});
+(async function cleanTooltipsFunct() {
+  const cleanTooltips = await createTooltips('.cleanLs');
+  cleanTooltips.forEach((el) => {
+    el.tip.addEventListener(
+      'click',
+      () => {
+        el.hide();
+      },
+      { once: true }
+    );
+  });
+})();
+
+document.querySelector('.cleanLs').addEventListener(
+  'click',
+  () => {
+    localStorage.clear();
+    alert('Local Storage Cleared');
+    window.location.reload();
+  },
+  { once: true }
+);
