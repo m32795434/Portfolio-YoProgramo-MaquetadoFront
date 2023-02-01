@@ -18,6 +18,8 @@ import { ak } from '../../gitignore/ak';
 import { shouldEnableContentEditable } from './loguin';
 
 let reducedEditables;
+let prevTime;
+let elapsTime;
 
 function wait(ms) {
   return new Promise((res) => {
@@ -141,11 +143,25 @@ function mirrorToLocalStorageConvert(object) {
 }
 
 async function fetchRates(base = 'USD') {
-  const res = await fetch(`${endPoint}/latest?base=${base}`, {
-    headers: { apikey: ak },
-  });
-  ratesByBase = (await res.json()).rates;
-  mirrorToLocalStorageConvert(ratesByBase);
+  if (!prevTime) prevTime = Date.now();
+  elapsTime = Date.now() - prevTime;
+  if (elapsTime < 1200000) {
+    const waitToConvert = document.getElementById('waitToConvert');
+    if (waitToConvert) {
+      waitToConvert.querySelector(
+        'div.toast-body'
+      ).innerText = `Pleasy🙏 wait ${((1200000 - elapsTime) / 60000).toFixed(
+        2
+      )} minutes to refresh the rates again`;
+      const myToast = new Toast(waitToConvert);
+      myToast.show();
+    }
+  }
+  // const res = await fetch(`${endPoint}/latest?base=${base}`, {
+  //   headers: { apikey: ak },
+  // });
+  // ratesByBase = (await res.json()).rates;
+  // mirrorToLocalStorageConvert(ratesByBase);
 }
 function restoreFromLocalStorageConvert() {
   const exchangeRates = localStorage.getItem('exchangeRates');
