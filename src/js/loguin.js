@@ -22,6 +22,7 @@ let tooltipsSaveBts;
 let logged;
 let toolChangeImg;
 let mirrorInterval;
+let imgDisplayed;
 
 // ------------------------EVENT HANDLERS-------------------------------
 function handleEditButtons(ev) {
@@ -58,12 +59,27 @@ async function handleSubmit(e) {
       { once: true }
     );
   });
-  // enable the tooltips for the load-img
-  // console.log('img to change:', imgsToChange);
 
+  // enable the tooltips for the load-img
+  console.log('imgs to change:', imgsToChange);
+  if (window.visualViewport.width < 975.2) {
+    imgDisplayed = imgsToChange.find((img) =>
+      img.classList.contains('d-lg-none')
+    );
+  } else {
+    imgDisplayed = imgsToChange.find((img) =>
+      img.classList.contains('d-lg-block')
+    );
+  }
+  console.log('img displayed=', imgDisplayed);
   toolChangeImg = await createTooltips('.changeImg');
   toolChangeImg.forEach((el) => {
     console.log('el:', el);
+
+    document.querySelector(
+      'div.changeImgTool .tooltip-inner'
+    ).innerText = `Select an img respecting the relation aspect like ${imgDisplayed.dataset.z}`;
+    console.log('imgDisplayed.dataset.z', imgDisplayed.dataset.z);
     el.tip.addEventListener(
       'click',
       () => {
