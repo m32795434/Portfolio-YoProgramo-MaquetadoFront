@@ -1,5 +1,4 @@
 import 'bootstrap/js/dist/dropdown.js';
-import Toast from 'bootstrap/js/dist/toast.js';
 
 // import popover from 'bootstrap/js/dist/popover.js';
 import { Slider1 } from './slider.js';
@@ -8,7 +7,7 @@ import {
   restoreFromLStorage,
   imgEventHandler,
   checkForToasts,
-  createTooltips,
+  cleanTooltipsFunct,
 } from './utils';
 import { write } from './typer';
 import { imgClick } from './elements';
@@ -65,25 +64,5 @@ imgClick.forEach((el) => {
 checkForToasts();
 
 // --------------------------TOOLTIPS--------------------------
-(async function cleanTooltipsFunct() {
-  const cleanTooltips = await createTooltips('.cleanLs');
-  cleanTooltips.forEach((el) => {
-    el.tip.addEventListener(
-      'click',
-      () => {
-        el.hide();
-      },
-      { once: true }
-    );
-  });
-})();
 
-document.querySelector('.cleanLs').addEventListener(
-  'click',
-  () => {
-    localStorage.clear();
-    alert('Local Storage Cleared');
-    window.location.reload();
-  },
-  { once: true }
-);
+cleanTooltipsFunct();

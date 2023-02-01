@@ -5,7 +5,7 @@ import {
   initConverter,
   imgEventHandler,
   checkForToasts,
-  createTooltips,
+  cleanTooltipsFunct,
 } from './utils';
 import { write } from './typer';
 import { imgClick } from './elements.js';
@@ -132,25 +132,4 @@ imgClick.forEach((el) => {
 });
 
 // --------------------------TOOLTIPS--------------------------
-(async function cleanTooltipsFunct() {
-  const cleanTooltips = await createTooltips('.cleanLs');
-  cleanTooltips.forEach((el) => {
-    el.tip.addEventListener(
-      'click',
-      () => {
-        el.hide();
-      },
-      { once: true }
-    );
-  });
-})();
-
-document.querySelector('.cleanLs').addEventListener(
-  'click',
-  () => {
-    localStorage.clear();
-    alert('Local Storage Cleared');
-    window.location.reload();
-  },
-  { once: true }
-);
+cleanTooltipsFunct();

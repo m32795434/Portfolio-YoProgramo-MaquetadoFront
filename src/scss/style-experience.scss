@@ -15,7 +15,14 @@
         padding: 21px 13px 13px 7px;
 
     }
+
+    & h1#h1Qual {
+        @include media-breakpoint-only(lg) {
+            font-size: 23px;
+        }
+    }
 }
+
 
 .slider-experience {
 

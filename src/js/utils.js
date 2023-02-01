@@ -11,6 +11,7 @@ import {
   toCurrency,
   fromAmount,
   toAmount,
+  cleanLsButton,
 } from './elements';
 import currencies from './currencies.js';
 import { ak } from '../../gitignore/ak';
@@ -238,6 +239,28 @@ async function createTooltips(tools) {
   return tooltipList;
 }
 
+async function cleanTooltipsFunct() {
+  const cleanTooltips = await createTooltips('.cleanLs');
+  cleanTooltips.forEach((el) => {
+    el.tip.addEventListener(
+      'click',
+      () => {
+        el.hide();
+      },
+      { once: true }
+    );
+  });
+  cleanLsButton.addEventListener(
+    'click',
+    () => {
+      localStorage.clear();
+      alert('Local Storage Cleared');
+      window.location.reload();
+    },
+    { once: true }
+  );
+}
+
 export {
   restoreFromLStorage,
   mirrorToLocalStorage,
@@ -254,4 +277,5 @@ export {
   checkForToasts,
   createTooltips,
   checkForLoginToasts,
+  cleanTooltipsFunct,
 };

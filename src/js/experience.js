@@ -1,7 +1,11 @@
 import 'bootstrap/js/dist/dropdown.js';
 import { Slider1 } from './slider.js';
 import { manageLogin } from './loguin.js';
-import { createTooltips, imgEventHandler, restoreFromLStorage } from './utils';
+import {
+  cleanTooltipsFunct,
+  imgEventHandler,
+  restoreFromLStorage,
+} from './utils';
 import { write } from './typer';
 import { imgClick } from './elements.js';
 
@@ -37,25 +41,4 @@ imgClick.forEach((el) => {
 });
 
 // --------------------------TOOLTIPS--------------------------
-(async function cleanTooltipsFunct() {
-  const cleanTooltips = await createTooltips('.cleanLs');
-  cleanTooltips.forEach((el) => {
-    el.tip.addEventListener(
-      'click',
-      () => {
-        el.hide();
-      },
-      { once: true }
-    );
-  });
-})();
-
-document.querySelector('.cleanLs').addEventListener(
-  'click',
-  () => {
-    localStorage.clear();
-    alert('Local Storage Cleared');
-    window.location.reload();
-  },
-  { once: true }
-);
+cleanTooltipsFunct();
