@@ -47,8 +47,9 @@ window.addEventListener('resize', handleResize);
 */
 
 // -------------------------SLIDER!---------------------------
-
-const myHomeSlider = new Slider1(document.querySelector('.home-slider'));
+if (document.querySelector('.home-slider')) {
+  const myHomeSlider = new Slider1(document.querySelector('.home-slider'));
+}
 manageLogin();
 restoreFromLStorage();
 document.querySelectorAll('[data-type]').forEach(write);

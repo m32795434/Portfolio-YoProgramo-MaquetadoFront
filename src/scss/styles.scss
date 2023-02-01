@@ -168,9 +168,13 @@ button.save {
     margin: 0;
     padding: 0;
   }
-
 }
 
+.Main404 {
+  & img {
+    width: 50%;
+  }
+}
 
 
 //-----------------END-MAIN----------------------------
