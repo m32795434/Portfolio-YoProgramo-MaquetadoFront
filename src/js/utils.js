@@ -143,7 +143,10 @@ function mirrorToLocalStorageConvert(object) {
 }
 
 async function fetchRates(base = 'USD') {
-  if (!prevTime) prevTime = Date.now();
+  prevTime = JSON.parse(localStorage.getItem('prevTime'));
+  console.log('prevTime from Ls', prevTime);
+  // if (!prevTime) prevTime = Date.now();
+  // localStorage.setItem('prevTime', JSON.stringify(prevTime));
   elapsTime = Date.now() - prevTime;
   if (elapsTime < 1200000) {
     const waitToConvert = document.getElementById('waitToConvert');
@@ -156,12 +159,24 @@ async function fetchRates(base = 'USD') {
       const myToast = new Toast(waitToConvert);
       myToast.show();
     }
+  } else {
+    console.log('auth to refresh rates...');
+
+    try {
+      const res = await fetch(`${endPoint}/latest?base=${base}`, {
+        headers: { apikey: ak },
+      });
+      ratesByBase = (await res.json()).rates;
+      if (ratesByBase) {
+        mirrorToLocalStorageConvert(ratesByBase);
+        prevTime = Date.now();
+        localStorage.setItem('prevTime', JSON.stringify(prevTime));
+        elapsTime = Date.now() - prevTime;
+      }
+    } catch (err) {
+      console.log(err);
+    }
   }
-  // const res = await fetch(`${endPoint}/latest?base=${base}`, {
-  //   headers: { apikey: ak },
-  // });
-  // ratesByBase = (await res.json()).rates;
-  // mirrorToLocalStorageConvert(ratesByBase);
 }
 function restoreFromLocalStorageConvert() {
   const exchangeRates = localStorage.getItem('exchangeRates');
@@ -271,6 +286,7 @@ async function cleanTooltipsFunct() {
     () => {
       localStorage.clear();
       alert('Local Storage Cleared');
+      if (prevTime) localStorage.setItem('prevTime', JSON.stringify(prevTime));
       window.location.reload();
     },
     { once: true }
