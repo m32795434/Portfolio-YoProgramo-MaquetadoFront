@@ -15,7 +15,7 @@ import {
 } from './elements';
 import currencies from './currencies.js';
 import { ak } from '../../gitignore/ak';
-import { ratesByBaseBkUp, ratesDate } from './ratesBAckUp';
+import { ratesByBaseBkUp, ratesDate } from './ratesBackUp';
 import { shouldEnableContentEditable } from './loguin';
 
 let reducedEditables;
@@ -108,7 +108,7 @@ function getRandomBetween(min = 20, max = 200) {
 
 // --------------------------Converter--------------------------
 
-let ratesByBase = {};
+let ratesByBase;
 
 const endPoint = 'https://api.apilayer.com/exchangerates_data';
 
@@ -162,9 +162,11 @@ async function fetchRates(base = 'USD') {
   elapsTime = Date.now() - prevTime;
   if (elapsTime < 1200000) {
     showWarningToast(
-      `Pleasy🙏 wait ${((1200000 - elapsTime) / 60000).toFixed(
-        2
-      )} minutes to refresh the rates again`
+      `Pleasy🙏 wait ${Math.floor(
+        (1200000 - elapsTime) / 60000
+      )} minutes and ${Math.floor(
+        ((1200000 - elapsTime) % 60000) / 1000
+      )} seconds to refresh the rates again`
     );
   } else {
     console.log('auth to refresh rates...');
@@ -175,11 +177,11 @@ async function fetchRates(base = 'USD') {
     });
 
     const result = await res.json();
-    console.log(result);
+    console.log('result..', result);
 
     if (result.rates) {
       ratesByBase = result.rates;
-      console.log(ratesByBase);
+      console.log('ratesByBase updated..', ratesByBase);
       if (ratesByBase) {
         LocalRatesByBaseBkUp = ratesByBase;
         console.log('LocalRatesByBaseBkUp updated...', LocalRatesByBaseBkUp);
@@ -312,6 +314,10 @@ async function cleanTooltipsFunct() {
       localStorage.clear();
       alert('Local Storage Cleared');
       if (prevTime) localStorage.setItem('prevTime', JSON.stringify(prevTime));
+      if (ratesByBase) {
+        mirrorToLocalStorageConvert(ratesByBase);
+        localStorage.setItem('ratesDate', JSON.stringify(localRatesDate));
+      }
       window.location.reload();
     },
     { once: true }
