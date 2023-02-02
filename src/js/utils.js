@@ -204,7 +204,7 @@ async function fetchRates(base = 'USD') {
       localStorage.setItem('ratesDate', JSON.stringify(localRatesDate));
       ratesByBase = LocalRatesByBaseBkUp; //
       showWarningToast(
-        `Refresh rate error. Using a rate from MM/DD/AA: ${localRatesDate}`
+        `Refresh rate error: \n"${result.message}". \nUsing a rate from MM/DD/AA: ${localRatesDate}`
       );
     }
   }
@@ -240,14 +240,14 @@ function imgEventHandler(e) {
           'https://www.linkedin.com/in/manuel-augusto-bravard-642034204/';
         break;
       case 'Whatsapp':
-        window.location = 'https://api.whatsapp.com/send?phone=+5493454093473';
+        window.location = 'https://api.whatsapp.com/send?phone=5493454093473';
         break;
       case 'Argentina Programa':
         window.location =
           'https://www.argentina.gob.ar/economia/conocimiento/argentina-programa';
         break;
       default:
-        window.location = 'https://api.whatsapp.com/send?phone=+5493454093473';
+        window.location = 'https://api.whatsapp.com/send?phone=5493454093473';
         break;
     }
   }
