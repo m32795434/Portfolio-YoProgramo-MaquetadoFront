@@ -62,7 +62,7 @@ export class Slider1 {
     if (t.matches('.open1')) {
       this.running = setInterval(() => {
         this.move();
-      }, 4000);
+      }, 10000);
     } else {
       clearInterval(this.running);
     }

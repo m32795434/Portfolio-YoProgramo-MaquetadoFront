@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta http-equiv="refresh" content="11111111111"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -13,8 +13,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>404</title>
     <link rel="stylesheet" href="scss/styles.scss">
-    <title>Projects</title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
             <div class="col col-4 gridItem d-flex justify-content-start m-0 py-1">
                 <img role="button" tabindex="0" src="../src/images/Argentina-Programa.png" alt="Argentina Programa">
             </div>
-            <div class="col col-4 gridItem d-grid justify-content-center align-content-center d-md-none">
+            <div class="col col-4 gridItem d-grid justify-content-center align-content-center d-lg-none">
                 <div class="d-flex">
                     <span class="toolSaveBtn" data-bs-toggle="tooltip"
                         data-bs-title="The site save changes every 10s, but you can save manually"
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="col col-4 gridItem d-flex justify-content-end align-content-center gap-1" id="section-socials">
-                <div class="btn-group d-none d-md-block" id="section">
+                <div class="btn-group d-none d-lg-block">
                     <span class="toolSaveBtnLg" data-bs-toggle="tooltip"
                         data-bs-title="The site save changes every 10s, but you can save manually"
                         data-bs-placement="left" data-bs-trigger="manual" data-bs-custom-class="innerRed"></span>
@@ -76,82 +76,22 @@
         </div>
     </header>
 
-    <!-- ------------------------------------MAIN------------------------------------ -->
+    <main class="Main404 d-flex justify-content-center align-content-center">
+        <img src="./images/e4042.jpg" alt="Sorry not found!">
 
-    <!-- main-section position relative -->
-    <main class="container-fluid m-0 p-0">
-        <div class="row flex-wrap m-0 p-0">
-            <div class="col-12 col-lg-2 flex-fill p-0 m-0 titleAndButtons">
-                <!-- <input type="file" accept="image/*" id="changeImg" hidden>
-                <button class="edit-button edit-top-left changeImg rounded-circle material-symbols-outlined"
-                    hidden>edit</button> -->
-                <h1 class=" edit-content" contenteditable="false" id="h1Proj">PROJECTS</h1>
-                <!-- <button class="edit-button rounded-circle material-symbols-outlined">edit</button> -->
-                <h3 class=" edit-content" id="h3Proj1">The MainNote</h3>
-                <h6>(Others comming soon...)</h6>
-            </div>
-            <div class="col-12 col-lg-10 flex-fill row gap-2 m-0 p-0">
-                <div class="col-12 col-lg-5 flex-fill m-0 p-0">
-                    <div class="shopping-list">
-                        <form class="shopping d-flex gap-2 justify-content-between" autocomplete="off">
-                            <!-- with "required" we can validate there is something entered in the input. but we will do this with javascript -->
-                            <fieldset class="flex-grow-1">
-                                <label for="item" id="laItemProj1">Item</label>
-                                <input class="rounded-1" type="text" id="item">
-                            </fieldset>
-                            <fieldset class="units">
-                                <label for="units" id="laUnitsProj1">Units?</label>
-                                <input class="rounded-1" type="number" id="units">
-                            </fieldset>
-                            <fieldset class="">
-                                <label for="price" id="laPriceProj1">Price?</label>
-                                <input class="rounded-1" type="number" id="price">
-                            </fieldset>
-                            <fieldset class="d-flex justify-content-end align-items-end">
-                                <button type="submit" class="material-symbols-outlined"
-                                    id="butMaterAddProj1">add</button>
-                            </fieldset>
-                        </form>
-                        <ul class="list"></ul>
-                        <h3 class=" edit-content" id="h3TotalProj1">Total =</h3><span id="sum">$0</span>
-                    </div>
 
-                </div>
-                <div class="col-12 col-lg-5 flex-fill m-0 p-0">
-                    <div class="app">
-                        <h3 class=" edit-content" id="h3ConvProj1">Need to convert?</h3>
-                        <form>
-                            <input class="rounded-1" type="number" name="from_amount">
-                            <select class="rounded-1" name="from_currency">
-                                <option>Select a Currency</option>
-                            </select>
-                            <p>in</p>
-                            <select class="rounded-1" name="to_currency">
-                                <option>Select a Currency</option>
-                            </select>
-                            <p>is</p>
-                            <p class="to_amount">$0</p>
-                        </form>
-                        <button type="button" name="refresh_rates" class="btn btn-light m-1"
-                            id="butRefreshProj1">Refresh Rates!</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
     <!-- MODAL! -->
     <div class="d-grid justify-content-center align-content-center modal-outer">
         <div class="d-grid justify-content-center align-content-center modal-inner">
         </div>
     </div>
-
-
-    <!------------------------------------FOOTER -------------------------------------->
-
     <footer class="container-fluid text-center">
+        <!------------------------------------FOOTER -------------------------------------->
 
-        <div class="d-grid mx-auto">
-            <nav class="d-grid mx-auto mt-4">
+
+        <div class="d-grid gap-1 mx-auto mb-4">
+            <nav class="d-grid gap-1 mx-auto mt-4">
                 <a href="./index.html">Home</a>
                 <a href="./experience.html">Experience</a>
                 <a href="./qandpd.html">Qualifications & P.D.</a>
@@ -163,6 +103,8 @@
             </div>
             <p>© MAB - All Rights Reserved.</p>
         </div>
+
+        <!-- ------------------------------TYPER ------------------------------------>
 
         <div class="typer-header text-start p-0 d-flex align-items-center justify-content-between">
             <p class="my-auto pt-1 d-block">Technologies and libraries:~</p>
@@ -178,39 +120,8 @@
             </p>
         </div>
     </footer>
-    <!-------------------------------------- TOASTS -------------------------------------->
-    <div class="toast-container position-fixed top-0 start-0 p-3">
-        <div id="warningToast" class="toast text-bg-warning" role="alert" aria-live="assertive" aria-atomic="true"
-            data-bs-delay="20000">
-            <div class="toast-header">
-                <!-- <img src="..." class="rounded me-2" alt="..."> -->
-                <strong class="me-auto">Converter</strong>
-                <small>Attention please</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                .
-            </div>
-        </div>
-    </div>
-    <div class="toast-container position-fixed top-0 start-0 p-3">
-        <div id="welcomeToast" class="toast text-bg-primary" role="alert" aria-live="assertive" aria-atomic="true"
-            data-bs-delay="30000">
-            <div class="toast-header">
-                <!-- <img src="..." class="rounded me-2" alt="..."> -->
-                <strong class="me-auto">MainNote</strong>
-                <small>Wellcome!!</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Welcome to the MainNote!. Just type in what you need. No matter if it's an activity or a shopping list
-                item. You can even calc something like a "reference badget". If you type a price, don't forget to type
-                the units!. You can do realtime currency convertions. Enjoy!
-            </div>
-        </div>
-    </div>
 
-    <script type="module" src="js/projects.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

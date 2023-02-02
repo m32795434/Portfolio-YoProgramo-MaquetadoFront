@@ -1,3 +1,7 @@
+/* eslint-disable import/no-mutable-exports, no-unused-expressions */
+import Toast from 'bootstrap/js/dist/toast';
+import Tooltip from 'bootstrap/js/dist/tooltip';
+
 import {
   editableElements,
   imgsToChange,
@@ -7,11 +11,18 @@ import {
   toCurrency,
   fromAmount,
   toAmount,
+  cleanLsButton,
 } from './elements';
 import currencies from './currencies.js';
 import { ak } from '../../gitignore/ak';
+import { ratesByBaseBkUp, ratesDate } from './ratesBAckUp';
+import { shouldEnableContentEditable } from './loguin';
 
 let reducedEditables;
+let prevTime;
+let elapsTime;
+let LocalRatesByBaseBkUp = ratesByBaseBkUp;
+let localRatesDate = ratesDate;
 
 function wait(ms) {
   return new Promise((res) => {
@@ -22,11 +33,11 @@ function wait(ms) {
 function editableContentsReducer(arr) {
   const reduced = arr.reduce((contentObj, currentEl) => {
     if (currentEl.tagName === 'IMG') {
-      console.log(`saving the content of an IMG`);
+      // console.log(`saving the content of an IMG`);
       contentObj[currentEl.id] = currentEl.src;
     } else if (currentEl.tagName === 'P' || currentEl.tagName.includes('H')) {
-      console.log(`saving the content of a ${currentEl.tagName}`);
-      contentObj[currentEl.id] = currentEl.innerText;
+      // console.log(`saving the content of a ${currentEl.tagName}`);
+      contentObj[currentEl.id] = currentEl.innerHTML;
     }
     return contentObj;
   }, {});
@@ -35,20 +46,15 @@ function editableContentsReducer(arr) {
 
 function mirrorToLocalStorage() {
   const { title } = document;
+  console.log('mirroring from:', title);
   reducedEditables = editableContentsReducer(editableElements);
-  console.log(title);
-  switch (title) {
-    case 'Home':
-      localStorage.setItem('Home', JSON.stringify(reducedEditables));
-      break;
-    case 'Experience':
-      localStorage.setItem('Experience', JSON.stringify(reducedEditables));
-      break;
-    default:
-      break;
-  }
+  localStorage.setItem(title, JSON.stringify(reducedEditables));
 }
+
 function restoreFromLStorage() {
+  const shouldEnable = JSON.parse(localStorage.getItem('login'));
+  console.log('shouldEnable?', shouldEnable);
+  if (shouldEnable) shouldEnableContentEditable(true);
   const { title } = document;
   const elsContent = JSON.parse(localStorage.getItem(title));
   if (!elsContent) {
@@ -56,21 +62,22 @@ function restoreFromLStorage() {
   } else {
     editableElements.forEach((el) => {
       if (el.tagName === 'IMG') {
-        console.log(`restoring the content of an IMG`);
+        // console.log(`restoring the content of an IMG`);
         el.src = elsContent[el.id];
       } else if (el.tagName === 'P' || el.tagName.includes('H')) {
-        console.log(`restoring the content of a ${el.tagName}`);
-        el.innerText = elsContent[el.id];
+        // console.log(`restoring the content of a ${el.tagName}`);
+        el.innerHTML = elsContent[el.id];
       }
     });
   }
 }
+
 async function selectImg(el) {
   const file = el.files[0];
   let img;
   console.log(file); // the File object
   // select the img element
-  if (window.visualViewport.width >= 992) {
+  if (window.visualViewport.width >= 975.2) {
     img = imgsToChange.find((elm) => elm.matches('.desktop'));
   } else {
     img = imgsToChange.find((elm) => elm.matches('.mobile'));
@@ -91,13 +98,18 @@ async function selectImg(el) {
     console.log(reader.erorr);
   };
 }
+
+// --------------------------AsyncTyper--------------------------
+
 function getRandomBetween(min = 20, max = 200) {
   const randomNumber = Math.random();
   return Math.floor(randomNumber * (max - min) + min);
 }
-// Converter
+
+// --------------------------Converter--------------------------
 
 let ratesByBase = {};
+
 const endPoint = 'https://api.apilayer.com/exchangerates_data';
 
 function generateOptions(options) {
@@ -133,14 +145,66 @@ function mirrorToLocalStorageConvert(object) {
   localStorage.setItem('exchangeRates', JSON.stringify(object));
 }
 
-export async function fetchRates(base = 'USD') {
-  const res = await fetch(`${endPoint}/latest?base=${base}`, {
-    headers: { apikey: ak },
-  });
-  ratesByBase = (await res.json()).rates;
-  mirrorToLocalStorageConvert(ratesByBase);
+function showWarningToast(text) {
+  const warningToast = document.getElementById('warningToast');
+  if (warningToast) {
+    warningToast.querySelector('div.toast-body').innerText = text;
+    const myToast = new Toast(warningToast);
+    myToast.show();
+  }
 }
-export function restoreFromLocalStorageConvert() {
+
+async function fetchRates(base = 'USD') {
+  prevTime = JSON.parse(localStorage.getItem('prevTime'));
+  console.log('prevTime from Ls', prevTime);
+  // if (!prevTime) prevTime = Date.now();
+  // localStorage.setItem('prevTime', JSON.stringify(prevTime));
+  elapsTime = Date.now() - prevTime;
+  if (elapsTime < 1200000) {
+    showWarningToast(
+      `Pleasy🙏 wait ${((1200000 - elapsTime) / 60000).toFixed(
+        2
+      )} minutes to refresh the rates again`
+    );
+  } else {
+    console.log('auth to refresh rates...');
+    // THE ONLY PLACE WHERE WE FETCH THE CURRENCIES
+
+    const res = await fetch(`${endPoint}/latest?base=${base}`, {
+      headers: { apikey: ak },
+    });
+
+    const result = await res.json();
+    console.log(result);
+
+    if (result.rates) {
+      ratesByBase = result.rates;
+      console.log(ratesByBase);
+      if (ratesByBase) {
+        LocalRatesByBaseBkUp = ratesByBase;
+        console.log('LocalRatesByBaseBkUp updated...', LocalRatesByBaseBkUp);
+        localRatesDate = result.date;
+        console.log('LocalRatesDate updated?', localRatesDate);
+        mirrorToLocalStorageConvert(ratesByBase);
+        localStorage.setItem('ratesDate', JSON.stringify(localRatesDate));
+        prevTime = Date.now();
+        localStorage.setItem('prevTime', JSON.stringify(prevTime));
+      }
+    } else {
+      mirrorToLocalStorageConvert(LocalRatesByBaseBkUp);
+      const ratesDateRestored = JSON.parse(localStorage.getItem('ratesDate'));
+      console.log('ratesDateRestored', ratesDateRestored);
+      ratesDateRestored ? (localRatesDate = ratesDateRestored) : null;
+      console.log(ratesDateRestored, localRatesDate);
+      localStorage.setItem('ratesDate', JSON.stringify(localRatesDate));
+      ratesByBase = LocalRatesByBaseBkUp;
+      showWarningToast(
+        `Refresh rate error: \n"${result.message}". \nUsing a rate from MM/DD/AA: ${localRatesDate}`
+      );
+    }
+  }
+}
+function restoreFromLocalStorageConvert() {
   const exchangeRates = localStorage.getItem('exchangeRates');
   if (exchangeRates) {
     ratesByBase = JSON.parse(exchangeRates);
@@ -149,12 +213,109 @@ export function restoreFromLocalStorageConvert() {
   fetchRates();
 }
 
-export function convert() {
+function convert() {
   const amount = fromAmount.value;
   const from = fromCurrecy.value;
   const to = toCurrency.value;
   const calcAmount = (amount * ratesByBase[to]) / ratesByBase[from];
   toAmount.textContent = formatCurrency(calcAmount, to);
+}
+// --------------------------imgEventHandler--------------------------
+function imgEventHandler(e) {
+  console.log(e);
+  if (e.key === 'Enter' || e.type === 'click') {
+    console.log(e.target.al);
+    switch (e.target.alt) {
+      case 'Instagram':
+        window.location = 'https://www.instagram.com/augustox86/';
+        break;
+      case 'Linkedin':
+        window.location =
+          'https://www.linkedin.com/in/manuel-augusto-bravard-642034204/';
+        break;
+      case 'Whatsapp':
+        window.location = 'https://api.whatsapp.com/send?phone=5493454093473';
+        break;
+      case 'Argentina Programa':
+        window.location =
+          'https://www.argentina.gob.ar/economia/conocimiento/argentina-programa';
+        break;
+      default:
+        window.location = 'https://api.whatsapp.com/send?phone=5493454093473';
+        break;
+    }
+  }
+}
+
+// -------------------------------------TOASTS----------------------------
+function checkForToasts() {
+  // I will limit the times people will see this toast
+  const { title } = document;
+  let toastTimes = JSON.parse(localStorage.getItem(`toastTimes${title}`));
+
+  if (!toastTimes || (toastTimes && toastTimes < 2)) {
+    toastTimes = !toastTimes ? (toastTimes = 1) : (toastTimes += 1);
+    localStorage.setItem(`toastTimes${title}`, JSON.stringify(toastTimes));
+    const welcomeToast = document.getElementById('welcomeToast');
+    if (welcomeToast) {
+      const myToast = new Toast(welcomeToast);
+      myToast.show();
+    }
+  }
+}
+function checkForLoginToasts() {
+  // I will limit the times people will see this toast
+  let toastTimes = JSON.parse(localStorage.getItem(`loginToastTimes`));
+
+  if (!toastTimes || (toastTimes && toastTimes < 2)) {
+    toastTimes = !toastTimes ? (toastTimes = 1) : (toastTimes += 1);
+    localStorage.setItem(`loginToastTimes`, JSON.stringify(toastTimes));
+    const loginToast = document.getElementById('loginToast');
+    if (loginToast) {
+      const myToast = new Toast(loginToast);
+      myToast.show();
+    }
+  }
+}
+
+// --------------------------------TOOLTIPS---------------------------
+async function createTooltips(tools) {
+  const tooltipTriggerList = document.querySelectorAll(tools);
+  const tooltipList = [...tooltipTriggerList].map(
+    (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
+  );
+  // if it needs to be showed manually
+  await wait(500);
+
+  tooltipList.forEach((el) => {
+    if (el._config.trigger === 'manual') {
+      el.show();
+    }
+  });
+  return tooltipList;
+}
+
+async function cleanTooltipsFunct() {
+  const cleanTooltips = await createTooltips('.cleanLs');
+  cleanTooltips.forEach((el) => {
+    el.tip.addEventListener(
+      'click',
+      () => {
+        el.hide();
+      },
+      { once: true }
+    );
+  });
+  cleanLsButton.addEventListener(
+    'click',
+    () => {
+      localStorage.clear();
+      alert('Local Storage Cleared');
+      if (prevTime) localStorage.setItem('prevTime', JSON.stringify(prevTime));
+      window.location.reload();
+    },
+    { once: true }
+  );
 }
 
 export {
@@ -166,4 +327,12 @@ export {
   generateOptions,
   formatCurrency,
   initConverter,
+  fetchRates,
+  restoreFromLocalStorageConvert,
+  convert,
+  imgEventHandler,
+  checkForToasts,
+  createTooltips,
+  checkForLoginToasts,
+  cleanTooltipsFunct,
 };
