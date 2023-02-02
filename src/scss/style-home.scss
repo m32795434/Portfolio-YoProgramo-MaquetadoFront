@@ -59,6 +59,12 @@
                 position: absolute;
                 top: 0;
             }
+
+            & a {
+                text-decoration: underline #f7141482 solid;
+                color: #f7141482;
+                font-weight: 900;
+            }
         }
 
         @include media-breakpoint-up(lg) {
