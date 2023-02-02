@@ -1,4 +1,4 @@
-/* eslint-disable import/no-mutable-exports */
+/* eslint-disable import/no-mutable-exports, no-unused-expressions */
 import Toast from 'bootstrap/js/dist/toast';
 import Tooltip from 'bootstrap/js/dist/tooltip';
 
@@ -15,11 +15,14 @@ import {
 } from './elements';
 import currencies from './currencies.js';
 import { ak } from '../../gitignore/ak';
+import { ratesByBaseBkUp, ratesDate } from './ratesBAckUp';
 import { shouldEnableContentEditable } from './loguin';
 
 let reducedEditables;
 let prevTime;
 let elapsTime;
+let LocalRatesByBaseBkUp = ratesByBaseBkUp;
+let localRatesDate = ratesDate;
 
 function wait(ms) {
   return new Promise((res) => {
@@ -107,6 +110,7 @@ function getRandomBetween(min = 20, max = 200) {
 // --------------------------Converter--------------------------
 
 let ratesByBase = {};
+
 const endPoint = 'https://api.apilayer.com/exchangerates_data';
 
 function generateOptions(options) {
@@ -142,49 +146,77 @@ function mirrorToLocalStorageConvert(object) {
   localStorage.setItem('exchangeRates', JSON.stringify(object));
 }
 
+function showWarningToast(text) {
+  const warningToast = document.getElementById('warningToast');
+  if (warningToast) {
+    warningToast.querySelector('div.toast-body').innerText = text;
+    const myToast = new Toast(warningToast);
+    myToast.show();
+  }
+}
+
 async function fetchRates(base = 'USD') {
-  prevTime = JSON.parse(localStorage.getItem('prevTime'));
-  console.log('prevTime from Ls', prevTime);
+  prevTime = JSON.parse(localStorage.getItem('prevTime')); // no hay
+  console.log('prevTime from Ls', prevTime); // null
   // if (!prevTime) prevTime = Date.now();
   // localStorage.setItem('prevTime', JSON.stringify(prevTime));
   elapsTime = Date.now() - prevTime;
   if (elapsTime < 1200000) {
-    const waitToConvert = document.getElementById('waitToConvert');
-    if (waitToConvert) {
-      waitToConvert.querySelector(
-        'div.toast-body'
-      ).innerText = `Pleasy🙏 wait ${((1200000 - elapsTime) / 60000).toFixed(
+    // no entra
+    showWarningToast(
+      `Pleasy🙏 wait ${((1200000 - elapsTime) / 60000).toFixed(
         2
-      )} minutes to refresh the rates again`;
-      const myToast = new Toast(waitToConvert);
-      myToast.show();
-    }
+      )} minutes to refresh the rates again`
+    );
   } else {
     console.log('auth to refresh rates...');
+    // THE ONLY PLACE WHERE WE FETCH THE CURRENCIES
 
-    try {
-      const res = await fetch(`${endPoint}/latest?base=${base}`, {
-        headers: { apikey: ak },
-      });
-      ratesByBase = (await res.json()).rates;
+    const res = await fetch(`${endPoint}/latest?base=${base}`, {
+      headers: { apikey: ak }, // err
+    });
+
+    const result = await res.json();
+    console.log(result);
+
+    console.log('y esto debería correr..');
+    if (result.rates) {
+      ratesByBase = result.rates;
+      console.log(ratesByBase); // err
       if (ratesByBase) {
-        mirrorToLocalStorageConvert(ratesByBase);
+        // etra - sig err
+        LocalRatesByBaseBkUp = ratesByBase; // ok
+        console.log('LocalRatesByBaseBkUp updated...', LocalRatesByBaseBkUp);
+        localRatesDate = result.date; // ok
+        console.log('LocalRatesDate updated?', localRatesDate);
+        mirrorToLocalStorageConvert(ratesByBase); // mirror
+        localStorage.setItem('ratesDate', JSON.stringify(localRatesDate));
         prevTime = Date.now();
-        localStorage.setItem('prevTime', JSON.stringify(prevTime));
-        elapsTime = Date.now() - prevTime;
+        localStorage.setItem('prevTime', JSON.stringify(prevTime)); // mirror
       }
-    } catch (err) {
-      console.log(err);
+    } else {
+      console.log('no result');
+      mirrorToLocalStorageConvert(LocalRatesByBaseBkUp); //
+      const ratesDateRestored = JSON.parse(localStorage.getItem('ratesDate'));
+      console.log('ratesDateRestored', ratesDateRestored);
+      ratesDateRestored ? (localRatesDate = ratesDateRestored) : null;
+      console.log(ratesDateRestored, localRatesDate);
+      localStorage.setItem('ratesDate', JSON.stringify(localRatesDate));
+      ratesByBase = LocalRatesByBaseBkUp; //
+      showWarningToast(
+        `Refresh rate error. Using a rate from MM/DD/AA: ${localRatesDate}`
+      );
     }
   }
 }
 function restoreFromLocalStorageConvert() {
-  const exchangeRates = localStorage.getItem('exchangeRates');
+  const exchangeRates = localStorage.getItem('exchangeRates'); // no hay
   if (exchangeRates) {
+    // no setea
     ratesByBase = JSON.parse(exchangeRates);
     return;
   }
-  fetchRates();
+  fetchRates(); // ingresa
 }
 
 function convert() {
