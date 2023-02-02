@@ -50,7 +50,6 @@ async function handleSubmit(e) {
     tooltipsSaveBts = await createTooltips('.toolSaveBtn'); // from the edit mode
   }
   tooltipsSaveBts.forEach((el) => {
-    console.log(el.tip);
     el.tip.addEventListener(
       'click',
       () => {
@@ -71,15 +70,11 @@ async function handleSubmit(e) {
       img.classList.contains('d-lg-block')
     );
   }
-  console.log('img displayed=', imgDisplayed);
   toolChangeImg = await createTooltips('.changeImg');
   toolChangeImg.forEach((el) => {
-    console.log('el:', el);
-
     document.querySelector(
       'div.changeImgTool .tooltip-inner'
     ).innerText = `Select an img respecting the relation aspect like ${imgDisplayed.dataset.z}`;
-    console.log('imgDisplayed.dataset.z', imgDisplayed.dataset.z);
     el.tip.addEventListener(
       'click',
       () => {
@@ -128,11 +123,12 @@ function shouldEnableContentEditable(bool) {
     editableElements.forEach((el) => {
       el.contentEditable = true;
     });
+
     mirrorInterval = setInterval(() => {
       mirrorToLocalStorage();
       console.log('Mirroring!!!');
     }, 10000);
-    console.log('mirrorInterval', mirrorInterval);
+
     loginButtons.forEach((el) => (el.textContent = 'LOGOUT'));
   } else {
     localStorage.setItem('login', false);

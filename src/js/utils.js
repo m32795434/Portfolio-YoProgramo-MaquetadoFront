@@ -37,7 +37,7 @@ function editableContentsReducer(arr) {
       contentObj[currentEl.id] = currentEl.src;
     } else if (currentEl.tagName === 'P' || currentEl.tagName.includes('H')) {
       // console.log(`saving the content of a ${currentEl.tagName}`);
-      contentObj[currentEl.id] = currentEl.innerText;
+      contentObj[currentEl.id] = currentEl.innerHTML;
     }
     return contentObj;
   }, {});
@@ -56,7 +56,6 @@ function restoreFromLStorage() {
   console.log('shouldEnable?', shouldEnable);
   if (shouldEnable) shouldEnableContentEditable(true);
   const { title } = document;
-  console.log(title);
   const elsContent = JSON.parse(localStorage.getItem(title));
   if (!elsContent) {
     mirrorToLocalStorage();
@@ -67,7 +66,7 @@ function restoreFromLStorage() {
         el.src = elsContent[el.id];
       } else if (el.tagName === 'P' || el.tagName.includes('H')) {
         // console.log(`restoring the content of a ${el.tagName}`);
-        el.innerText = elsContent[el.id];
+        el.innerHTML = elsContent[el.id];
       }
     });
   }
@@ -156,13 +155,12 @@ function showWarningToast(text) {
 }
 
 async function fetchRates(base = 'USD') {
-  prevTime = JSON.parse(localStorage.getItem('prevTime')); // no hay
-  console.log('prevTime from Ls', prevTime); // null
+  prevTime = JSON.parse(localStorage.getItem('prevTime'));
+  console.log('prevTime from Ls', prevTime);
   // if (!prevTime) prevTime = Date.now();
   // localStorage.setItem('prevTime', JSON.stringify(prevTime));
   elapsTime = Date.now() - prevTime;
   if (elapsTime < 1200000) {
-    // no entra
     showWarningToast(
       `Pleasy🙏 wait ${((1200000 - elapsTime) / 60000).toFixed(
         2
@@ -173,36 +171,33 @@ async function fetchRates(base = 'USD') {
     // THE ONLY PLACE WHERE WE FETCH THE CURRENCIES
 
     const res = await fetch(`${endPoint}/latest?base=${base}`, {
-      headers: { apikey: ak }, // err
+      headers: { apikey: ak },
     });
 
     const result = await res.json();
     console.log(result);
 
-    console.log('y esto debería correr..');
     if (result.rates) {
       ratesByBase = result.rates;
-      console.log(ratesByBase); // err
+      console.log(ratesByBase);
       if (ratesByBase) {
-        // etra - sig err
-        LocalRatesByBaseBkUp = ratesByBase; // ok
+        LocalRatesByBaseBkUp = ratesByBase;
         console.log('LocalRatesByBaseBkUp updated...', LocalRatesByBaseBkUp);
-        localRatesDate = result.date; // ok
+        localRatesDate = result.date;
         console.log('LocalRatesDate updated?', localRatesDate);
-        mirrorToLocalStorageConvert(ratesByBase); // mirror
+        mirrorToLocalStorageConvert(ratesByBase);
         localStorage.setItem('ratesDate', JSON.stringify(localRatesDate));
         prevTime = Date.now();
-        localStorage.setItem('prevTime', JSON.stringify(prevTime)); // mirror
+        localStorage.setItem('prevTime', JSON.stringify(prevTime));
       }
     } else {
-      console.log('no result');
-      mirrorToLocalStorageConvert(LocalRatesByBaseBkUp); //
+      mirrorToLocalStorageConvert(LocalRatesByBaseBkUp);
       const ratesDateRestored = JSON.parse(localStorage.getItem('ratesDate'));
       console.log('ratesDateRestored', ratesDateRestored);
       ratesDateRestored ? (localRatesDate = ratesDateRestored) : null;
       console.log(ratesDateRestored, localRatesDate);
       localStorage.setItem('ratesDate', JSON.stringify(localRatesDate));
-      ratesByBase = LocalRatesByBaseBkUp; //
+      ratesByBase = LocalRatesByBaseBkUp;
       showWarningToast(
         `Refresh rate error: \n"${result.message}". \nUsing a rate from MM/DD/AA: ${localRatesDate}`
       );
@@ -210,13 +205,12 @@ async function fetchRates(base = 'USD') {
   }
 }
 function restoreFromLocalStorageConvert() {
-  const exchangeRates = localStorage.getItem('exchangeRates'); // no hay
+  const exchangeRates = localStorage.getItem('exchangeRates');
   if (exchangeRates) {
-    // no setea
     ratesByBase = JSON.parse(exchangeRates);
     return;
   }
-  fetchRates(); // ingresa
+  fetchRates();
 }
 
 function convert() {
@@ -295,7 +289,6 @@ async function createTooltips(tools) {
 
   tooltipList.forEach((el) => {
     if (el._config.trigger === 'manual') {
-      // console.log(el);
       el.show();
     }
   });

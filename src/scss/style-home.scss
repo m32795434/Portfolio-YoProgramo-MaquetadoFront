@@ -61,10 +61,16 @@
             }
 
             & a {
-                text-decoration: underline #f7141482 solid;
-                color: #f7141482;
+                color: #474e6e;
+                background-color: #fe0;
+                padding: 1px 10px;
                 font-weight: 900;
+                text-decoration-line: underline;
+                text-decoration-color: #f7141482;
+                text-decoration-thickness: 6px;
             }
+
+
         }
 
         @include media-breakpoint-up(lg) {
