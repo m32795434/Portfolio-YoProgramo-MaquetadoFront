@@ -197,8 +197,12 @@ footer {
     // font: 500 22px Montserrat, 'Open Sans', Lato, 'sans-serif';
     color: white;
     line-height: 1.5;
-    display: block;
+    display: inline-block;
     transition: border-bottom 0.5s ease-in-out, font-size 0.2s ease-in-out;
+
+    @include media-breakpoint-only(xs) {
+      width: 270px;
+    }
 
     &:hover {
       color: white;
@@ -210,6 +214,7 @@ footer {
       @include media-breakpoint-down(lg) {
         font-size: 17px;
       }
+
     }
   }
 
