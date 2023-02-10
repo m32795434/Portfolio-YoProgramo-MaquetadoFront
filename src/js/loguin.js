@@ -216,7 +216,7 @@ async function createForm() {
 
 function manageLogin() {
   logged = JSON.parse(localStorage.getItem('login'));
-  console.log('refreshed....logged:', logged);
+  console.log('refreshed....logged?:', logged);
   loginButtons.forEach((but) => {
     but.addEventListener('click', () => {
       if (logged) {
@@ -231,6 +231,29 @@ function manageLogin() {
       }
     });
   });
+
+  // I will check if the visitor come here 12hrs ago, or more, and clean the LocalStorage, because I update the content high frequently.
+  let prevTimeVisit = JSON.parse(localStorage.getItem('prevTimeVisit'));
+  console.log('prevTimeVisit from Ls', prevTimeVisit);
+  const elapsTime = Date.now() - prevTimeVisit;
+  if (elapsTime < 43200000) {
+    console.log(
+      `We will not clear the LocalStorage until ${Math.floor(
+        (43200000 - elapsTime) / 3600000
+      )} hrs ${Math.floor(
+        ((43200000 - elapsTime) / 60000) % 60
+      )} minutes and ${Math.floor(
+        ((43200000 - elapsTime) % 60000) / 1000
+      )} seconds}`
+    );
+  } else {
+    localStorage.clear();
+    console.log(
+      'LocalStorage cleared. It has passed more than 12hrs since last clean'
+    );
+    prevTimeVisit = Date.now();
+    localStorage.setItem('prevTimeVisit', JSON.stringify(prevTimeVisit));
+  }
 }
 
 export { manageLogin, loginForm, shouldEnableContentEditable };
