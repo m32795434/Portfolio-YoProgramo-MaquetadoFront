@@ -248,9 +248,7 @@ function manageLogin() {
     );
   } else {
     localStorage.clear();
-    console.log(
-      'LocalStorage cleared. It has passed more than 12hrs since last clean'
-    );
+    console.log('LocalStorage cleared automatically');
     prevTimeVisit = Date.now();
     localStorage.setItem('prevTimeVisit', JSON.stringify(prevTimeVisit));
   }
