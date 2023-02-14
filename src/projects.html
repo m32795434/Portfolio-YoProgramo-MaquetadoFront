@@ -87,55 +87,72 @@
                     hidden>edit</button> -->
                 <h1 class=" edit-content" contenteditable="false" id="h1Proj">PROJECTS</h1>
                 <!-- <button class="edit-button rounded-circle material-symbols-outlined">edit</button> -->
-                <h3 class=" edit-content" id="h3Proj1">The MainNote</h3>
-                <h6>(Others coming soon...)</h6>
             </div>
-            <div class="col-12 col-lg-10 flex-fill row gap-2 m-0 p-0">
-                <div class="col-12 col-lg-5 flex-fill m-0 p-0">
-                    <div class="shopping-list">
-                        <form class="shopping d-flex gap-2 justify-content-between" autocomplete="off">
-                            <!-- with "required" we can validate there is something entered in the input. but we will do this with javascript -->
-                            <fieldset class="flex-grow-1">
-                                <label for="item" id="laItemProj1">Item</label>
-                                <input class="rounded-1" type="text" id="item">
-                            </fieldset>
-                            <fieldset class="units">
-                                <label for="units" id="laUnitsProj1">Units?</label>
-                                <input class="rounded-1" type="number" id="units">
-                            </fieldset>
-                            <fieldset class="">
-                                <label for="price" id="laPriceProj1">Price?</label>
-                                <input class="rounded-1" type="number" id="price">
-                            </fieldset>
-                            <fieldset class="d-flex justify-content-end align-items-end">
-                                <button type="submit" class="material-symbols-outlined"
-                                    id="butMaterAddProj1">add</button>
-                            </fieldset>
-                        </form>
-                        <ul class="list"></ul>
-                        <h3 class=" edit-content" id="h3TotalProj1">Total =</h3><span id="sum">$0</span>
-                    </div>
 
-                </div>
-                <div class="col-12 col-lg-5 flex-fill m-0 p-0">
-                    <div class="app">
-                        <h3 class=" edit-content" id="h3ConvProj1">Need to convert?</h3>
-                        <form>
-                            <input class="rounded-1" type="number" name="from_amount">
-                            <select class="rounded-1" name="from_currency">
-                                <option>Select a Currency</option>
-                            </select>
-                            <p>in</p>
-                            <select class="rounded-1" name="to_currency">
-                                <option>Select a Currency</option>
-                            </select>
-                            <p>is</p>
-                            <p class="to_amount">$0</p>
-                        </form>
-                        <button type="button" name="refresh_rates" class="btn btn-light m-1"
-                            id="butRefreshProj1">Refresh Rates!</button>
+            <div class="col-12 col-lg-10 flex-fill row gap-2 m-0 p-0">
+
+                <!-- OFFCANVAS START-->
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainNote"
+                    aria-controls="mainNote">
+                    Button with data-bs-target
+                </button>
+
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="mainNote" aria-labelledby="mainNoteLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="mainNoteLabel">Offcanvas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div>
+                            <div class="col-12 col-lg-5 flex-fill m-0 p-0">
+                                <div class="shopping-list">
+                                    <form class="shopping d-flex gap-2 justify-content-between" autocomplete="off">
+                                        <!-- with "required" we can validate there is something entered in the input. but we will do this with javascript -->
+                                        <fieldset class="flex-grow-1">
+                                            <label for="item" id="laItemProj1">Item</label>
+                                            <input class="rounded-1" type="text" id="item">
+                                        </fieldset>
+                                        <fieldset class="units">
+                                            <label for="units" id="laUnitsProj1">Units?</label>
+                                            <input class="rounded-1" type="number" id="units">
+                                        </fieldset>
+                                        <fieldset class="">
+                                            <label for="price" id="laPriceProj1">Price?</label>
+                                            <input class="rounded-1" type="number" id="price">
+                                        </fieldset>
+                                        <fieldset class="d-flex justify-content-end align-items-end">
+                                            <button type="submit" class="material-symbols-outlined"
+                                                id="butMaterAddProj1">add</button>
+                                        </fieldset>
+                                    </form>
+                                    <ul class="list"></ul>
+                                    <h3 class=" edit-content" id="h3TotalProj1">Total =</h3><span id="sum">$0</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-5 flex-fill m-0 p-0">
+                                <div class="app">
+                                    <h3 class=" edit-content" id="h3ConvProj1">Need to convert?</h3>
+                                    <form>
+                                        <input class="rounded-1" type="number" name="from_amount">
+                                        <select class="rounded-1" name="from_currency">
+                                            <option>Select a Currency</option>
+                                        </select>
+                                        <p>in</p>
+                                        <select class="rounded-1" name="to_currency">
+                                            <option>Select a Currency</option>
+                                        </select>
+                                        <p>is</p>
+                                        <p class="to_amount">$0</p>
+                                    </form>
+                                    <button type="button" name="refresh_rates" class="btn btn-light m-1"
+                                        id="butRefreshProj1">Refresh Rates!</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <!-- OFFCANVAS END-->
+
             </div>
         </div>
     </main>

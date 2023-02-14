@@ -1,4 +1,5 @@
 import 'bootstrap/js/dist/dropdown.js';
+import 'bootstrap/js/dist/offcanvas.js';
 import { manageLogin } from './loguin.js';
 import {
   restoreFromLStorage,
