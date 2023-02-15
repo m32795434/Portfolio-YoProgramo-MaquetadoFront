@@ -32,6 +32,10 @@
         overflow: hidden;
         width: 100%;
 
+        &.qualifications {
+            height: 460px;
+        }
+
         @include media-breakpoint-up(lg) {
             height: 44vw;
             position: static;
