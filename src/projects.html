@@ -79,9 +79,9 @@
     <!-- ------------------------------------MAIN------------------------------------ -->
 
     <!-- main-section position relative -->
-    <main class="container-fluid m-0 p-0">
-        <div class="flex-column row flex-lg-row flex-wrap m-0 p-0 tittleAndButtons">
-            <div class="col-lg-2 p-0 m-0 tittleWrapper">
+    <main class="container-fluid m-0 p-0 mainProjects">
+        <div class="flex-column row flex-lg-row flex-wrap m-0 p-0 titleAndButtons">
+            <div class="col-lg-2 p-0 m-0 titleWrapper">
                 <!-- <input type="file" accept="image/*" id="changeImg" hidden>
                 <button class="edit-button edit-top-left changeImg rounded-circle material-symbols-outlined"
                     hidden>edit</button> -->
@@ -97,19 +97,27 @@
                         aria-controls="mainNote">
                         The Main Note
                     </button>
-
-                    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="##"
-                        aria-controls="#">
-                        Travel App
-                    </button>
-                    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="##"
-                        aria-controls="#">
-                        Admin Employees
-                    </button>
-                    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="##"
-                        aria-controls="#">
-                        Accrued interest Calc
-                    </button>
+                    <span class="d-inline-block commingSoon" tabindex="0" data-bs-toggle="tooltip"
+                        title="Comming Soon!🛬">
+                        <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="##"
+                            aria-controls="#" disabled>
+                            Travel App
+                        </button>
+                    </span>
+                    <span class="d-inline-block commingSoon" tabindex="0" data-bs-toggle="tooltip"
+                        title="Comming Soon!🛬">
+                        <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="##"
+                            aria-controls="#" disabled>
+                            Admin Employees
+                        </button>
+                    </span>
+                    <span class="d-inline-block commingSoon" tabindex="0" data-bs-toggle="tooltip"
+                        title="Comming Soon!🛬">
+                        <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="##"
+                            aria-controls="#" disabled>
+                            Accrued interest Calc
+                        </button>
+                    </span>
                 </div>
 
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="mainNote" aria-labelledby="mainNoteLabel">

@@ -91,6 +91,11 @@
         @include media-breakpoint-up(lg) {
             font-size: 1.5vw;
         }
+
+        @media (max-width: 410px) {
+            font-size: 14px;
+
+        }
     }
 
     & .slider-buttons>button {
