@@ -32,6 +32,10 @@
         overflow: hidden;
         width: 100%;
 
+        &.qualifications {
+            height: 460px;
+        }
+
         @include media-breakpoint-up(lg) {
             height: 44vw;
             position: static;
@@ -103,6 +107,9 @@
                 color: #5A5A5A;
                 line-height: 1.5;
 
+                @media (max-width: 410px) {
+                    font-size: 14px;
+                }
             }
 
             & img {

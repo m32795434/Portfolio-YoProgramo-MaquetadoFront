@@ -283,21 +283,25 @@ function checkForLoginToasts() {
 // --------------------------------TOOLTIPS---------------------------
 async function createTooltips(tools) {
   const tooltipTriggerList = document.querySelectorAll(tools);
-  const tooltipList = [...tooltipTriggerList].map(
-    (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
-  );
-  // if it needs to be showed manually
-  await wait(500);
+  if (tooltipTriggerList) {
+    const tooltipList = [...tooltipTriggerList].map(
+      (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
+    );
+    // if it needs to be showed manually
+    await wait(500);
 
-  tooltipList.forEach((el) => {
-    if (el._config.trigger === 'manual') {
-      el.show();
-    }
-  });
-  return tooltipList;
+    tooltipList.forEach((el) => {
+      if (el._config.trigger === 'manual') {
+        el.show();
+      }
+    });
+    return tooltipList;
+  }
+  return undefined;
 }
 
-async function cleanTooltipsFunct() {
+async function createTooltipsFunct() {
+  // cleaner tooltips
   const cleanTooltips = await createTooltips('.cleanLs');
   cleanTooltips.forEach((el) => {
     el.tip.addEventListener(
@@ -322,6 +326,8 @@ async function cleanTooltipsFunct() {
     },
     { once: true }
   );
+  // commingSoon tooltips
+  const commingSoonTooltips = await createTooltips('.commingSoon');
 }
 
 export {
@@ -340,5 +346,5 @@ export {
   checkForToasts,
   createTooltips,
   checkForLoginToasts,
-  cleanTooltipsFunct,
+  createTooltipsFunct,
 };

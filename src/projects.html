@@ -79,9 +79,9 @@
     <!-- ------------------------------------MAIN------------------------------------ -->
 
     <!-- main-section position relative -->
-    <main class="container-fluid m-0 p-0">
-        <div class="row flex-wrap m-0 p-0 tittleAndButtons">
-            <div class="col-12 col-lg-2 flex-fill p-0 m-0 titleAndButtons">
+    <main class="container-fluid m-0 p-0 mainProjects">
+        <div class="flex-column row flex-lg-row flex-wrap m-0 p-0 titleAndButtons">
+            <div class="col-lg-2 p-0 m-0 titleWrapper">
                 <!-- <input type="file" accept="image/*" id="changeImg" hidden>
                 <button class="edit-button edit-top-left changeImg rounded-circle material-symbols-outlined"
                     hidden>edit</button> -->
@@ -89,13 +89,36 @@
                 <!-- <button class="edit-button rounded-circle material-symbols-outlined">edit</button> -->
             </div>
 
-            <div class="col-12 col-lg-10 flex-fill m-0 p-2">
+            <div class="flex-grow-1 col-lg-10 projectsWrapper m-0 p-2">
 
                 <!-- OFFCANVAS START-->
-                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainNote"
-                    aria-controls="mainNote">
-                    The Main Note
-                </button>
+                <div class="d-flex justify-content-center flex-wrap gap-2 mt-4">
+                    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainNote"
+                        aria-controls="mainNote">
+                        The Main Note
+                    </button>
+                    <span class="d-inline-block commingSoon" tabindex="0" data-bs-toggle="tooltip"
+                        title="Comming Soon!🛬">
+                        <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="##"
+                            aria-controls="#" disabled>
+                            Travel App
+                        </button>
+                    </span>
+                    <span class="d-inline-block commingSoon" tabindex="0" data-bs-toggle="tooltip"
+                        title="Comming Soon!🛬">
+                        <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="##"
+                            aria-controls="#" disabled>
+                            Admin Employees
+                        </button>
+                    </span>
+                    <span class="d-inline-block commingSoon" tabindex="0" data-bs-toggle="tooltip"
+                        title="Comming Soon!🛬">
+                        <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="##"
+                            aria-controls="#" disabled>
+                            Accrued interest Calc
+                        </button>
+                    </span>
+                </div>
 
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="mainNote" aria-labelledby="mainNoteLabel">
                     <div class="offcanvas-header">
@@ -191,7 +214,7 @@
             <p class="text-start footer-typer" data-type data-type-min="80" data-type-max="200">
                 UI:~ <br>
                 Own Authorship:~$Sliders -Login-Modal --AsyncTyper --And TONS of Javascript🤯 <br> Bootstrap:~$Layers
-                -Popovers --Tooltips --Toasts --LoginForm <br> Thank you for Watching!📺
+                -Popovers --Tooltips --Toasts --LoginForm -Offcanvas<br> Thank you for Watching!📺
             </p>
         </div>
     </footer>

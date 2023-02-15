@@ -7,7 +7,7 @@ import {
   restoreFromLStorage,
   imgEventHandler,
   checkForToasts,
-  cleanTooltipsFunct,
+  createTooltipsFunct,
 } from './utils';
 import { write } from './typer';
 import { imgClick } from './elements';
@@ -66,4 +66,4 @@ checkForToasts();
 
 // --------------------------TOOLTIPS--------------------------
 
-cleanTooltipsFunct();
+createTooltipsFunct();
