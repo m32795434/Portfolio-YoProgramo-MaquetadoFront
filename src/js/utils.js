@@ -16,13 +16,14 @@ import {
 import currencies from './currencies.js';
 import { ak } from '../../gitignore/ak';
 import { ratesByBaseBkUp, ratesDate } from './ratesBackUp';
-import { shouldEnableContentEditable } from './loguin';
+import { shouldEnableContentEditable, prevTimeCleared } from './loguin';
 
 let reducedEditables;
 let prevTime;
 let elapsTime;
 let LocalRatesByBaseBkUp = ratesByBaseBkUp;
-let localRatesDate = ratesDate;
+let utilsModuleRatesDate = ratesDate;
+let ratesByBase;
 
 function wait(ms) {
   return new Promise((res) => {
@@ -52,8 +53,9 @@ function mirrorToLocalStorage() {
 }
 
 function restoreFromLStorage() {
+  restoreFromLocalStorageConvert();
   const shouldEnable = JSON.parse(localStorage.getItem('login'));
-  console.log('shouldEnable?', shouldEnable);
+  console.log('shouldEnable contenteditable?', shouldEnable);
   if (shouldEnable) shouldEnableContentEditable(true);
   const { title } = document;
   const elsContent = JSON.parse(localStorage.getItem(title));
@@ -108,8 +110,6 @@ function getRandomBetween(min = 20, max = 200) {
 
 // --------------------------Converter--------------------------
 
-let ratesByBase;
-
 const endPoint = 'https://api.apilayer.com/exchangerates_data';
 
 function generateOptions(options) {
@@ -155,8 +155,10 @@ function showWarningToast(text) {
 }
 
 async function fetchRates(base = 'USD') {
-  prevTime = JSON.parse(localStorage.getItem('prevTime'));
-  console.log('prevTime from Ls', prevTime);
+  if (!prevTime) {
+    prevTime = JSON.parse(localStorage.getItem('prevTime'));
+    console.log('prevTime from Ls', prevTime);
+  }
   // if (!prevTime) prevTime = Date.now();
   // localStorage.setItem('prevTime', JSON.stringify(prevTime));
   elapsTime = Date.now() - prevTime;
@@ -185,10 +187,10 @@ async function fetchRates(base = 'USD') {
       if (ratesByBase) {
         LocalRatesByBaseBkUp = ratesByBase;
         console.log('LocalRatesByBaseBkUp updated...', LocalRatesByBaseBkUp);
-        localRatesDate = result.date;
-        console.log('LocalRatesDate updated?', localRatesDate);
+        utilsModuleRatesDate = result.date;
+        console.log('LocalRatesDate updated?', utilsModuleRatesDate);
         mirrorToLocalStorageConvert(ratesByBase);
-        localStorage.setItem('ratesDate', JSON.stringify(localRatesDate));
+        localStorage.setItem('ratesDate', JSON.stringify(utilsModuleRatesDate));
         prevTime = Date.now();
         localStorage.setItem('prevTime', JSON.stringify(prevTime));
       }
@@ -196,23 +198,27 @@ async function fetchRates(base = 'USD') {
       mirrorToLocalStorageConvert(LocalRatesByBaseBkUp);
       const ratesDateRestored = JSON.parse(localStorage.getItem('ratesDate'));
       console.log('ratesDateRestored', ratesDateRestored);
-      ratesDateRestored ? (localRatesDate = ratesDateRestored) : null;
-      console.log(ratesDateRestored, localRatesDate);
-      localStorage.setItem('ratesDate', JSON.stringify(localRatesDate));
+      ratesDateRestored ? (utilsModuleRatesDate = ratesDateRestored) : null;
+      console.log(ratesDateRestored, utilsModuleRatesDate);
+      localStorage.setItem('ratesDate', JSON.stringify(utilsModuleRatesDate));
       ratesByBase = LocalRatesByBaseBkUp;
       showWarningToast(
-        `Refresh rate error: \n"${result.message}". \nUsing a rate from MM/DD/AA: ${localRatesDate}`
+        `Refresh rate error: \n"${result.message}". \nUsing a rate from MM/DD/AA: ${utilsModuleRatesDate}`
       );
     }
   }
 }
 function restoreFromLocalStorageConvert() {
+  const prevTimeLocal = localStorage.getItem('prevTime');
+  if (prevTimeLocal) prevTime = JSON.parse(prevTimeLocal);
+  console.log('restoring prevTime exchange refresh from Ls...', prevTime);
+  const ratesDateLocal = localStorage.getItem('ratesDate');
+  if (ratesDateLocal) utilsModuleRatesDate = JSON.parse(ratesDateLocal);
+  console.log('restoring rates date from Ls...', ratesDateLocal);
   const exchangeRates = localStorage.getItem('exchangeRates');
   if (exchangeRates) {
     ratesByBase = JSON.parse(exchangeRates);
-    return;
   }
-  fetchRates();
 }
 
 function convert() {
@@ -255,7 +261,7 @@ function checkForToasts() {
   const { title } = document;
   let toastTimes = JSON.parse(localStorage.getItem(`toastTimes${title}`));
 
-  if (!toastTimes || (toastTimes && toastTimes < 2)) {
+  if (!toastTimes || (toastTimes && toastTimes < 4)) {
     toastTimes = !toastTimes ? (toastTimes = 1) : (toastTimes += 1);
     localStorage.setItem(`toastTimes${title}`, JSON.stringify(toastTimes));
     const welcomeToast = document.getElementById('welcomeToast');
@@ -315,19 +321,40 @@ async function createTooltipsFunct() {
   cleanLsButton.addEventListener(
     'click',
     () => {
-      localStorage.clear();
-      alert('Local Storage Cleared');
-      if (prevTime) localStorage.setItem('prevTime', JSON.stringify(prevTime));
-      if (ratesByBase) {
-        mirrorToLocalStorageConvert(ratesByBase);
-        localStorage.setItem('ratesDate', JSON.stringify(localRatesDate));
-      }
-      window.location.reload();
+      saveClean('cleanLsButtonClick');
     },
+    // because we refresh the page. IMPORTANT!
     { once: true }
   );
   // commingSoon tooltips
   const commingSoonTooltips = await createTooltips('.commingSoon');
+}
+// ---------------------------SAVE CLEAN-------------------------
+function saveClean(str) {
+  localStorage.clear();
+
+  // call from login?
+  if (str === 'login') {
+    console.log(
+      'LocalStorage cleared automatically so you can stay aware of new content😎'
+    );
+    localStorage.setItem('prevTimeCleared', JSON.stringify(Date.now()));
+  }
+  // exists some currency rates?
+  if (prevTime) localStorage.setItem('prevTime', JSON.stringify(prevTime));
+  if (ratesByBase) {
+    mirrorToLocalStorageConvert(ratesByBase);
+    localStorage.setItem('ratesDate', JSON.stringify(utilsModuleRatesDate));
+  }
+
+  // call from cleanLsButton click event handler
+  if (str === 'cleanLsButtonClick') {
+    // to backup prevTimeCleared wich is a variable from another scope.
+    localStorage.setItem('prevTimeCleared', JSON.stringify(prevTimeCleared));
+    alert('Local Storage Cleared manually');
+  }
+  // anyway
+  window.location.reload();
 }
 
 export {
@@ -347,4 +374,9 @@ export {
   createTooltips,
   checkForLoginToasts,
   createTooltipsFunct,
+  prevTime,
+  ratesByBase,
+  utilsModuleRatesDate as localRatesDate,
+  mirrorToLocalStorageConvert,
+  saveClean,
 };

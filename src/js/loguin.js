@@ -14,6 +14,7 @@ import {
   createTooltips,
   mirrorToLocalStorage,
   selectImg,
+  saveClean,
 } from './utils';
 
 let loginForm;
@@ -23,6 +24,7 @@ let logged;
 let toolChangeImg;
 let mirrorInterval;
 let imgDisplayed;
+let prevTimeCleared;
 
 // ------------------------EVENT HANDLERS-------------------------------
 function handleEditButtons(ev) {
@@ -233,9 +235,9 @@ function manageLogin() {
   });
 
   // I will check if the visitor come here 12hrs ago, or more, and clean the LocalStorage, because I update the content high frequently.
-  let prevTimeVisit = JSON.parse(localStorage.getItem('prevTimeVisit'));
-  console.log('prevTimeVisit from Ls', prevTimeVisit);
-  const elapsTime = Date.now() - prevTimeVisit;
+  prevTimeCleared = JSON.parse(localStorage.getItem('prevTimeCleared'));
+  console.log('restoring prevTime LS.clear() time, from LS', prevTimeCleared);
+  const elapsTime = Date.now() - prevTimeCleared;
   if (elapsTime < 43200000) {
     console.log(
       `We will not clear the LocalStorage until ${Math.floor(
@@ -247,11 +249,8 @@ function manageLogin() {
       )} seconds}`
     );
   } else {
-    localStorage.clear();
-    console.log('LocalStorage cleared automatically');
-    prevTimeVisit = Date.now();
-    localStorage.setItem('prevTimeVisit', JSON.stringify(prevTimeVisit));
+    saveClean('login');
   }
 }
 
-export { manageLogin, loginForm, shouldEnableContentEditable };
+export { manageLogin, loginForm, shouldEnableContentEditable, prevTimeCleared };
