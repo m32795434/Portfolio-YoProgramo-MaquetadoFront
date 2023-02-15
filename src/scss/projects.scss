@@ -1,18 +1,47 @@
 main {
     height: 500px;
 
-    & .tittleAndButtons {
-        height: auto;
+    &>.tittleAndButtons {
+        height: 100%;
+
+        // @include media-breakpoint-up(lg) {
+        //     height: 100%;
+        // }
+    }
+
+    & .tittleWrapper {
+        background-color: #D9D9D9;
+        // height: 80px;
 
         @include media-breakpoint-up(lg) {
             height: 100%;
         }
+    }
+
+    & .projectsWrapper {
+        background-color: #212529;
     }
 }
 
 .offcanvas,
 .offcanvas-body {
     --bs-offcanvas-width: 100%;
+}
+
+button[data-bs-toggle="offcanvas"] {
+    border-radius: 9px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 23px;
+    width: 340px;
+    height: 65px;
+
+
+    @include media-breakpoint-up(lg) {
+        width: 380px;
+        font-size: 26px;
+        height: 76px;
+
+    }
 }
 
 #h1Proj {
@@ -23,9 +52,7 @@ main {
     padding: 21px 13px 13px 7px;
 }
 
-.titleAndButtons {
-    background-color: rgba(217, 217, 217, 1);
-}
+
 
 //Shopping List
 .shopping .units {
