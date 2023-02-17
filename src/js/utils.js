@@ -127,6 +127,7 @@ function formatCurrency(amount, currency) {
 }
 
 function initConverter() {
+  fetchRates();
   refresh.addEventListener('click', () => {
     fetchRates();
   });
@@ -219,6 +220,7 @@ function restoreFromLocalStorageConvert() {
   if (exchangeRates) {
     ratesByBase = JSON.parse(exchangeRates);
   }
+  // fetchRates();
 }
 
 function convert() {
