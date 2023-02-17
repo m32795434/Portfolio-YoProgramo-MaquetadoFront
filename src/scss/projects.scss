@@ -54,17 +54,17 @@ button[data-bs-toggle="offcanvas"] {
 
 
 
-//Shopping List
-.shopping .units {
+//note List
+.noteForm .units {
     width: 50px;
     min-width: 50px;
 }
 
-.shopping input {
+.noteForm input {
     width: 100%;
 }
 
-.shopping-list {
+.note-list {
     width: 100%;
 
     & form button {
@@ -78,7 +78,7 @@ button[data-bs-toggle="offcanvas"] {
     }
 }
 
-.shopping-list button {
+.note-list button {
     height: 30px;
     width: 30px;
     padding: 0;
@@ -91,7 +91,7 @@ button[data-bs-toggle="offcanvas"] {
     }
 }
 
-.shopping-item {
+.note-item {
     padding: 1rem 0;
     display: grid;
     grid-template-columns: auto 1fr 1fr auto;
@@ -100,11 +100,11 @@ button[data-bs-toggle="offcanvas"] {
     border-bottom: 1px solid rgb(196, 190, 190);
 }
 
-.shopping-item input[type="checkbox"] {
+.note-item input[type="checkbox"] {
     margin-right: 1rem;
 }
 
-.shopping-item input[type="checkbox"]:checked+.itemName {
+.note-item input[type="checkbox"]:checked+.itemName {
     opacity: 0.7;
     text-decoration: rgb(0, 0, 0) line-through;
 }

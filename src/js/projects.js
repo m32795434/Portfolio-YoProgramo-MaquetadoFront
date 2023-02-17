@@ -18,12 +18,12 @@ document.querySelectorAll('[data-type]').forEach(write);
 // ------------------------------------MainNote----------------------------------------
 
 const sumSpan = document.querySelector('#sum');
-const shoppingForm = document.querySelector('.shopping');
+const noteForm = document.querySelector('.noteForm');
 const list = document.querySelector('.list');
 
 let items = [];
 
-function handleSubmitShop(e) {
+function handleSubmitNote(e) {
   e.preventDefault();
   const [name, price, units] = [
     e.currentTarget.item.value,
@@ -47,7 +47,7 @@ function handleSubmitShop(e) {
 
 function displayItems() {
   /* eslint-disable*/
-  const html = items.map(item => `<li class="shopping-item">
+  const html = items.map(item => `<li class="note-item">
   <input 
   value="${item.id}"
   type="checkbox"
@@ -99,7 +99,7 @@ function sum() {
   });
   sumSpan.textContent = `$${suma.toFixed(2)}`;
 }
-shoppingForm.addEventListener('submit', handleSubmitShop);
+noteForm.addEventListener('submit', handleSubmitNote);
 list.addEventListener('itemsUpdated', displayItems);
 list.addEventListener('itemsUpdated', mirrorToLocalStorageList);
 list.addEventListener('itemsUpdated', sum);
