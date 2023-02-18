@@ -7,7 +7,6 @@ import {
   editButtons,
   loginButtons,
   changeImgInput,
-  imgsToChange,
 } from './elements';
 import {
   checkForLoginToasts,
@@ -15,15 +14,15 @@ import {
   mirrorToLocalStorage,
   selectImg,
   saveClean,
+  toolChangeImg,
+  tooltipsSaveBts,
+  createLoggedTooltips,
 } from './utils';
 
 let loginForm;
 let loginToolTips;
-let tooltipsSaveBts;
 let logged;
-let toolChangeImg;
 let mirrorInterval;
-let imgDisplayed;
 let prevTimeCleared;
 
 // ------------------------EVENT HANDLERS-------------------------------
@@ -46,46 +45,6 @@ async function handleSubmit(e) {
   modalOuter.classList.remove('open');
 
   // ---------------------------DESDE ACA
-  // setting the tooltips for the edit mode
-  if (window.visualViewport.width >= 975.2) {
-    tooltipsSaveBts = await createTooltips('.toolSaveBtnLg'); // from the edit mode
-  } else {
-    tooltipsSaveBts = await createTooltips('.toolSaveBtn'); // from the edit mode
-  }
-  tooltipsSaveBts.forEach((el) => {
-    el.tip.addEventListener(
-      'click',
-      () => {
-        el.hide();
-      },
-      { once: true }
-    );
-  });
-
-  // enable the tooltips for the load-img
-  console.log('imgs to change:', imgsToChange);
-  if (window.visualViewport.width < 975.2) {
-    imgDisplayed = imgsToChange.find((img) =>
-      img.classList.contains('d-lg-none')
-    );
-  } else {
-    imgDisplayed = imgsToChange.find((img) =>
-      img.classList.contains('d-lg-block')
-    );
-  }
-  toolChangeImg = await createTooltips('.changeImg');
-  toolChangeImg.forEach((el) => {
-    document.querySelector(
-      'div.changeImgTool .tooltip-inner'
-    ).innerText = `Select an img respecting the relation aspect like ${imgDisplayed.dataset.z}`;
-    el.tip.addEventListener(
-      'click',
-      () => {
-        el.hide();
-      },
-      { once: true }
-    );
-  });
 
   // ------------------------HASTA ACA
 
@@ -115,6 +74,7 @@ function shouldEnableContentEditable(bool) {
   if (bool) {
     localStorage.setItem('login', true);
     logged = true;
+    createLoggedTooltips();
     console.log('shouldEnableContentEditable(true)');
     if (changeImgInput) {
       changeImgInput.onchange = function () {
@@ -226,11 +186,12 @@ function manageLogin() {
     but.addEventListener('click', () => {
       if (logged) {
         // LOGOUT
-        console.log('logged true?', logged);
+        console.log('login out...');
+        console.log('logged?', logged);
         shouldEnableContentEditable(false);
       } else {
         // LOGIN
-        console.log('logged false?', logged);
+        console.log('logged?', logged);
         createForm();
         console.log('form created');
       }
@@ -256,4 +217,10 @@ function manageLogin() {
   }
 }
 
-export { manageLogin, loginForm, shouldEnableContentEditable, prevTimeCleared };
+export {
+  manageLogin,
+  loginForm,
+  shouldEnableContentEditable,
+  prevTimeCleared,
+  logged,
+};

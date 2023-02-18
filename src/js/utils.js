@@ -16,8 +16,10 @@ import {
 import currencies from './currencies.js';
 import { ak } from '../../gitignore/ak';
 import { ratesByBaseBkUp, ratesDate } from './ratesBackUp';
-import { shouldEnableContentEditable, prevTimeCleared } from './loguin';
+import { shouldEnableContentEditable, prevTimeCleared, logged } from './loguin';
 
+let toolChangeImg;
+let tooltipsSaveBts;
 let reducedEditables;
 let prevTime;
 let elapsTime;
@@ -330,6 +332,55 @@ async function createInitTooltips() {
   );
   // commingSoon! tooltips
   const commingSoonTooltips = await createTooltips('.commingSoon');
+
+  // refresh...is the user logged? yes: well, create the tooltips for the edit buttons
+
+  // ------------------------------------------------------------------AQUI TRABAJANDOOOOOOOOOOOOOO
+}
+async function createLoggedTooltips() {
+  if (logged) {
+    // setting the tooltips for the edit mode
+    if (window.visualViewport.width >= 975.2) {
+      tooltipsSaveBts = await createTooltips('.toolSaveBtnLg'); // from the edit mode
+    } else {
+      tooltipsSaveBts = await createTooltips('.toolSaveBtn'); // from the edit mode
+    }
+    tooltipsSaveBts.forEach((el) => {
+      el.tip.addEventListener(
+        'click',
+        () => {
+          el.hide();
+        },
+        { once: true }
+      );
+    });
+
+    // enable the tooltips for the load-img
+    console.log('imgs to change:', imgsToChange);
+    let imgDisplayed;
+    if (window.visualViewport.width < 975.2) {
+      imgDisplayed = imgsToChange.find((img) =>
+        img.classList.contains('d-lg-none')
+      );
+    } else {
+      imgDisplayed = imgsToChange.find((img) =>
+        img.classList.contains('d-lg-block')
+      );
+    }
+    toolChangeImg = await createTooltips('.changeImg');
+    toolChangeImg.forEach((el) => {
+      document.querySelector(
+        'div.changeImgTool .tooltip-inner'
+      ).innerText = `Select an img respecting the relation aspect like ${imgDisplayed.dataset.z}`;
+      el.tip.addEventListener(
+        'click',
+        () => {
+          el.hide();
+        },
+        { once: true }
+      );
+    });
+  }
 }
 // ---------------------------SAVE CLEAN-------------------------
 function saveClean(str) {
@@ -380,4 +431,7 @@ export {
   ratesByBase,
   mirrorToLocalStorageConvert,
   saveClean,
+  toolChangeImg,
+  tooltipsSaveBts,
+  createLoggedTooltips,
 };
