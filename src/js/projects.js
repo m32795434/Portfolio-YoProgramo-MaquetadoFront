@@ -6,7 +6,7 @@ import {
   initConverter,
   imgEventHandler,
   checkForToasts,
-  createTooltipsFunct,
+  createInitTooltips,
 } from './utils';
 import { write } from './typer';
 import { imgClick } from './elements.js';
@@ -133,4 +133,4 @@ imgClick.forEach((el) => {
 });
 
 // --------------------------TOOLTIPS--------------------------
-createTooltipsFunct();
+createInitTooltips();

@@ -38,13 +38,14 @@ function handleEditButtons(ev) {
 
 async function handleSubmit(e) {
   e.preventDefault();
-  // if it's necessary to close some tooltips in the login
+  // if it's necessary to close some tooltips LATER the login
   loginToolTips.forEach((el) => {
     if (el._config.trigger && el._config.trigger === 'manual') el.hide();
   });
 
   modalOuter.classList.remove('open');
 
+  // ---------------------------DESDE ACA
   // setting the tooltips for the edit mode
   if (window.visualViewport.width >= 975.2) {
     tooltipsSaveBts = await createTooltips('.toolSaveBtnLg'); // from the edit mode
@@ -85,6 +86,8 @@ async function handleSubmit(e) {
       { once: true }
     );
   });
+
+  // ------------------------HASTA ACA
 
   // tooltips?need to change the color of the arrow? - SOME DAY IN THE FUTURE🙏
   /* const sheets = document.styleSheets;

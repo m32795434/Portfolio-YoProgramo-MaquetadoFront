@@ -2,7 +2,7 @@ import 'bootstrap/js/dist/dropdown.js';
 import { Slider1 } from './slider.js';
 import { manageLogin } from './loguin.js';
 import {
-  createTooltipsFunct,
+  createInitTooltips,
   imgEventHandler,
   restoreFromLStorage,
 } from './utils';
@@ -41,4 +41,4 @@ imgClick.forEach((el) => {
 });
 
 // --------------------------TOOLTIPS--------------------------
-createTooltipsFunct();
+createInitTooltips();

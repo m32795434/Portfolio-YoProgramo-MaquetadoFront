@@ -295,9 +295,9 @@ async function createTooltips(tools) {
     const tooltipList = [...tooltipTriggerList].map(
       (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
     );
-    // if it needs to be showed manually
     await wait(500);
 
+    // if it needs to be showed manually
     tooltipList.forEach((el) => {
       if (el._config.trigger === 'manual') {
         el.show();
@@ -308,7 +308,7 @@ async function createTooltips(tools) {
   return undefined;
 }
 
-async function createTooltipsFunct() {
+async function createInitTooltips() {
   // cleaner tooltips
   const cleanTooltips = await createTooltips('.cleanLs');
   cleanTooltips.forEach((el) => {
@@ -328,7 +328,7 @@ async function createTooltipsFunct() {
     // because we refresh the page. IMPORTANT!
     { once: true }
   );
-  // commingSoon tooltips
+  // commingSoon! tooltips
   const commingSoonTooltips = await createTooltips('.commingSoon');
 }
 // ---------------------------SAVE CLEAN-------------------------
@@ -375,10 +375,9 @@ export {
   checkForToasts,
   createTooltips,
   checkForLoginToasts,
-  createTooltipsFunct,
+  createInitTooltips,
   prevTime,
   ratesByBase,
-  utilsModuleRatesDate as localRatesDate,
   mirrorToLocalStorageConvert,
   saveClean,
 };
