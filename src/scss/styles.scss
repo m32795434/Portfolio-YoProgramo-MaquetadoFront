@@ -82,7 +82,6 @@ $success: #7952b3;
 
 @import "icon-list";
 */
-
 @import './style-home.scss';
 @import './style-experience.scss';
 @import'./projects.scss';
@@ -186,6 +185,10 @@ footer {
   font: 500 16px Montserrat, 'Open Sans', Lato, 'sans-serif';
   color: white;
 
+  @include media-breakpoint-down(md) {
+    height: 430px;
+  }
+
   @include media-breakpoint-up(lg) {
     background-color: #393838;
     height: 400px;
@@ -240,6 +243,10 @@ footer {
     border-radius: 0 0 5px 5px;
     height: 50px;
     overflow: auto;
+
+    @include media-breakpoint-down(md) {
+      height: 100px;
+    }
 
     & p {
       font: 500 16px 'Courier Prime', monospace;
