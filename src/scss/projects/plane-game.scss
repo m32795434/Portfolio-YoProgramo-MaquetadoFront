@@ -6,10 +6,28 @@
 }
 
 .plane {
-    position: relative;
+    position: absolute;
+    vertical-align: unset;
+    top: 50vh;
+    left: 50vw;
     transform: translateX(var(--x)) translateY(var(--y)) rotateY(var(--rotatey)) rotate(var(--rotate));
 }
 
 #plane>.offcanvas-body {
-    background: center / contain no-repeat url("../images/plane/espansione-dell-universo-cos-e-spostamento-rosso-v6-43688.jpg");
+    background-color: black;
+    height: 1000px;
+    position: relative;
+
+    // background: scroll url("../images/plane/espansione-dell-universo-cos-e-spostamento-rosso-v6-43688.jpg") center/contain no-repeat;
+    & .universe-background {
+        width: 100%;
+    }
+}
+
+video[controls] {
+    width: 200px;
+    // background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
 }

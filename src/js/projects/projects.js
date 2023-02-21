@@ -136,5 +136,17 @@ imgClick.forEach((el) => {
 // --------------------------TOOLTIPS--------------------------
 createInitTooltips();
 
-// --------------------------SOME DAY A COMPLETE PAKMAN--------------------------
-window.addEventListener('keydown', handleKeyDown);
+// --------------------------SOME DAY A COMPLETE PLANEGAME--------------------------
+const planeShowButton = document.querySelector('[data-bs-target="#plane"]');
+const planeCloseButton = document.querySelector('#plane [aria-label="Close"]');
+const videoTag = document.querySelector('video');
+if (planeShowButton && planeCloseButton) {
+  planeShowButton.addEventListener('click', () => {
+    window.addEventListener('keydown', handleKeyDown);
+    videoTag.play();
+  });
+  planeCloseButton.addEventListener('click', () => {
+    window.removeEventListener('keydown', handleKeyDown);
+    videoTag.pause();
+  });
+}

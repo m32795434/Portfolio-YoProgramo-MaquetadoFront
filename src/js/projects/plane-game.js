@@ -43,7 +43,7 @@ let rotate = 0;
   /* other way */
   // turtle.style.setProperty('--x', `${x}px`); // needs two arguments, and just for one property
   /*eslint-disable*/
-      plane.style['background'] = `hsla(${x + 1 + y}, 100%, 50%, 1)`;
+      // plane.style['background'] = `hsla(${x + 1 + y}, 100%, 50%, 1)`;
       /* eslint-enable */
   /* OTHER WAYS */
   // turtle.style.background = `hsla(${x + 50 + y}, 100%, 50%, 1)`;
