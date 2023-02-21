@@ -11,6 +11,12 @@ import {
 import { write } from '../typer';
 import { imgClick } from '../elements.js';
 import { handleKeyDown } from './plane-game';
+import {
+  createOrRmovefaceDetector,
+  detect,
+  populateVideo,
+  shouldStream,
+} from './faceDetector.js';
 
 manageLogin();
 restoreFromLStorage();
@@ -148,5 +154,23 @@ if (planeShowButton && planeCloseButton) {
   planeCloseButton.addEventListener('click', () => {
     window.removeEventListener('keydown', handleKeyDown);
     videoTag.pause();
+  });
+}
+// --------------------------FACE DETECTOR--------------------------
+const faceDetectShowButton = document.querySelector(
+  '[data-bs-target="#facedetector"]'
+);
+const faceDetectCloseButton = document.querySelector(
+  '#facedetector [aria-label="Close"]'
+);
+if (faceDetectShowButton && faceDetectCloseButton) {
+  faceDetectShowButton.addEventListener('click', () => {
+    createOrRmovefaceDetector(true);
+    shouldStream(true);
+    populateVideo().then(detect);
+  });
+  faceDetectCloseButton.addEventListener('click', () => {
+    createOrRmovefaceDetector(false);
+    shouldStream(false);
   });
 }
