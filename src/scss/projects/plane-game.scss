@@ -1,0 +1,15 @@
+* {
+    --x: 0;
+    --y: 0;
+    --rotatey: 0;
+    --rotate: 0;
+}
+
+.plane {
+    position: relative;
+    transform: translateX(var(--x)) translateY(var(--y)) rotateY(var(--rotatey)) rotate(var(--rotate));
+}
+
+#plane>.offcanvas-body {
+    background: center / contain no-repeat url("../images/plane/espansione-dell-universo-cos-e-spostamento-rosso-v6-43688.jpg");
+}
