@@ -196,5 +196,9 @@ button[data-bs-toggle="offcanvas"] {
 
     @include media-breakpoint-only(xs) {
         padding: 1rem;
+
+        & select {
+            width: 100%;
+        }
     }
 }
