@@ -56,7 +56,7 @@ function displayItems() {
   <span class="itemPrice">$ ${item.price*item.units}</span>
   <button 
   aria-label="Remove ${item.name}"
-  value="${item.id}"class="material-symbols-outlined"
+  value="${item.id}"class="material-symbols-outlined delete"
   >delete</button>
     </li>`).join('');
   /* eslint-enable */
