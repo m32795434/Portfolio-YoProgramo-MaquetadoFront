@@ -82,9 +82,9 @@ $success: #7952b3;
 
 @import "icon-list";
 */
+@import'./projects/projects.scss';
 @import './style-home.scss';
 @import './style-experience.scss';
-@import'./projects/projects.scss';
 
 :is(button.material-symbols-outlined, button.material-icons) {
   font-family: 'Material Symbols Outlined';

@@ -15,17 +15,17 @@ const options = {
   SCALE: 1.35,
 };
 let stream;
-async function shouldStream(bool) {
-  if (bool) {
-    try {
-      stream = await navigator.mediaDevices.getUserMedia({
-        video: { width: 640, height: 360 },
-      });
-    } catch (err) {
-      alert('You have to authorize the camera recording to use this app😄');
-    }
-  } else {
-    stream = null;
+let faceDetector;
+
+async function shouldStream() {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({
+      video: { width: 640, height: 360 },
+    });
+    console.log(stream);
+    // console.log(stream);
+  } catch (err) {
+    alert('You have to authorize the camera recording to use this app😄');
   }
 }
 
@@ -37,19 +37,15 @@ function handleOption(event) {
 optionsInputs.forEach((input) => {
   input.addEventListener('input', handleOption);
 });
-let faceDetector;
 
-function createOrRmovefaceDetector(bool) {
-  if (bool) {
-    try {
-      faceDetector = new window.FaceDetector();
-    } catch (err) {
-      alert(
-        'You have to enable the Experimental Web Platform features. Go to "yourBrowser://flags" and enable!'
-      );
-    }
-  } else {
-    faceDetector = null;
+async function createOrRmovefaceDetector() {
+  try {
+    faceDetector = new window.FaceDetector();
+    console.log(faceDetector);
+  } catch (err) {
+    alert(
+      'You have to enable the Experimental Web Platform features to use the detection function. Go to "yourBrowser://flags" and enable!'
+    );
   }
 }
 // console.log(video, canvas, faceCanvas, faceDetector);
@@ -69,7 +65,6 @@ async function populateVideo() {
 
 function drawFace(face) {
   const { width, height, top, left } = face.boundingBox;
-  // console.log(face);
   // console.log({ width, height, top, left });
   ctx.clearRect(0, 0, videoCanvas.width, videoCanvas.height);
   ctx.strokeStyle = '#ffc600';
@@ -111,9 +106,14 @@ function censor({ boundingBox: face }) {
   );
 }
 async function detect() {
-  const faces = await faceDetector.detect(video); // this "detect" is a method from the faceDetector object, and throws an array of faces.
-  faces.forEach(drawFace);
-  faces.forEach(censor);
+  let faces;
+  try {
+    faces = await faceDetector.detect(video); // this "detect" is a method from the faceDetector object, and throws an array of faces.
+    faces.forEach(drawFace);
+    faces.forEach(censor);
+  } catch (err) {
+    console.log(err);
+  }
   // ask the browser when the next animation frame is, and tell it to run "detect" for us.
   requestAnimationFrame(detect); // this performs better, but it could be just "detect();"
 }
@@ -121,5 +121,12 @@ async function detect() {
 // if we don't have access to the globals variables. We can:
 // window.populateVideo = populateVideo; or
 // console.log(populateVideo); then store in a global variable
-export { detect, populateVideo, createOrRmovefaceDetector, shouldStream };
+
+async function faceAsyncinit() {
+  await createOrRmovefaceDetector();
+  await shouldStream();
+  await populateVideo();
+  await detect();
+}
+export { faceAsyncinit };
 // Yes! you can learn to codding this app with the (BOS)=>'WESBOS'😄🫡

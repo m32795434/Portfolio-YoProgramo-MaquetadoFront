@@ -11,12 +11,7 @@ import {
 import { write } from '../typer';
 import { imgClick } from '../elements.js';
 import { handleKeyDown } from './plane-game';
-import {
-  createOrRmovefaceDetector,
-  detect,
-  populateVideo,
-  shouldStream,
-} from './faceDetector.js';
+import { faceAsyncinit } from './faceDetector.js';
 
 manageLogin();
 restoreFromLStorage();
@@ -163,14 +158,12 @@ const faceDetectShowButton = document.querySelector(
 const faceDetectCloseButton = document.querySelector(
   '#facedetector [aria-label="Close"]'
 );
+
 if (faceDetectShowButton && faceDetectCloseButton) {
   faceDetectShowButton.addEventListener('click', () => {
-    createOrRmovefaceDetector(true);
-    shouldStream(true);
-    populateVideo().then(detect);
+    faceAsyncinit();
   });
   faceDetectCloseButton.addEventListener('click', () => {
-    createOrRmovefaceDetector(false);
-    shouldStream(false);
+    window.location.reload();
   });
 }
