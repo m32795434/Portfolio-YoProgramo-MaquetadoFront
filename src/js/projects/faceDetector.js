@@ -17,13 +17,11 @@ const options = {
 let stream;
 let faceDetector;
 
-async function shouldStream() {
+async function streamFunction() {
   try {
     stream = await navigator.mediaDevices.getUserMedia({
       video: { width: 640, height: 360 },
     });
-    console.log(stream);
-    // console.log(stream);
   } catch (err) {
     alert('You have to authorize the camera recording to use this app😄');
   }
@@ -38,7 +36,7 @@ optionsInputs.forEach((input) => {
   input.addEventListener('input', handleOption);
 });
 
-async function createOrRmovefaceDetector() {
+async function createFaceDetector() {
   try {
     faceDetector = new window.FaceDetector();
     console.log(faceDetector);
@@ -123,8 +121,8 @@ async function detect() {
 // console.log(populateVideo); then store in a global variable
 
 async function faceAsyncinit() {
-  await createOrRmovefaceDetector();
-  await shouldStream();
+  await createFaceDetector();
+  await streamFunction();
   await populateVideo();
   await detect();
 }

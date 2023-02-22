@@ -10,7 +10,12 @@ import {
 } from '../utils';
 import { write } from '../typer';
 import { imgClick } from '../elements.js';
-import { handleKeyDown } from './plane-game';
+import {
+  handleKeyDown,
+  planeCloseButton,
+  planeShowButton,
+  videoTag,
+} from './plane-game';
 import { faceAsyncinit } from './faceDetector.js';
 
 manageLogin();
@@ -138,9 +143,7 @@ imgClick.forEach((el) => {
 createInitTooltips();
 
 // --------------------------SOME DAY A COMPLETE PLANEGAME--------------------------
-const planeShowButton = document.querySelector('[data-bs-target="#plane"]');
-const planeCloseButton = document.querySelector('#plane [aria-label="Close"]');
-const videoTag = document.querySelector('video');
+
 if (planeShowButton && planeCloseButton) {
   planeShowButton.addEventListener('click', () => {
     window.addEventListener('keydown', handleKeyDown);
@@ -165,5 +168,11 @@ if (faceDetectShowButton && faceDetectCloseButton) {
   });
   faceDetectCloseButton.addEventListener('click', () => {
     window.location.reload();
+  });
+  window.addEventListener('keyup', (e) => {
+    if (e.key === 'Escape') {
+      faceDetectCloseButton.click();
+      console.log(e.key);
+    }
   });
 }

@@ -1,4 +1,7 @@
 const plane = document.querySelector('.plane');
+const planeShowButton = document.querySelector('[data-bs-target="#plane"]');
+const planeCloseButton = document.querySelector('#plane [aria-label="Close"]');
+const videoTag = document.querySelector('video');
 let x = 0;
 let y = 0;
 const speed = 50;
@@ -7,9 +10,12 @@ let rotate = 0;
 
 /* eslint-disable*/
     function handleKeyDown(event) {
-      if (!event.key.includes('Arrow')) { return; }
+      // if (!event.key.includes('Arrow')) { return; }
       /* eslint-enable */
   switch (event.key) {
+    case 'Escape':
+      planeCloseButton.click();
+      break;
     case 'ArrowUp':
       y -= 1;
       //   rotate = 90;
@@ -50,5 +56,5 @@ let rotate = 0;
   // turtle.style.setProperty('background', `hsla(${x + 50 + y}, 100%, 50%, 1)`);
   // turtle.setAttribute('style', `background: hsla(${x + 50 + y}, 100%, 50%, 1)`);
 }
-export { handleKeyDown };
+export { handleKeyDown, planeShowButton, planeCloseButton, videoTag };
 /* Yes!You can learn the basics of this code, with the (Bos)=> WesBos.😄🎮 */
