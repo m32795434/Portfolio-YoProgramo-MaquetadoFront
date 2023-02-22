@@ -1,9 +1,33 @@
-#facedetector>.offcanvas-body {
-    box-sizing: border-box;
+#facedetector {
+    & .offcanvas-title {
+        background-color: #ffeb74;
+    }
+
+    &>.offcanvas-header {
+        background-color: #782828;
+        color: black;
+    }
+
+    &>.offcanvas-body {
+        box-sizing: border-box;
+    }
 }
 
 .wrapCanvas {
     &>* {
         position: absolute;
+        width: 97vw;
+
+        @include media-breakpoint-down(md) {
+            width: 94vw;
+        }
+
+        @include media-breakpoint-up(lg) {
+            width: 80vw;
+        }
+
+        @include media-breakpoint-up(xl) {
+            width: 1030px;
+        }
     }
 }
