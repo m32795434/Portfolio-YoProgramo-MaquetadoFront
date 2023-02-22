@@ -10,12 +10,31 @@
 
     &>.offcanvas-body {
         box-sizing: border-box;
+        background: repeat url('../images/faceDetector/tilde.png');
+    }
+
+    & .controls {
+        background-color: #ffd000;
+        width: 97vw;
+
+        @include media-breakpoint-down(md) {
+            width: 94vw;
+        }
+
+        @include media-breakpoint-up(lg) {
+            width: 80vw;
+        }
+
+        @include media-breakpoint-up(xl) {
+            width: 1030px;
+        }
     }
 }
 
 .wrapCanvas {
     &>* {
         position: absolute;
+        outline: thick double #c3a0a0;
         width: 97vw;
 
         @include media-breakpoint-down(md) {
