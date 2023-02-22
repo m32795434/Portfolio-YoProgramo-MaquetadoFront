@@ -264,14 +264,15 @@ function checkForToasts() {
   // I will limit the times people will see this toast
   const { title } = document;
   let toastTimes = JSON.parse(localStorage.getItem(`toastTimes${title}`));
-
-  if (!toastTimes || (toastTimes && toastTimes < 4)) {
-    toastTimes = !toastTimes ? (toastTimes = 1) : (toastTimes += 1);
-    localStorage.setItem(`toastTimes${title}`, JSON.stringify(toastTimes));
-    const welcomeToast = document.getElementById('welcomeToast');
-    if (welcomeToast) {
-      const myToast = new Toast(welcomeToast);
-      myToast.show();
+  if (title === 'Home') {
+    if (!toastTimes || (toastTimes && toastTimes < 4)) {
+      toastTimes = !toastTimes ? (toastTimes = 1) : (toastTimes += 1);
+      localStorage.setItem(`toastTimes${title}`, JSON.stringify(toastTimes));
+      const welcomeToast = document.getElementById('welcomeToast');
+      if (welcomeToast) {
+        const myToast = new Toast(welcomeToast);
+        myToast.show();
+      }
     }
   }
 }

@@ -1,3 +1,4 @@
+import Toast from 'bootstrap/js/dist/toast';
 import 'bootstrap/js/dist/dropdown.js';
 import 'bootstrap/js/dist/offcanvas.js';
 import { manageLogin } from '../loguin.js';
@@ -23,10 +24,12 @@ restoreFromLStorage();
 document.querySelectorAll('[data-type]').forEach(write);
 
 // ------------------------------------MainNote----------------------------------------
-
 const sumSpan = document.querySelector('#sum');
 const noteForm = document.querySelector('.noteForm');
 const list = document.querySelector('.list');
+const openMainNoteButton = document.querySelector(
+  '[data-bs-target="#mainNote"]'
+);
 
 let items = [];
 
@@ -122,7 +125,13 @@ list.addEventListener('click', (event) => {
 });
 
 restoreFromLocalStorageList();
-
+openMainNoteButton.addEventListener('click', () => {
+  const mainNoteToast = document.querySelector('#mainNoteToast');
+  if (mainNoteToast) {
+    const myToast = new Toast(mainNoteToast);
+    myToast.show();
+  }
+});
 // --------------------------Converter--------------------------
 
 const form = document.querySelector('.app form');
