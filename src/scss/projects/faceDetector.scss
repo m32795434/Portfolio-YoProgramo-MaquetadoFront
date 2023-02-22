@@ -1,11 +1,8 @@
 #facedetector>.offcanvas-body {
     box-sizing: border-box;
-    position: relative;
 }
 
-.wrap {
-    z-index: 20000;
-
+.wrapCanvas {
     &>* {
         position: absolute;
     }

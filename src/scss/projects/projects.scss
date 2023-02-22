@@ -2,11 +2,10 @@
 @import'./faceDetector.scss';
 
 .mainProjects {
-    height: 500px;
+    // height: 500px;
 
     &>.titleAndButtons {
-        height: 100%;
-
+        background-color: #d9d9d9;
         // @include media-breakpoint-up(lg) {
         //     height: 100%;
         // }
