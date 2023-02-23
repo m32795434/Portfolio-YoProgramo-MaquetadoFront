@@ -2,6 +2,8 @@ const result = document.querySelector('.encoderResult');
 const filterInputs = Array.from(
   document.querySelectorAll('[name= "encoderFilter"]')
 );
+const decodeTitle = document.querySelector('#decodeTitle');
+
 /* eslint-disable */
 const encodeDic = ['a','b','1','c','d','2','e','f','g','3','h','i','8','j','k','9','l','m','4','n','o','0','p','q','r','5','s','t','u','6','v','w','7','x','y','z'];
 const funkyLetters = {
@@ -47,4 +49,12 @@ function transformText(text) {
   const mod = Array.from(text).map(filters[filter]).join('');
   result.textContent = mod;
 }
-export { filterInputs, transformText };
+function handleToggle() {
+  console.log('togglin encode-decode');
+  this.textContent = this.textContent === 'Encode' ? 'Decode' : 'Encode';
+  filterInputs.forEach((el) => {
+    el.disabled = !el.disabled;
+  });
+  decodeTitle.hidden = !decodeTitle.hidden;
+}
+export { filterInputs, transformText, handleToggle };
