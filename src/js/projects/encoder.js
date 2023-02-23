@@ -26,10 +26,10 @@ const filters = {
     // for (let a = 0; a < lenght; a++) {
     //   textToReturn += text[i];
     // }
-    return textToReturn;
+    return `${text}encode`;
   },
   alfaNumericDecode(text) {
-    return text;
+    return `${text}decode`;
   },
   funky(letter) {
     // check if there is a funky letter for this case or
@@ -56,19 +56,15 @@ const filters = {
 };
 
 function transformText(text, filter) {
-  console.log(text, filter);
   // take the text and loop over each caracter
   const mod = Array.from(text.trim()).map(filters[filter]).join('');
   result.textContent = mod;
 }
 function encodeOrDecode(text, filter) {
-  let modified;
-  if (filter === 'alfaNumericEncode') modified = 'encode';
-  if (filter === 'alfaNumericDecode') modified = 'decode';
+  const modified = filters[filter](text);
   result.textContent = modified;
 }
 function handleToggle() {
-  console.log('togglin encode-decode');
   this.textContent =
     this.textContent === 'to Encode' ? 'to Decode' : 'to Encode';
   filterInputs.forEach((el) => {
