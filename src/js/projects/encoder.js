@@ -3,22 +3,33 @@ const filterInputs = Array.from(
   document.querySelectorAll('[name= "encoderFilter"]')
 );
 const decodeTitle = document.querySelector('#decodeTitle');
+const passInput = document.querySelector('#alfPassword');
+const textArea = document.querySelector('[name="encoderText"]');
 
 /* eslint-disable */
 // const encodeDic = ['a','b','1','c','d','2','e','f','g','3','h','i','8','j','k','9','l','m','4','n','o','0','p','q','r','5','s','t','u','6','v','w','7','x','y','z'];
 const funkyLetters = {
-  '-': '₋', '!': 'ᵎ', '?': 'ˀ', '(': '⁽', ')': '₎', '+': '⁺', '=': '₌', '0': '⁰', '1': '₁', '2': '²', '4': '₄', '5': '₅', '6': '₆', '7': '⁷', '8': '⁸', '9': '⁹', a: 'ᵃ', A: 'ᴬ', B: 'ᴮ', b: 'ᵦ', C: '𝒸', d: 'ᵈ', D: 'ᴰ', e: 'ₑ', E: 'ᴱ', f: '𝒻', F: 'ᶠ', g: 'ᵍ', G: 'ᴳ', h: 'ʰ', H: 'ₕ', I: 'ᵢ', i: 'ᵢ', j: 'ʲ', J: 'ᴶ', K: 'ₖ', k: 'ₖ', l: 'ˡ', L: 'ᴸ', m: 'ᵐ', M: 'ₘ', n: 'ₙ', N: 'ᴺ', o: 'ᵒ', O: 'ᴼ', p: 'ᵖ', P: 'ᴾ', Q: 'ᵠ', q: 'ᑫ', r: 'ʳ', R: 'ᵣ', S: 'ˢ', s: 'ˢ', t: 'ᵗ', T: 'ₜ', u: 'ᵘ', U: 'ᵤ', v: 'ᵛ', V: 'ᵥ', w: '𝓌', W: 'ʷ', x: 'ˣ', X: 'ˣ', y: 'y', Y: 'Y', z: '𝓏', Z: 'ᶻ' };
+  '-': '₋', '!': 'ᵎ', '?': 'ˀ', '(': '⁽', ')': '₎', '+': '⁺', '=': '₌', '0': '⁰', '1': '₁', '2': '²', '4': '₄', '5': '₅', '6': '₆', '7': '⁷', '8': '⁸', '9': '⁹', a: 'ᵃ', A: 'ᴬ', B: 'ᴮ', b: 'ᵦ', C: '𝒸', d: 'ᵈ', D: 'ᴰ', e: 'ₑ', E: 'ᴱ', f: '𝒻', F: 'ᶠ', g: 'ᵍ', G: 'ᴳ', h: 'ʰ', H: 'ₕ', I: 'ᵢ', i: 'ᵢ', j: 'ʲ', J: 'ᴶ', K: 'ₖ', k: 'ₖ', l: 'ˡ', L: 'ᴸ', m: 'ᵐ', M: 'ₘ', n: 'ₙ', N: 'ᴺ', o: 'ᵒ', O: 'ᴼ', p: 'ᵖ', P: 'ᴾ', Q: 'ᵠ', q: 'ᑫ', r: 'ʳ', R: 'ᵣ', S: 'ˢ', s: 'ˢ', t: 'ᵗ', T: 'ₜ', u: 'ᵘ', U: 'ᵤ', v: 'ᵛ', V: 'ᵥ', w: '𝓌', W: 'ʷ', x: 'ˣ', X: 'ˣ', y: 'y', Y: 'Y', z: '𝓏', Z: 'ᶻ'
+};
 /* eslint-enable */
 const filters = {
-  alfaNumericEncode(letter) {
+  alfaNumericEncode(text) {
     // String.prototype.codePointAt();
     // String.fromCharCode()
     // take a pass. Use it to convert the text.
     // One of the chars introduced in the text + one of the chars introduced in the pass => grater than 10175 => "introduce another char in the pass"
-    return letter;
+    let textToReturn;
+    // const pass = passInput.value;
+    // const textLenght = text.lenght;
+    // const passLenght = pass.lenght;
+    // console.log('pass:', pass);
+    // for (let a = 0; a < lenght; a++) {
+    //   textToReturn += text[i];
+    // }
+    return textToReturn;
   },
-  alfaNumericDecode(letter) {
-    return letter;
+  alfaNumericDecode(text) {
+    return text;
   },
   funky(letter) {
     // check if there is a funky letter for this case or
@@ -44,20 +55,59 @@ const filters = {
   },
 };
 
-function transformText(text) {
-  // const filter = document.querySelector('[name="filter"]:checked').value;
-  const filter = filterInputs.find((input) => input.checked).value;
+function transformText(text, filter) {
+  console.log(text, filter);
   // take the text and loop over each caracter
   const mod = Array.from(text.trim()).map(filters[filter]).join('');
   result.textContent = mod;
 }
+function encodeOrDecode(text, filter) {
+  let modified;
+  if (filter === 'alfaNumericEncode') modified = 'encode';
+  if (filter === 'alfaNumericDecode') modified = 'decode';
+  result.textContent = modified;
+}
 function handleToggle() {
   console.log('togglin encode-decode');
-  this.textContent = this.textContent === 'Encode' ? 'Decode' : 'Encode';
+  this.textContent =
+    this.textContent === 'to Encode' ? 'to Decode' : 'to Encode';
   filterInputs.forEach((el) => {
+    if (el.id === 'alfaNumericDecode') {
+      el.hidden = !el.hidden;
+      el.checked = !el.checked;
+    }
+    if (el.id === 'alfaNumericEncode') {
+      el.hidden = !el.hidden;
+    }
     el.disabled = !el.disabled;
-    el.hidden = !el.hidden;
   });
-  decodeTitle.hidden = !decodeTitle.hidden;
+  decodeTitle.textContent =
+    decodeTitle.textContent === 'Alfanumeric Encode'
+      ? 'Alfanumeric Decode'
+      : 'Alfanumeric Encode';
 }
-export { filterInputs, transformText, handleToggle };
+function handleTextAreaInput(e) {
+  const filter = filterInputs.find((input) => input.checked).value;
+  const { value } = e.target;
+  if (filter !== 'alfaNumericEncode' && filter !== 'alfaNumericDecode') {
+    transformText(value, filter);
+  } else {
+    encodeOrDecode(value, filter);
+  }
+}
+function handleFilterInputsInput(e) {
+  const { id } = e.target;
+  if (id !== 'alfaNumericEncode' && id !== 'alfaNumericDecode') {
+    transformText(textArea.value, id);
+  } else {
+    encodeOrDecode(textArea.value, id);
+  }
+}
+export {
+  filterInputs,
+  transformText,
+  handleToggle,
+  handleTextAreaInput,
+  handleFilterInputsInput,
+  textArea,
+};

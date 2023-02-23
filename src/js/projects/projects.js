@@ -18,7 +18,13 @@ import {
   videoTag,
 } from './plane-game';
 import { faceAsyncinit } from './faceDetector.js';
-import { filterInputs, handleToggle, transformText } from './encoder.js';
+import {
+  filterInputs,
+  handleFilterInputsInput,
+  handleTextAreaInput,
+  handleToggle,
+  textArea,
+} from './encoder.js';
 
 manageLogin();
 restoreFromLStorage();
@@ -186,10 +192,11 @@ if (faceDetectShowButton && faceDetectCloseButton) {
   });
 }
 // --------------------------ENCODER--------------------------
-const textArea = document.querySelector('[name="encoderText"]');
 const toogleEncode = document.querySelector('#toogleEncode');
+
 toogleEncode.addEventListener('click', handleToggle);
-textArea.addEventListener('input', (e) => transformText(e.target.value));
+
+textArea.addEventListener('input', handleTextAreaInput);
 filterInputs.forEach((input) =>
-  input.addEventListener('input', () => transformText(textArea.value))
+  input.addEventListener('input', handleFilterInputsInput)
 );

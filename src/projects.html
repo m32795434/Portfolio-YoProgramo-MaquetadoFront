@@ -244,10 +244,10 @@
                         <div class="encoderTyper">
                             <div class="row align-items-center">
                                 <div class="col-6 ">
-                                    <h5 id="decodeTitle" hidden>Alfanumeric decode</h5>
+                                    <h5 id="decodeTitle">Alfanumeric Encode</h5>
                                 </div>
                                 <div class="col-6 d-flex flex-row-reverse">
-                                    <button type="button" class="btn btn-primary" id="toogleEncode">Decode</button>
+                                    <button type="button" class="btn btn-primary" id="toogleEncode">to Decode</button>
                                 </div>
                             </div>
                             <label for="AlfaNumeric">
@@ -272,9 +272,14 @@
                                 <input type="radio" value="unable" id="unable" name="encoderFilter">
                                 Unable to Structure a Sentence
                             </label>
-                            <textarea name="encoderText">so I was thinking about going to the store.</textarea>
-                            <textarea name="decoderText" hidden>so I was thinking about going to the store.</textarea>
-                            <p class="encoderResult"></p>
+                            <hr>
+                            <div class="mb-1">
+                                Please insert some text
+                                <textarea name="encoderText">so I was thinking about going to the store.</textarea>
+                                <textarea name="decoderText"
+                                    hidden>so I was thinking about going to the store.</textarea>
+                                <p class="encoderResult"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
