@@ -18,6 +18,7 @@ import {
   videoTag,
 } from './plane-game';
 import { faceAsyncinit } from './faceDetector.js';
+import { filterInputs, transformText } from './encoder.js';
 
 manageLogin();
 restoreFromLStorage();
@@ -181,7 +182,12 @@ if (faceDetectShowButton && faceDetectCloseButton) {
   window.addEventListener('keyup', (e) => {
     if (e.key === 'Escape') {
       faceDetectCloseButton.click();
-      console.log(e.key);
     }
   });
 }
+// --------------------------ENCODER--------------------------
+const textArea = document.querySelector('[name="encoderText"]');
+textArea.addEventListener('input', (e) => transformText(e.target.value));
+filterInputs.forEach((input) =>
+  input.addEventListener('input', () => transformText(textArea.value))
+);

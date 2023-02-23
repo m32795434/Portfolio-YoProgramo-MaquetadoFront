@@ -1,0 +1,20 @@
+#encoder>.offcanvas-body {
+    // min-height: 100vh;
+    display: grid;
+    align-items: center;
+
+    & .encoderTyper {
+        margin: 0 auto;
+        background: white;
+        width: 500px;
+        padding: 2rem;
+        border-radius: 3px;
+        display: grid;
+
+        & textarea {
+            width: 100%;
+        }
+    }
+
+
+}
