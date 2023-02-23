@@ -5,11 +5,16 @@
 
     & .encoderTyper {
         margin: 0 auto;
+        padding: 2rem;
         background: white;
         width: 500px;
-        padding: 2rem;
         border-radius: 3px;
         display: grid;
+
+        @include media-breakpoint-down(sm) {
+            width: auto;
+            padding: 1rem;
+        }
 
         & textarea {
             width: 100%;

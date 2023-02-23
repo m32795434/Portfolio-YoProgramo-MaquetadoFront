@@ -251,9 +251,15 @@
                                 </div>
                             </div>
                             <label for="AlfaNumeric">
-                                <input type="radio" value="AlfaNumeric" id="AlfaNumeric" name="encoderFilter" checked>
+                                <input type="radio" value="alfaNumericDecode" id="alfaNumericDecode"
+                                    name="encoderFilter" hidden disabled>
+                                <input type="radio" value="alfaNumericEncode" id="alfaNumericEncode"
+                                    name="encoderFilter" checked>
                                 AlfaNumeric
+                                <input type="text" id="alfPassword" name="alfPassword" placeholder="Insert a password">
                             </label>
+                            <hr>
+                            Other generators
                             <label for="sarcastic">
                                 <input type="radio" value="sarcastic" id="sarcastic" name="encoderFilter">
                                 Sarcastic
