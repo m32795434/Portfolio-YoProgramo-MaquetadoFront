@@ -15,7 +15,7 @@ const funkyLetters = {
 
 const filters = {
   alfaNumericEncode(text) {
-    let textToReturn = '';
+    let acum = '';
     const pass = passInput.value;
     const textLength = text.length;
     console.log('pass:', pass);
@@ -35,36 +35,35 @@ const filters = {
         );
         return;
       }
-      textToReturn += String.fromCharCode(codeSum);
-      if (a === textLength - 1) {
-        textToReturn += `${b}`;
-      }
+      acum += String.fromCharCode(codeSum);
+      // if (a === textLength - 1) {
+      // textToReturn += `${b}`;
+      // }
       b = pass[b + 1] ? b + 1 : 0;
     }
-    console.log('textToReturn:', textToReturn);
+    const textToReturn = Array.from(acum).reverse().join('');
     return textToReturn;
   },
   alfaNumericDecode(text) {
-    console.log('text:', text);
     let textToReturn = '';
     const textLength = text.length;
-    const passLastInd = text[textLength - 1];
+    // const passLastInd = text[textLength - 1];
     const pass = passInput.value;
     const passLenth = pass.length;
-    const textToWork = text.slice(0, textLength - 1);
-    const textToWorkLength = textToWork.length;
-    console.log('textToWorkLength:', textToWorkLength);
-    console.log('textToWork:', textToWork);
+    // const textToWork = text.slice(0, textLength - 1);
+    // const textToWorkLength = textToWork.length;
+    // console.log('textToWorkLength:', textToWorkLength);
+    // console.log('textToWork:', textToWork);
     console.log('pass:', pass);
-    let b = passLastInd;
-    for (let a = textToWorkLength - 1; a > -1; a--) {
-      const codePointTextChar = textToWork[a].codePointAt();
+    let b = 0;
+    for (let a = textLength - 1; a > -1; a--) {
+      const codePointTextChar = text[a].codePointAt();
       const codePointPass = pass[b].codePointAt();
       console.log('codePointTextChar', codePointTextChar);
       console.log('codePointPass', codePointPass);
       const codeSub = codePointTextChar - codePointPass;
       textToReturn += String.fromCharCode(codeSub);
-      b = pass[b - 1] ? b - 1 : passLenth - 1;
+      b = pass[b + 1] ? b + 1 : 0;
     }
     console.log('textToReturn:', textToReturn);
     return textToReturn;
