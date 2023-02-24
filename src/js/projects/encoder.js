@@ -5,6 +5,8 @@ const filterInputs = Array.from(
 const decodeTitle = document.querySelector('#decodeTitle');
 const passInput = document.querySelector('#alfPassword');
 const textArea = document.querySelector('[name="encoderText"]');
+const inputEncode = document.querySelector('#alfaNumericEncode');
+const inputDecode = document.querySelector('#alfaNumericDecode');
 
 /* eslint-disable */
 const funkyLetters = {
@@ -14,18 +16,13 @@ const funkyLetters = {
 /* eslint-disable no-plusplus */
 
 const filters = {
-  alfaNumericEncode(text) {
+  alfaNumericEncode(text, pass) {
     let acum = '';
-    const pass = passInput.value;
     const textLength = text.length;
-    console.log('pass:', pass);
-    console.log('textLength:', textLength);
     let b = 0;
     for (let a = 0; a < textLength; a++) {
       const codePointTextChar = text[a].codePointAt();
       const codePointPass = pass[b].codePointAt();
-      console.log('codePointTextChar', codePointTextChar);
-      console.log('codePointPass', codePointPass);
       const codeSum = codePointTextChar + codePointPass;
       if (codeSum >= 10175) {
         alert(
@@ -44,28 +41,18 @@ const filters = {
     const textToReturn = Array.from(acum).reverse().join('');
     return textToReturn;
   },
-  alfaNumericDecode(text) {
+  alfaNumericDecode(text, pass) {
     let textToReturn = '';
     const textLength = text.length;
-    // const passLastInd = text[textLength - 1];
-    const pass = passInput.value;
     const passLenth = pass.length;
-    // const textToWork = text.slice(0, textLength - 1);
-    // const textToWorkLength = textToWork.length;
-    // console.log('textToWorkLength:', textToWorkLength);
-    // console.log('textToWork:', textToWork);
-    console.log('pass:', pass);
     let b = 0;
     for (let a = textLength - 1; a > -1; a--) {
       const codePointTextChar = text[a].codePointAt();
       const codePointPass = pass[b].codePointAt();
-      console.log('codePointTextChar', codePointTextChar);
-      console.log('codePointPass', codePointPass);
       const codeSub = codePointTextChar - codePointPass;
       textToReturn += String.fromCharCode(codeSub);
       b = pass[b + 1] ? b + 1 : 0;
     }
-    console.log('textToReturn:', textToReturn);
     return textToReturn;
   },
   funky(letter) {
@@ -99,22 +86,31 @@ function transformText(text, filter) {
 }
 function encodeOrDecode(text, filter) {
   const adaptedText = text.replace(/ /g, '');
-  const modified = filters[filter](adaptedText);
+  const pass = passInput.value;
+  if (pass === '' || pass.includes(' ')) {
+    alert('Pass must not be empty or contain spaces');
+    return;
+  }
+  const modified = filters[filter](adaptedText, pass);
   result.textContent = modified;
 }
 function handleToggle() {
   this.textContent =
-    this.textContent === 'to Encode' ? 'to Decode' : 'to Encode';
+    this.textContent === 'go to Encode' ? 'go to Decode' : 'go to Encode';
   filterInputs.forEach((el) => {
-    if (el.id === 'alfaNumericDecode') {
-      el.hidden = !el.hidden;
-      el.checked = !el.checked;
-    }
-    if (el.id === 'alfaNumericEncode') {
-      el.hidden = !el.hidden;
-    }
     el.disabled = !el.disabled;
   });
+  if (inputEncode.disabled) {
+    inputEncode.checked = false;
+    inputEncode.hidden = true;
+    inputDecode.hidden = false;
+    inputDecode.checked = true;
+  } else {
+    inputDecode.hidden = true;
+    inputDecode.checked = false;
+    inputEncode.hidden = false;
+    inputEncode.checked = true;
+  }
   decodeTitle.textContent =
     decodeTitle.textContent === 'Alfanumeric Encode'
       ? 'Alfanumeric Decode'
