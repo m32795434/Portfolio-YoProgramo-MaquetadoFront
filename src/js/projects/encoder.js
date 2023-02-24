@@ -5,8 +5,8 @@ const filterInputs = Array.from(
 const decodeTitle = document.querySelector('#decodeTitle');
 const passInput = document.querySelector('#alfPassword');
 const textArea = document.querySelector('[name="encoderText"]');
-const inputEncode = document.querySelector('#alfaNumericEncode');
-const inputDecode = document.querySelector('#alfaNumericDecode');
+const inputEncode = document.querySelector('#alphaNumericEncode');
+const inputDecode = document.querySelector('#alphaNumericDecode');
 
 /* eslint-disable */
 const funkyLetters = {
@@ -16,7 +16,7 @@ const funkyLetters = {
 /* eslint-disable no-plusplus */
 
 const filters = {
-  alfaNumericEncode(text, pass) {
+  alphaNumericEncode(text, pass) {
     let acum = '';
     const textLength = text.length;
     let b = 0;
@@ -28,7 +28,7 @@ const filters = {
         alert(
           `Replace "${pass[a]}". Use a char lower than ${
             codePointPass - (codeSum - 10175)
-          }in Unicode.`
+          } in Unicode.`
         );
         return;
       }
@@ -41,7 +41,7 @@ const filters = {
     const textToReturn = Array.from(acum).reverse().join('');
     return textToReturn;
   },
-  alfaNumericDecode(text, pass) {
+  alphaNumericDecode(text, pass) {
     let textToReturn = '';
     const textLength = text.length;
     const passLenth = pass.length;
@@ -112,14 +112,14 @@ function handleToggle() {
     inputEncode.checked = true;
   }
   decodeTitle.textContent =
-    decodeTitle.textContent === 'Alfanumeric Encode'
-      ? 'Alfanumeric Decode'
-      : 'Alfanumeric Encode';
+    decodeTitle.textContent === 'Alphanumeric Encode'
+      ? 'Alphanumeric Decode'
+      : 'Alphanumeric Encode';
 }
 function handleTextAreaInput(e) {
   const filter = filterInputs.find((input) => input.checked).value;
   const { value } = e.target;
-  if (filter !== 'alfaNumericEncode' && filter !== 'alfaNumericDecode') {
+  if (filter !== 'alphaNumericEncode' && filter !== 'alphaNumericDecode') {
     transformText(value, filter);
   } else {
     encodeOrDecode(value, filter);
@@ -127,7 +127,7 @@ function handleTextAreaInput(e) {
 }
 function handleFilterInputsInput(e) {
   const { id } = e.target;
-  if (id !== 'alfaNumericEncode' && id !== 'alfaNumericDecode') {
+  if (id !== 'alphaNumericEncode' && id !== 'alphaNumericDecode') {
     transformText(textArea.value, id);
   } else {
     encodeOrDecode(textArea.value, id);
