@@ -1,9 +1,24 @@
+#encoder>.offcanvas-header {
+    background-color: black;
+    color: white;
+
+    & button {
+        background-color: white;
+    }
+}
+
 #encoder>.offcanvas-body {
-    // min-height: 100vh;
     display: grid;
     align-items: center;
+    background: url('../images/encoder/enigma.png'), content-box radial-gradient(crimson, skyblue);
+
+    @include media-breakpoint-down(lg) {
+        background: top / contain no-repeat url('../images/encoder/enigma.png'), content-box radial-gradient(crimson, skyblue);
+
+    }
 
     & .encoderTyper {
+        outline: thick double red;
         margin: 0 auto;
         padding: 2rem;
         background: white;
