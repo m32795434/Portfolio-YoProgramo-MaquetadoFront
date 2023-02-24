@@ -7,7 +7,6 @@ const passInput = document.querySelector('#alfPassword');
 const textArea = document.querySelector('[name="encoderText"]');
 
 /* eslint-disable */
-// const encodeDic = ['a','b','1','c','d','2','e','f','g','3','h','i','8','j','k','9','l','m','4','n','o','0','p','q','r','5','s','t','u','6','v','w','7','x','y','z'];
 const funkyLetters = {
   '-': '₋', '!': 'ᵎ', '?': 'ˀ', '(': '⁽', ')': '₎', '+': '⁺', '=': '₌', '0': '⁰', '1': '₁', '2': '²', '4': '₄', '5': '₅', '6': '₆', '7': '⁷', '8': '⁸', '9': '⁹', a: 'ᵃ', A: 'ᴬ', B: 'ᴮ', b: 'ᵦ', C: '𝒸', d: 'ᵈ', D: 'ᴰ', e: 'ₑ', E: 'ᴱ', f: '𝒻', F: 'ᶠ', g: 'ᵍ', G: 'ᴳ', h: 'ʰ', H: 'ₕ', I: 'ᵢ', i: 'ᵢ', j: 'ʲ', J: 'ᴶ', K: 'ₖ', k: 'ₖ', l: 'ˡ', L: 'ᴸ', m: 'ᵐ', M: 'ₘ', n: 'ₙ', N: 'ᴺ', o: 'ᵒ', O: 'ᴼ', p: 'ᵖ', P: 'ᴾ', Q: 'ᵠ', q: 'ᑫ', r: 'ʳ', R: 'ᵣ', S: 'ˢ', s: 'ˢ', t: 'ᵗ', T: 'ₜ', u: 'ᵘ', U: 'ᵤ', v: 'ᵛ', V: 'ᵥ', w: '𝓌', W: 'ʷ', x: 'ˣ', X: 'ˣ', y: 'y', Y: 'Y', z: '𝓏', Z: 'ᶻ'
 };
@@ -15,15 +14,10 @@ const funkyLetters = {
 /* eslint-disable no-plusplus */
 
 const filters = {
-  // take a pass. Use it to convert the text.
-  // One of the chars introduced in the text + one of the chars introduced in the pass => grater than 10175 => "introduce another char in the pass"
   alfaNumericEncode(text) {
-    // String.prototype.codePointAt();
-    // String.fromCharCode()
     let textToReturn = '';
     const pass = passInput.value;
     const textLength = text.length;
-    // const passLenght = pass.lenght;
     console.log('pass:', pass);
     console.log('textLength:', textLength);
     let b = 0;
@@ -42,13 +36,38 @@ const filters = {
         return;
       }
       textToReturn += String.fromCharCode(codeSum);
+      if (a === textLength - 1) {
+        textToReturn += `${b}`;
+      }
       b = pass[b + 1] ? b + 1 : 0;
     }
     console.log('textToReturn:', textToReturn);
     return textToReturn;
   },
   alfaNumericDecode(text) {
-    return `${text}decode`;
+    console.log('text:', text);
+    let textToReturn = '';
+    const textLength = text.length;
+    const passLastInd = text[textLength - 1];
+    const pass = passInput.value;
+    const passLenth = pass.length;
+    const textToWork = text.slice(0, textLength - 1);
+    const textToWorkLength = textToWork.length;
+    console.log('textToWorkLength:', textToWorkLength);
+    console.log('textToWork:', textToWork);
+    console.log('pass:', pass);
+    let b = passLastInd;
+    for (let a = textToWorkLength - 1; a > -1; a--) {
+      const codePointTextChar = textToWork[a].codePointAt();
+      const codePointPass = pass[b].codePointAt();
+      console.log('codePointTextChar', codePointTextChar);
+      console.log('codePointPass', codePointPass);
+      const codeSub = codePointTextChar - codePointPass;
+      textToReturn += String.fromCharCode(codeSub);
+      b = pass[b - 1] ? b - 1 : passLenth - 1;
+    }
+    console.log('textToReturn:', textToReturn);
+    return textToReturn;
   },
   funky(letter) {
     // check if there is a funky letter for this case or
@@ -80,7 +99,8 @@ function transformText(text, filter) {
   result.textContent = mod;
 }
 function encodeOrDecode(text, filter) {
-  const modified = filters[filter](text);
+  const adaptedText = text.replace(/ /g, '');
+  const modified = filters[filter](adaptedText);
   result.textContent = modified;
 }
 function handleToggle() {
