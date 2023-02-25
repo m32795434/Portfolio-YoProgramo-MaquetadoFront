@@ -18,15 +18,35 @@
         & .universe-background {
             width: 100%;
         }
+
+        .wrapFaceDetectorPlaneGame>* {
+            position: absolute;
+            outline: thick double #c3a0a0;
+            width: 200px;
+            top: 50%;
+            left: 71%;
+            // @include media-breakpoint-down(md) {
+            //     width: 94vw;
+            // }
+
+            // @include media-breakpoint-up(lg) {
+            //     width: 80vw;
+            // }
+
+            // @include media-breakpoint-up(xl) {
+            //     width: 1030px;
+            // }
+        }
     }
 }
+
 
 .plane {
     position: absolute;
     vertical-align: unset;
-    top: 50vh;
-    left: 50vw;
-    transform: translateX(var(--x)) translateY(var(--y)) rotateY(var(--rotatey)) rotate(var(--rotate));
+    top: 0;
+    left: 0;
+    transform: translateX(var(--x)) translateY(var(--y));
 }
 
 

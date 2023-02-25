@@ -1,8 +1,5 @@
 const video = document.querySelector('.webcam');
-//  we will use the canvas objects to getContext, set their width and height the same as the video element, and clear the canvas with its measures.
-// we will use the respective contexts to draw the image and clear the canvas.
-
-const videoCanvas = document.querySelector('.videoCanvas'); // I don't like this NAME, becasuse this will paint a rectangle in the canvas, not the video.
+const videoCanvas = document.querySelector('.videoCanvas');
 const ctx = videoCanvas.getContext('2d');
 const faceCanvas = document.querySelector('.face'); // it will store the DRAW of the small face, and then draw it in a normal size
 const faceCtx = faceCanvas.getContext('2d');

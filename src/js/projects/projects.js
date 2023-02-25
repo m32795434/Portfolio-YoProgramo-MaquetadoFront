@@ -12,10 +12,11 @@ import {
 import { write } from '../typer';
 import { imgClick } from '../elements.js';
 import {
-  handleKeyDown,
+  // handleKeyDown,
   planeCloseButton,
   planeShowButton,
-  videoTag,
+  videoControls,
+  faceDPlaneAsyncinit,
 } from './plane-game';
 import { faceAsyncinit } from './faceDetector.js';
 import {
@@ -162,12 +163,14 @@ createInitTooltips();
 
 if (planeShowButton && planeCloseButton) {
   planeShowButton.addEventListener('click', () => {
-    window.addEventListener('keydown', handleKeyDown);
-    videoTag.play();
+    // window.addEventListener('keydown', handleKeyDown);
+    videoControls.play();
+    faceDPlaneAsyncinit();
   });
   planeCloseButton.addEventListener('click', () => {
-    window.removeEventListener('keydown', handleKeyDown);
-    videoTag.pause();
+    // window.removeEventListener('keydown', handleKeyDown);
+    // videoControls.pause();
+    window.location.reload();
   });
 }
 // --------------------------FACE DETECTOR--------------------------
