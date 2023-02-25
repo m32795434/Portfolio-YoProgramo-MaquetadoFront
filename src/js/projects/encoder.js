@@ -24,14 +24,14 @@ const filters = {
       const codePointTextChar = text[a].codePointAt();
       const codePointPass = pass[b].codePointAt();
       const codeSum = codePointTextChar + codePointPass;
-      if (codeSum >= 10175) {
-        alert(
-          `Replace "${pass[a]}". Use a char lower than ${
-            codePointPass - (codeSum - 10175)
-          } in Unicode.`
-        );
-        return;
-      }
+      // if (codeSum >= 10175) {
+      //   alert(
+      //     `Replace "${pass[a]}". Use a char lower than ${
+      //       codePointPass - (codeSum - 10175)
+      //     } in Unicode.`
+      //   );
+      //   return;
+      // }
       acum += String.fromCharCode(codeSum);
       // if (a === textLength - 1) {
       // textToReturn += `${b}`;
