@@ -98,39 +98,6 @@ async function detect() {
         plane.style.setProperty('left', `${initialX}px`);
         plane.style.setProperty('--x', `${moveX}px`);
       }
-
-      // turtle.style.setProperty('--x', `${x}px`);
-
-      // --initialY:${
-      //   windowHeight * options.positionY
-      // }px; --initialX:${windowWidth * options.positionX}px
-
-      // --rotatey: ${flippedy ? '180deg' : '0'};
-      /* if (xDetect > tempX) {
-        handleMove('Left');
-        move[0] = 'Left';
-      } else if (xDetect < tempX) {
-        handleMove('Right');
-        move[0] = 'Right';
-        // we recive the same value
-      } else if (move[0] === 'Left') {
-        handleMove('Left');
-      } else {
-        handleMove('Right');
-      }
-      if (yDetect > tempY) {
-        handleMove('Down');
-        move[1] = 'Down';
-      } else if (yDetect < tempY) {
-        handleMove('Up');
-        move[1] = 'Up';
-      } else if (move[1] === 'Down') {
-        handleMove('Down');
-      } else {
-        handleMove('Up');
-      }
-      tempX = xDetect;
-      tempY = yDetect; */
     }
   } catch (err) {
     console.log(err);

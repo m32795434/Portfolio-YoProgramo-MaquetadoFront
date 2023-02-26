@@ -206,16 +206,18 @@
                         <video controls hidden>
                             <source src="./images/plane/back-video.mp4" type="video/mp4">
                         </video>
-                        <div class="wrapFaceDetectorPlaneGame">
-                            <video class="webcamPlane"></video>
-                        </div>
-                        <div class="speedRange">
-                            <label for="speed">Position X</label>
-                            <input type="range" class="planeSpeedRange" step="0.5" min="-5" max="15" id="speedX"
-                                name="speedX">
-                            <label for="speed">Position Y</label>
-                            <input type="range" class="planeSpeedRange" step="0.5" min="0.5" max="10" id="speedY"
-                                name="speedY">
+                        <div class="row">
+                            <div class="d-block col-md-6 wrapFaceDetectorPlaneGame">
+                                <video class="webcamPlane"></video>
+                            </div>
+                            <div class="d-block col-md-6 speedRange">
+                                <label for="speed">Position X</label>
+                                <input type="range" class="planeSpeedRange" step="0.5" min="-5" max="20" id="speedX"
+                                    name="speedX">
+                                <label for="speed">Position Y</label>
+                                <input type="range" class="planeSpeedRange" step="0.5" min="-5" max="20" id="speedY"
+                                    name="speedY">
+                            </div>
                         </div>
                     </div>
                 </div>
