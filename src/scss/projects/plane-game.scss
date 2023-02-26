@@ -19,6 +19,10 @@
         & .universe-background {
             width: 100%;
             height: 500px;
+
+            @include media-breakpoint-down(lg) {
+                height: 230px;
+            }
         }
 
         .wrapFaceDetectorPlaneGame>* {
@@ -51,7 +55,7 @@
     left: 80vw;
     transform: translateX(var(--x)) translateY(var(--y)) rotateY(var(--rorateY));
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
         height: 70px;
         width: auto;
     }

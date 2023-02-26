@@ -19,10 +19,8 @@ const planeSpeedRange = Array.from(
 let x = 0;
 let y = 0;
 const options = {
-  positionX: 0.5,
-  positionY: 0.5,
-  speedX: 1,
-  speedY: 1,
+  positionX: 1,
+  positionY: 1,
 };
 const flippedy = true;
 // let rotate = 0;
@@ -69,7 +67,7 @@ function handleOptions(e) {
   const { name } = e.target;
   const value = parseFloat(e.target.value);
   options[name] = value;
-  console.log('name', name, 'value', value);
+  // console.log('name', name, 'value', value);
 }
 
 async function detect() {
@@ -80,20 +78,15 @@ async function detect() {
       // when I move right-->x decrease, when I move up, y decrease
       const { width, height } = face.boundingBox;
       [x, y] = [face.boundingBox.x, face.boundingBox.y];
-      const moveY = -(y + height / 2) * options.speedY;
-      const moveX = -(x + width / 2) * options.speedX;
-      if (
-        initialY + moveY > planeHeight &&
-        initialY + moveY < windowHeight - planeHeight
-      ) {
+      const moveY = -(y + height / 2) * options.positionY;
+      const moveX = -(x + width / 2) * options.positionX;
+      // console.log('moveX', moveX);
+      if (initialY + moveY > 1 && initialY + moveY < windowHeight - 1) {
         //  plane.setAttribute('style', `top:${initialY}px;--y:${moveY}px;`);
         plane.style.setProperty('top', `${initialY}px`);
         plane.style.setProperty('--y', `${moveY}px`);
       }
-      if (
-        initialX + moveX > planeWidth &&
-        initialX + moveX < windowWidth - planeWidth
-      ) {
+      if (initialX + moveX > 1 && initialX + moveX < windowWidth - 1) {
         // plane.setAttribute('style', `left:${initialX}px;--x:${moveX}px;`);
         plane.style.setProperty('left', `${initialX}px`);
         plane.style.setProperty('--x', `${moveX}px`);
