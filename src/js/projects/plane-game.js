@@ -2,6 +2,11 @@
 import { wait } from '../utils';
 
 const video = document.querySelector('.webcamPlane');
+const windowHeight = window.visualViewport.height;
+const windowWidth = window.visualViewport.width;
+
+const initialY = 2500;
+const initialX = 5000;
 
 let stream;
 let faceDetector;
@@ -22,7 +27,8 @@ const options = {
   positionX: 1,
   positionY: 1,
 };
-const flippedy = true;
+// let flippedy = false;
+// let tempX = 0;
 // let rotate = 0;
 
 // ----------------------------------FACE DETECTOR FUNCTIONS
@@ -49,20 +55,7 @@ async function populateVideo() {
   video.srcObject = stream;
   await video.play();
 }
-/*
-const move = ['Right', 'Up'];
-let [tempX, tempY] = [0, 0];
-*/
-const planeHeight = plane.height;
-const planeWidth = plane.width;
-const windowHeight = window.visualViewport.height;
-const windowWidth = window.visualViewport.width;
-// const initPositionX = windowWidth / 2 - planeWidth / 2;
-// const initPositionY = windowHeight / 2 - planeHeight / 2;
-const initialY = 2500;
-const initialX = 5000;
 
-// plane.setAttribute('style', ``);
 function handleOptions(e) {
   const { name } = e.target;
   const value = parseFloat(e.target.value);
@@ -91,13 +84,22 @@ async function detect() {
         plane.style.setProperty('left', `${initialX}px`);
         plane.style.setProperty('--x', `${moveX}px`);
       }
+      // if (tempX < moveX) {
+      //   flippedy = true;
+      // } else {
+      //   flippedy = false;
+      // }
+      // plane.style.setProperty('--rotateY', `${flippedy ? '180deg' : '0'}`);
+      // tempX = moveX;
+      // --rotatey: ${flippedy ? '180deg' : '0'};
     }
   } catch (err) {
     console.log(err);
   }
   // ask the browser when the next animation frame is, and tell it to run "detect" for us.
-  await wait(150);
+  // await wait(0);
   requestAnimationFrame(detect); // this performs better, but it could be just "detect();"
+  // detect();
 }
 
 async function faceDPlaneAsyncinit() {
@@ -106,7 +108,6 @@ async function faceDPlaneAsyncinit() {
   await populateVideo();
   await detect();
 }
-// Yes! you can learn to codding this app with the (BOS)=>'WESBOS'😄🫡
 
 // --------------------------------------------PLANEGAME FUNCTIONS
 
@@ -160,4 +161,3 @@ export {
   videoControls,
   faceDPlaneAsyncinit,
 };
-/* Yes!You can learn the basics of this code, with the (Bos)=> WesBos.😄🎮 */

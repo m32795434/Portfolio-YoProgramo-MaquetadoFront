@@ -1,7 +1,7 @@
 #plane {
     --x: 0;
     --y: 0;
-    --rorateY: 0;
+    --rotateY: 0;
     // --initialY: 50;
     // --initialX: 50;
 
@@ -53,7 +53,7 @@
     vertical-align: unset;
     top: 80vh;
     left: 80vw;
-    transform: translateX(var(--x)) translateY(var(--y)) rotateY(var(--rorateY));
+    transform: translateX(var(--x)) translateY(var(--y)) rotateY(var(--rotateY));
 
     @include media-breakpoint-down(lg) {
         height: 70px;
@@ -63,19 +63,22 @@
 
 
 video[controls] {
-    width: 200px;
+    width: 150px;
     // background-color: transparent;
     position: absolute;
     top: 0;
     left: 0;
 }
 
-.planeSpeedRange {
+.speedRangeWrapper {
     color: white;
-    width: 400px;
-    display: block;
 
-    @include media-breakpoint-down(md) {
-        width: 100%;
+    .planeSpeedRange {
+        width: 400px;
+        display: block;
+
+        @include media-breakpoint-down(md) {
+            width: 100%;
+        }
     }
 }
