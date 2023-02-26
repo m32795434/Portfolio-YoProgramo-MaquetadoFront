@@ -99,7 +99,7 @@
                     </button>
                     <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#plane"
                         aria-controls="plane">
-                        🤓🛩️(Pc - 📲Landscape)
+                        🤓🛩️ GAME (Pc ONLY)
                     </button>
                     <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#facedetector" aria-controls="facedetector">
@@ -203,7 +203,7 @@
                         <img src="./images/plane/espansione-dell-universo-cos-e-spostamento-rosso-v6-43688.jpg"
                             alt="universe" class="universe-background">
                         <img width="100" src="./images/plane/space-ship.png" alt="plane" id="planeImg">
-                        <video controls>
+                        <video controls hidden>
                             <source src="./images/plane/back-video.mp4" type="video/mp4">
                         </video>
                         <div class="row">
@@ -211,6 +211,7 @@
                                 <video class="webcamPlane"></video>
                             </div>
                             <div class="d-block col-md-6 speedRangeWrapper">
+                                Set the plane position <br>
                                 <label for="speed">Position X</label>
                                 <input type="range" class="planeSpeedRange" step="0.5" min="1" max="20" id="positionX"
                                     name="positionX">
