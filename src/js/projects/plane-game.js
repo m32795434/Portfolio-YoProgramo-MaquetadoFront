@@ -12,11 +12,18 @@ const plane = document.querySelector('#planeImg');
 const planeShowButton = document.querySelector('[data-bs-target="#plane"]');
 const planeCloseButton = document.querySelector('#plane [aria-label="Close"]');
 const videoControls = document.querySelector('video');
-const speedTag = document.querySelector('input#speed');
+const planeSpeedRange = Array.from(
+  document.querySelectorAll('.planeSpeedRange')
+);
 
 let x = 0;
 let y = 0;
-let speed = 1;
+const options = {
+  positionX: 0.5,
+  positionY: 0.5,
+  speedX: 1,
+  speedY: 1,
+};
 const flippedy = true;
 // let rotate = 0;
 
@@ -52,12 +59,18 @@ const planeHeight = plane.height;
 const planeWidth = plane.width;
 const windowHeight = window.visualViewport.height;
 const windowWidth = window.visualViewport.width;
-const initPositionX = windowWidth / 2 - planeWidth / 2;
-const initPositionY = windowHeight / 2 - planeHeight / 2;
-plane.setAttribute(
-  'style',
-  `--initialY:${initPositionY}px; --initialX:${initPositionX}px`
-);
+// const initPositionX = windowWidth / 2 - planeWidth / 2;
+// const initPositionY = windowHeight / 2 - planeHeight / 2;
+const initialY = 2500;
+const initialX = 5000;
+
+// plane.setAttribute('style', ``);
+function handleOptions(e) {
+  const { name } = e.target;
+  const value = parseFloat(e.target.value);
+  options[name] = value;
+  console.log('name', name, 'value', value);
+}
 
 async function detect() {
   let faces;
@@ -67,12 +80,31 @@ async function detect() {
       // when I move right-->x decrease, when I move up, y decrease
       const { width, height } = face.boundingBox;
       [x, y] = [face.boundingBox.x, face.boundingBox.y];
-      plane.setAttribute(
-        'style',
-        `
-        --x: ${(x + width / 2) * speed}px;
-        --y: ${(y + height / 2) * speed}px;`
-      );
+      const moveY = -(y + height / 2) * options.speedY;
+      const moveX = -(x + width / 2) * options.speedX;
+      if (
+        initialY + moveY > planeHeight &&
+        initialY + moveY < windowHeight - planeHeight
+      ) {
+        //  plane.setAttribute('style', `top:${initialY}px;--y:${moveY}px;`);
+        plane.style.setProperty('top', `${initialY}px`);
+        plane.style.setProperty('--y', `${moveY}px`);
+      }
+      if (
+        initialX + moveX > planeWidth &&
+        initialX + moveX < windowWidth - planeWidth
+      ) {
+        // plane.setAttribute('style', `left:${initialX}px;--x:${moveX}px;`);
+        plane.style.setProperty('left', `${initialX}px`);
+        plane.style.setProperty('--x', `${moveX}px`);
+      }
+
+      // turtle.style.setProperty('--x', `${x}px`);
+
+      // --initialY:${
+      //   windowHeight * options.positionY
+      // }px; --initialX:${windowWidth * options.positionX}px
+
       // --rotatey: ${flippedy ? '180deg' : '0'};
       /* if (xDetect > tempX) {
         handleMove('Left');
@@ -104,7 +136,7 @@ async function detect() {
     console.log(err);
   }
   // ask the browser when the next animation frame is, and tell it to run "detect" for us.
-  // await wait(2000);
+  await wait(150);
   requestAnimationFrame(detect); // this performs better, but it could be just "detect();"
 }
 
@@ -160,10 +192,7 @@ async function faceDPlaneAsyncinit() {
 //     --y: ${y * speed}px;`
 //   );
 // }
-speedTag.addEventListener('input', (e) => {
-  speed = parseFloat(e.target.value);
-  console.log('speed:..', speed);
-});
+planeSpeedRange.forEach((el)=>el.addEventListener('input',handleOptions))
 export {
   // handleKeyDown,
   planeShowButton,

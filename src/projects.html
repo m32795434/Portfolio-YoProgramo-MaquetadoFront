@@ -208,13 +208,14 @@
                         </video>
                         <div class="wrapFaceDetectorPlaneGame">
                             <video class="webcamPlane"></video>
-                            <!-- <canvas class="videoCanvasPlane"></canvas>
-                            <canvas class="facePlane"></canvas> -->
                         </div>
                         <div class="speedRange">
-                            <label for="speed">Motion sensitivity</label>
-                            <input type="range" step="0.1" min="0.1" max="5" id="speedX" name="speedX">
-                            <input type="range" step="0.1" min="0.1" max="5" id="speedY" name="speedY">
+                            <label for="speed">Position X</label>
+                            <input type="range" class="planeSpeedRange" step="0.5" min="-5" max="15" id="speedX"
+                                name="speedX">
+                            <label for="speed">Position Y</label>
+                            <input type="range" class="planeSpeedRange" step="0.5" min="0.5" max="10" id="speedY"
+                                name="speedY">
                         </div>
                     </div>
                 </div>
