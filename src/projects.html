@@ -199,16 +199,22 @@
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
+
                         <img src="./images/plane/espansione-dell-universo-cos-e-spostamento-rosso-v6-43688.jpg"
                             alt="universe" class="universe-background">
-                        <img width="100" src="./images/plane/plane-removebg-preview.png" alt="plane" class="plane">
-                        <video controls>
+                        <img width="100" src="./images/plane/plane-removebg-preview.png" alt="plane" id="planeImg">
+                        <video controls hidden>
                             <source src="./images/plane/back-video.mp4" type="video/mp4">
                         </video>
                         <div class="wrapFaceDetectorPlaneGame">
                             <video class="webcamPlane"></video>
-                            <canvas class="videoCanvasPlane"></canvas>
-                            <canvas class="facePlane"></canvas>
+                            <!-- <canvas class="videoCanvasPlane"></canvas>
+                            <canvas class="facePlane"></canvas> -->
+                        </div>
+                        <div class="speedRange">
+                            <label for="speed">Motion sensitivity</label>
+                            <input type="range" step="0.1" min="0.1" max="5" id="speedX" name="speedX">
+                            <input type="range" step="0.1" min="0.1" max="5" id="speedY" name="speedY">
                         </div>
                     </div>
                 </div>

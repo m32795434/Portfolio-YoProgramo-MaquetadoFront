@@ -164,7 +164,7 @@ createInitTooltips();
 if (planeShowButton && planeCloseButton) {
   planeShowButton.addEventListener('click', () => {
     // window.addEventListener('keydown', handleKeyDown);
-    videoControls.play();
+    // videoControls.play();
     faceDPlaneAsyncinit();
   });
   planeCloseButton.addEventListener('click', () => {
