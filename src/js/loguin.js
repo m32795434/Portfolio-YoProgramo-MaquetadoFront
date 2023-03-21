@@ -44,10 +44,6 @@ async function handleSubmit(e) {
 
   modalOuter.classList.remove('open');
 
-  // ---------------------------DESDE ACA
-
-  // ------------------------HASTA ACA
-
   // tooltips?need to change the color of the arrow? - SOME DAY IN THE FUTURE🙏
   /* const sheets = document.styleSheets;
   for (let i = 0; i < sheets.length; i++) {
@@ -120,7 +116,8 @@ function shouldEnableContentEditable(bool) {
 
 async function createForm() {
   modalOuter.classList.add('open');
-  modalInner.innerHTML = `<div class="dropdown-menu show" style="position: static;">
+  modalInner.innerHTML = `
+  <div class="dropdown-menu show" style="position: static;">
     <form class="px-4 py-3 login-form">
       <div class="mb-3">
         <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
