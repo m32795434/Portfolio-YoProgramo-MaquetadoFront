@@ -90,6 +90,7 @@ $success: #7952b3;
   font-family: 'Material Symbols Outlined';
 }
 
+
 //-----------------START-HEADER----------------------------
 
 header {
@@ -160,6 +161,7 @@ button.save {
 //-----------------START-MAIN----------------------------
 
 .main-section {
+  overflow: hidden;
   position: relative;
 
   & img {
@@ -170,6 +172,8 @@ button.save {
 }
 
 .Main404 {
+  overflow: hidden;
+
   & img {
     width: 50%;
   }
@@ -310,4 +314,46 @@ footer {
   box-shadow: 0 0 10px 10px;
   transform: translateY(-100vh);
   transition: all 0.5s
+}
+
+//----------------------------------------- flyer! -----------------------
+//this is important! jojo
+
+.flayer-container {
+  z-index: 30000;
+  background-color: #f4d610a5;
+  position: absolute;
+  top: 20%;
+  white-space: nowrap;
+  animation: slide-in-out infinite linear;
+  animation-duration: 12s;
+  padding: 1rem;
+  outline: red 3px dotted;
+
+  & a {
+    text-decoration: underline 2px black;
+    color: black;
+  }
+}
+
+.flayer-container:hover {
+  animation-play-state: paused;
+}
+
+@keyframes slide-in-out {
+  0% {
+    left: -100%;
+  }
+
+  5% {
+    left: 0%;
+  }
+
+  50% {
+    left: 0%;
+  }
+
+  100% {
+    left: 100%;
+  }
 }
