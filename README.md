@@ -1,6 +1,6 @@
 ## Proyecto final ArgPrograma etapa YoProgramo
->/> Transcribiendo a Angular!... 👉
-https://github.com/m32795434/Portfolio-YoProgramo-Front-Angular (Repo actualmente privado - lo libero cuando esté ready to deploy!)
+>/> Transcripto a Angular!...and working on... 👉
+https://github.com/m32795434/Portfolio-YoProgramo-Front-Angular 
 
 En el desafío del primer módulo de la capacitación debíamos aplicar la metodología SCRUM. Dado que es mi portfolio, me consideré en todas las posiciones que SCRUM determina. A saber: Product Owner, Scrum Master, Developer. Por tanto aunque parezca un poco redundante todo esto, lo apliqué solo a modo de práctica, y en cada posición consideré todos los aspectos que consideraría en caso de trabajar con un equipo real, teniendo que asumir alguna de dichas funciones.<br>
 Actualmente continúo aplicando las características y funcionalidades adicionales que nos ofrece Github, tales como ["Projects", "Labels", "Issues", "Pull Requests", "Tags"]. Aunque parezca un poco <strong>"burocrático"</strong>, (ya que estoy jugando con esto en <b>solitario</b>), de esta forma llevo un correcto registro de todas las tareas, realizadas y a realizar, y considero este acercamiento es más eficiente.
