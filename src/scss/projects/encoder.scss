@@ -25,18 +25,30 @@
         width: 500px;
         border-radius: 3px;
         display: grid;
+        overflow: hidden;
 
         @include media-breakpoint-down(sm) {
             width: auto;
             padding: 1rem;
         }
 
-        & textarea {
-            width: 100%;
-        }
-
         & #decodeTitle {
             display: inline;
+        }
+
+        .text-area-wrapper {
+            width: 90%;
+            overflow: hidden;
+
+            & textarea {
+                width: 100%;
+                overflow: auto;
+            }
+
+            .encoderResult {
+                width: 100%;
+                overflow: auto;
+            }
         }
     }
 
