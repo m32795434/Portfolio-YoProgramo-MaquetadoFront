@@ -172,6 +172,7 @@ button.save {
 }
 
 .Main404 {
+  position: relative;
   overflow: hidden;
 
   & img {
@@ -281,7 +282,7 @@ footer {
 .edit-top-left {
   position: absolute;
   z-index: 11;
-  top: -30px;
+  // top: -30px;
   left: 5px;
 }
 
@@ -289,7 +290,7 @@ footer {
 .edit-top-right {
   position: absolute;
   z-index: 11;
-  top: -50px;
+  // top: -50px;
   left: 85%;
 }
 
@@ -320,7 +321,7 @@ footer {
 //this is important! jojo
 
 .flayer-container {
-  z-index: 30000;
+  z-index: 30;
   background-color: #f4d610a5;
   position: absolute;
   top: 20%;
