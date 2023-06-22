@@ -1,3 +1,24 @@
+.imgTitleWrapper {
+    //exp & qpd
+    //width: col-12 col-lg-3 inline
+    height: 65vw;
+    position: relative;
+
+    @include media-breakpoint-up(lg) {
+        height: 44vw;
+    }
+
+    #imgDesktopQa,
+    #imgDesktopExp {
+        max-height: 44vw;
+    }
+
+    #imgMobileQa,
+    #imgMobileExp {
+        max-height: 65vw;
+    }
+}
+
 .cols-slider-wrapper {
     height: 100%;
 }
