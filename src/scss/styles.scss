@@ -326,8 +326,7 @@ footer {
   position: absolute;
   top: 20%;
   white-space: nowrap;
-  animation: slide-in-out infinite linear;
-  animation-duration: 12s;
+  animation: 15s linear infinite slide-in-out;
   padding: 1rem;
   outline: red 3px dotted;
 
@@ -346,11 +345,7 @@ footer {
     left: -100%;
   }
 
-  5% {
-    left: 0%;
-  }
-
-  20% {
+  50% {
     left: 0%;
   }
 
