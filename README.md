@@ -1,7 +1,9 @@
 ## RESUMEN
 
-Este proyecto es mi 💼😀 portfolio (anterior). <b>Incluye otros proyectos adicionales en la seccion correspondiente</b>.
-Es una aplicación Web por medio de la cual se pueden aplicar cambios sobre imáges y textos del sitio y estos cambios se guardan en objetos en tu LocalStorage (un mecanismo de almacenamiento del tipo clave-valor de tu navegador). El código está distribuido en módulos Javascript. Las funciones están organizadas en Objetos.
+🎆Vienvenidos a mi 💼Portfolio (anterior😀)! 🎇<br>
+Ésta <b>es una aplicación Web</b> por medio de la cual se pueden aplicar cambios sobre imáges y textos del sitio y estos cambios se guardan dentro de objetos en tu LocalStorage (un mecanismo de almacenamiento del tipo clave-valor de tu navegador). Por tal motivo verás el sitio tal como lo vayas modificando, (aún ante un refresh), hasta que decidas "presionar" el botón de "Clean LocalStorage"🤩 ubicado en el footer del sitio.
+<b>Esta aplicación incluye otros proyectos adicionales en la seccion correspondiente</b>.
+El código está distribuido en módulos Javascript. Las funciones están organizadas en Objetos.
 Lo desarrollé como consecuencia del primer módulo de la segunda etapa de Argentina Programa, pero luego lo continué como un proyecto independiente.
 
 ## PROYECTOS INCLUÍDOS
@@ -16,9 +18,7 @@ Lo desarrollé como consecuencia del primer módulo de la segunda etapa de Argen
 
 - The Face Detector
 
-Tecnologías y Conceptos: mucho ES7+ JavaScript, Local Storage, codePoint, MediaStream API, Canvas API, Face Detection API, Web Animation API, Fetch API, DOM, RequestAnimationFrame, Bootstrap, Scss, Parcel
-
-Los archivos de informacion sobre el proyecto los van a encontrar en la carpeta /ProyectInfo en el directorio raiz.
+Tecnologías y Conceptos: mucho ES7+ JavaScript, Local Storage, codePoint, MediaStream API, Canvas API, Face Detection API, Web Animation API, Fetch API, DOM, RequestAnimationFrame, Bootstrap, Scss, Parcel.
 
 Enlace al Figma:https://www.figma.com/file/OzmM9ZwWiCKJm0VOkrIZa5/Portfolio-YoProgramo?node-id=0%3A1&t=8uwZka9PgEAfaabS-1
 
@@ -26,7 +26,7 @@ Enlace al Figma:https://www.figma.com/file/OzmM9ZwWiCKJm0VOkrIZa5/Portfolio-YoPr
 
 <div style="display:grid;align-items:center; justify-items:center;gap:1rem;">
 <h2 style="text-align:center;">Digital Mockup</h2>
-<img src="./ProjectInfo/img/figmaSnapshot.png" alt="Figma - Digital Mockup" style="max-width:600px; height:auto;">
+<img src="https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/images%2Fgallery%2Fabout-projects%2Ffigma-Portfolio-project.png?alt=media&token=35fd1ec6-ca57-4c6b-b822-131b7395c25f" alt="Figma - Digital Mockup" style="max-width:600px; height:auto;">
 </div>
 
 <hr style="margin:1rem 0;">
