@@ -58,7 +58,7 @@ Enlace al Figma:https://www.figma.com/file/OzmM9ZwWiCKJm0VOkrIZa5/Portfolio-YoPr
 
 <hr style="margin:1rem 0;">
 
-<b>Si quieres ver una demo de mi portfolio actual te dejo el enlace!😀👇</b>
+<b>Si quieres ver una demo de mi portfolio actual te dejo el enlace!😀👇</b><br>
 https://github.com/m32795434/Portfolio-YoProgramo-Front-Angular
 
 Archivo de Licencia cargado en el repo.
