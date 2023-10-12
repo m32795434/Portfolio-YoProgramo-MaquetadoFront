@@ -1,0 +1,26 @@
+Licencia Creative Commons Atribución-NoComercial 4.0 Internacional
+
+Al otorgar una licencia bajo los siguientes términos, el Licenciatario acepta y se compromete a cumplir con los términos y condiciones de esta licencia:
+
+1. **Definiciones**
+   a. "Licenciante" se refiere a [Manuel Augusto Bravard].
+   b. "Licenciatario" se refiere a cualquier persona que ejerza los derechos otorgados por esta licencia.
+   c. "Obra" se refiere al trabajo creativo protegido por esta licencia, que incluye el repositorio alojado en https://github.com/m32795434/Portfolio-YoProgramo-MaquetadoFront.
+
+2. **Concesión de Licencia**
+   El Licenciatario tiene el derecho no exclusivo de copiar, modificar y distribuir la Obra, siempre y cuando se cumplan las siguientes condiciones:
+   
+   a. **Atribución**: El Licenciatario debe dar crédito al Licenciante, proporcionando un enlace a la obra original y mencionando al Licenciante en cualquier copia o adaptación de la Obra.
+
+   b. **No Comercial**: El Licenciatario no puede utilizar la Obra con fines comerciales. Se prohíbe expresamente el uso de la Obra para obtener ganancias comerciales directas o indirectas.
+
+3. **Renuncia de Garantía**
+   La Obra se proporciona "tal como está" y el Licenciante no ofrece ninguna garantía con respecto a su precisión, idoneidad o funcionalidad. El uso de la Obra se realiza bajo la responsabilidad del Licenciatario.
+
+4. **Ley Aplicable**
+   Esta licencia se rige por las leyes de Argentina.
+
+5. **Contacto**
+   Para cualquier pregunta o solicitud relacionada con esta licencia, comuníquese con el Licenciante a la casilla [manubravard@gmail.com].
+
+[12/10/2023] - [Manuel Augusto Bravard]

@@ -1,9 +1,22 @@
-## Proyecto final ArgPrograma etapa YoProgramo
->/> Transcripto a Angular!...and working on... 👉
-https://github.com/m32795434/Portfolio-YoProgramo-Front-Angular 
+## RESUMEN
 
-En el desafío del primer módulo de la capacitación debíamos aplicar la metodología SCRUM. Dado que es mi portfolio, me consideré en todas las posiciones que SCRUM determina. A saber: Product Owner, Scrum Master, Developer. Por tanto aunque parezca un poco redundante todo esto, lo apliqué solo a modo de práctica, y en cada posición consideré todos los aspectos que consideraría en caso de trabajar con un equipo real, teniendo que asumir alguna de dichas funciones.<br>
-Actualmente continúo aplicando las características y funcionalidades adicionales que nos ofrece Github, tales como ["Projects", "Labels", "Issues", "Pull Requests", "Tags"]. Aunque parezca un poco <strong>"burocrático"</strong>, (ya que estoy jugando con esto en <b>solitario</b>), de esta forma llevo un correcto registro de todas las tareas, realizadas y a realizar, y considero este acercamiento es más eficiente.
+Este proyecto es mi 💼😀 portfolio (anterior). <b>Incluye otros proyectos adicionales en la seccion correspondiente</b>.
+Es una aplicación Web por medio de la cual se pueden aplicar cambios sobre imáges y textos del sitio y estos cambios se guardan en objetos en tu LocalStorage (un mecanismo de almacenamiento del tipo clave-valor de tu navegador). El código está distribuido en módulos Javascript. Las funciones están organizadas en Objetos.
+Lo desarrollé como consecuencia del primer módulo de la segunda etapa de Argentina Programa, pero luego lo continué como un proyecto independiente.
+
+## PROYECTOS INCLUÍDOS
+
+- Portfolio
+
+- CodePoint Encoder
+
+- Face-Driven Move Controller
+
+- The Main Note
+
+- The Face Detector
+
+Tecnologías y Conceptos: mucho ES7+ JavaScript, Local Storage, codePoint, MediaStream API, Canvas API, Face Detection API, Web Animation API, Fetch API, DOM, RequestAnimationFrame, Bootstrap, Scss, Parcel
 
 Los archivos de informacion sobre el proyecto los van a encontrar en la carpeta /ProyectInfo en el directorio raiz.
 
@@ -19,41 +32,31 @@ Enlace al Figma:https://www.figma.com/file/OzmM9ZwWiCKJm0VOkrIZa5/Portfolio-YoPr
 <hr style="margin:1rem 0;">
 
 <div style="display:grid;align-items:center; justify-items:center;gap:1rem;">
-<h2 style="text-align:center;">App architecture</h2>
-<img src="./ProjectInfo/img/YoProgramo-PortfolioWeb-Arquitectura-Manuel-Bravard.png" alt="App architecture" style="max-width:600px; height:auto;">
+<h2 style="text-align:center;">Portfolio</h2>
+<img src="https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/images%2Fgallery%2Fabout-projects%2Fportfolio-vanilla.png?alt=media&token=26c20811-4737-4564-b0e8-46ad84115507" alt="Portfolio" style="max-width:600px; height:auto;">
+</div>
+<hr style="margin:1rem 0;">
+
+<div style="display:grid;align-items:center; justify-items:center;gap:1rem;">
+<h2 style="text-align:center;">CodePoint Encoder</h2>
+<img src="https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/images%2Fgallery%2Fabout-projects%2Fencoder.png?alt=media&token=b867815f-3f0f-433e-a07d-6e8a7c49811a" alt="CodePoint Encoder" style="max-width:600px; height:auto;">
 </div>
 
 <hr style="margin:1rem 0;">
 
 <div style="display:grid;align-items:center; justify-items:center;gap:1rem;">
-<h2 style="text-align:center;">Epics and Features</h2>
-<img src="./ProjectInfo/img/Epics-Features.png" alt="Epics and Features" style="max-width:600px; height:auto;">
+<h2 style="text-align:center;">The Main Note</h2>
+<img src="https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/images%2Fgallery%2Fabout-projects%2Fmain-note.png?alt=media&token=eac97f6e-2c4a-430a-b54a-28f033305dc8" alt="The Main Note" style="max-width:600px; height:auto;">
 </div>
 
 <hr style="margin:1rem 0;">
 
 <div style="display:grid;align-items:center; justify-items:center;gap:1rem;">
-<h2 style="text-align:center;">Some User Stories</h2>
-<img src="./ProjectInfo/img/Some-User-Stories.png" alt="User Stories" style="max-width:600px; height:auto;">
+<h2 style="text-align:center;">Face-Driven Move Controller</h2>
+<img src="https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/images%2Fgallery%2Fabout-projects%2Fspaceship.png?alt=media&token=902eafa9-ae21-4535-94c7-b5b12a4b3590" alt="Face-Driven Move Controller" style="max-width:600px; height:auto;">
 </div>
 
 <hr style="margin:1rem 0;">
 
-<div style="display:grid;align-items:center; justify-items:center;gap:1rem;">
-<h2 style="text-align:center;">First Sprint Planing</h2>
-<img src="./ProjectInfo/img/First-Sprint-Planing.png" alt="First Sprint Planing" style="max-width:600px; height:auto;">
-</div>
-
-<hr style="margin:1rem 0;">
-
-<div style="display:grid;align-items:center; justify-items:center;gap:1rem;">
-<h2 style="text-align:center;">SprintGoal, Backlog and Tasks</h2>
-<img src="./ProjectInfo/img/SprintGoal-Backlog-Tasks.png" alt="SprintGoal Backlog and Tasks" style="max-width:600px; height:auto;">
-</div>
-
-<hr style="margin:1rem 0;">
-
-<div style="display:grid;align-items:center; justify-items:center;gap:1rem;">
-<h2 style="text-align:center;">Acceptance Criteria</h2>
-<img src="./ProjectInfo/img/Acceptance-Criteria.png" alt="Acceptance Criteria" style="max-width:600px; height:auto;">
-</div>
+<b>Si quieres ver una demo de mi portfolio actual te dejo el enlace!😀👇</b>
+https://github.com/m32795434/Portfolio-YoProgramo-Front-Angular
